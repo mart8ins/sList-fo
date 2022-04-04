@@ -1,24 +1,51 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
 
 type Props = {};
 
 const Header = (props: Props) => {
+    const [auth, setAuth] = useState(false);
+    // const auth = true;
+    const recipesLength = true;
+    const shoppingListLength = true;
+    const activeShoppingList = true;
+
+    const signIn = () => {
+        setAuth(!auth);
+    };
+
     return (
         <div className="header">
-            <div className="top__title">
-                <h1>S-list</h1>
-            </div>
-            <div className="bottom__nav">
-                <div className="lang__options">
-                    <p>LV</p>
-                    <p>ENG</p>
+            <div className="top">
+                <div></div>
+                <div>
+                    <Link to="/">S-list</Link>
                 </div>
-                <div className="nav__options">
-                    <Link to="recipes">Receptes</Link>
-                    <Link to="shopping-list">SList</Link>
+                <div className="auth__false">
+                    {auth ? (
+                        <Link onClick={signIn} to="/">
+                            Logout
+                        </Link>
+                    ) : (
+                        <Link onClick={signIn} to="auth">
+                            Sign in
+                        </Link>
+                    )}
                 </div>
             </div>
+
+            {auth && (
+                <div className="bottom">
+                    {recipesLength && <Link to="recipes">Recipes</Link>}
+                    {shoppingListLength && (
+                        <Link to="s-list">Shopping list</Link>
+                    )}
+                    {activeShoppingList && (
+                        <Link to="s-list">Active shopping list</Link>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

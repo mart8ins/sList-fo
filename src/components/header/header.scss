@@ -1,54 +1,93 @@
+@import "../../scss/config";
+@import "../../scss/layout";
+
 .header {
-    .top__title {
-        background-color: #292929;
-        h1 {
+    .top {
+        @include flexColumn();
+        background-color: $dark-color;
+
+        div:nth-child(2) {
+            a {
+                display:block;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-size: 2rem;
+                font-weight: bold;
+                text-align: center;
+                color: $grey-color;
+                text-shadow: 0px 0px 5px $white-color;
+                letter-spacing: 2px;
+            }
+        }
+        div:nth-child(3) {
             text-align: center;
             padding: 10px;
-            color: #ff8c00;
-            text-shadow: 0px 0px 5px #ff8c00;
+            a {
+                text-decoration: none;
+                color: $grey-color;
+                font-weight: bold;
+                font-size: 1.2rem;
+                
+            }
+
+            a:hover {
+                color: $white-color;
+            }
         }
     }
     
-    .bottom__nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+    .bottom {
+        @include flexColumnAlignCenter();
+        margin-bottom: 40px;
+        box-shadow: 0px 2px 10px $grey-color;
         padding: 10px;
-
-        .lang__options {
-            display: flex;
-            flex-direction: row;
-            p {
-                margin-left: 20px;
-            }
+        a {
+            text-decoration: none;
+            color: $dark-color;
+            border-bottom: 1px solid $dark-color;
+            margin: 10px;
+            padding: 2px 8px;
+            border-radius: 5px;
+            font-size: 1rem;
+            background-color: $grey-color;
+            color: $white-color;
+            box-shadow: 0px 2px 7px $dark-color;
+            font-weight: bold;
+        }
+        a:hover {
+            box-shadow: 1px 2px 11px $dark-color;
         }
     }
 }
 
+
+
 @media screen and (min-width: 768px) {
     .header {
-        .top__title {
-            background-color: #292929;
-            h1 {
-                text-align: center;
-                padding: 10px;
-                color: #ff8c00;
-                text-shadow: 0px 0px 5px #ff8c00;
+        .top {
+            @include flexRow();
+            justify-content: space-between;
+            padding: 10px;
+
+            div:nth-child(3) {
+                @include flexCenter();
+                padding: 0px;
+                a {
+                    font-size: 1.4rem;
+                }
             }
         }
         
-        .bottom__nav {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            padding: 10px;
-    
-            .lang__options {
-                display: flex;
-                flex-direction: row;
-                p {
-                    margin-left: 20px;
-                }
+        .bottom {
+            @include flexRow();
+            a {
+                border-bottom: 3px solid $dark-color;
+                margin: 5px 15px;
+                padding: 2px 11px;
+                font-size: 1.3rem;
+            }
+            a:hover {
+                box-shadow: 1px 2px 15px $dark-color;
             }
         }
     }
