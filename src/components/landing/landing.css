@@ -1,4 +1,8 @@
-.landing__container {
+.landing {
+  position: relative;
+}
+
+.landing .landing__container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,7 +20,7 @@
   height: 95vh;
 }
 
-.landing__container .intro {
+.landing .landing__container .intro {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -28,7 +32,7 @@
   margin-top: -100px;
 }
 
-.landing__container .intro div {
+.landing .landing__container .intro div {
   background-color: #778899;
   width: 80%;
   margin: 5px auto;

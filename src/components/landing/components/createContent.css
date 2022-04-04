@@ -1,0 +1,93 @@
+.create__options__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 60vh;
+}
+
+.create__options__container .option {
+  margin: 10px;
+  background-color: #292929;
+  color: #f2f2ff;
+  padding: 10px;
+  height: 220px;
+  width: 160px;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 10px #778899;
+          box-shadow: 5px 5px 10px #778899;
+}
+
+.create__options__container .option:hover {
+  cursor: pointer;
+  background-color: #434343;
+}
+
+.create__options__container .option h3 {
+  color: #778899;
+  margin-bottom: 5px;
+}
+
+.create__options__container .option h1 {
+  text-align: center;
+  font-size: 1.6rem;
+}
+
+.create__options__container .option div {
+  height: 75%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.create__options__container .option div .icon {
+  font-size: 4rem;
+}
+
+@media screen and (min-width: 786px) {
+  .create__options__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .create__options__container .option {
+    margin: 50px;
+    height: 300px;
+    width: 200px;
+  }
+  .create__options__container .option h1 {
+    font-size: 2rem;
+  }
+  .create__options__container .option div .icon {
+    font-size: 6rem;
+  }
+}

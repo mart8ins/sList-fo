@@ -5,7 +5,7 @@ import "./header.css";
 type Props = {};
 
 const Header = (props: Props) => {
-    const [auth, setAuth] = useState(false);
+    const [auth, setAuth] = useState(true);
     // const auth = true;
     const recipesLength = true;
     const shoppingListLength = true;

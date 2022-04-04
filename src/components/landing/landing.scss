@@ -1,19 +1,22 @@
 @import "../../scss/layout";
 @import "../../scss/styles";
 
-.landing__container {
-    @include flexCenter();
-    width: 100vw;
-    height: 95vh;
-    .intro {
-        @include flexColumn();
-        width: 100%;
-        margin-top: -100px;
-        div {
-            background-color: $grey-color;
-            width: 80%;
-            margin: 5px auto;
-            height: 400px;
+.landing {
+    position: relative;
+    .landing__container {
+        @include flexCenter();
+        width: 100vw;
+        height: 95vh;
+        .intro {
+            @include flexColumn();
+            width: 100%;
+            margin-top: -100px;
+            div {
+                background-color: $grey-color;
+                width: 80%;
+                margin: 5px auto;
+                height: 400px;
+            }
         }
     }
 }

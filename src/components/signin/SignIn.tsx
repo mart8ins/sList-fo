@@ -1,15 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./signin.css";
 
 function SignIn() {
+    const navigate = useNavigate();
+
     const [login, setLogin] = useState(true); // choosen option for auth
 
-    const canLogin = false; // all data is filled
+    const canLogin = true; // all data is filled
 
     const error = false; // if data is not valid
     const errorMessage = "Invalid input, please check again!";
 
     const signIn = () => {
+        navigate("/");
         console.log("sign in");
     };
 

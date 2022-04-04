@@ -1,0 +1,55 @@
+@import "../../../scss/layout";
+@import "../../../scss/styles";
+
+.create__options__container {
+    @include flexColumnAlignJustifyCenter();
+    height: 60vh;
+    .option {
+        margin: 10px;
+        background-color: $dark-color;
+        color: $white-color;
+        padding: 10px;
+        height: 220px;
+        width: 160px;
+        border-radius: 5px;
+        box-shadow: 5px 5px 10px $grey-color;
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($dark-color, 10%);
+        }
+        h3 {
+            color: $grey-color;
+            margin-bottom: 5px;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.6rem;
+        }
+        div{
+            height: 75%;
+            @include flexColumnAlignJustifyCenter();
+            .icon {
+                font-size: 4rem;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .create__options__container {
+        @include flexCenter();
+        .option {
+            margin: 50px;
+            height: 300px;
+            width: 200px;
+            h1 {
+                font-size: 2rem;
+            }
+            div{
+                .icon {
+                    font-size: 6rem;
+                }
+            }
+        }
+    }
+}
