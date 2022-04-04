@@ -1,0 +1,127 @@
+@import "../../scss/layout";
+@import "../../scss/styles";
+
+@mixin ActiveAuthOption {
+    color: $white-color;
+    background-color: $grey-color;
+}
+
+.signin__container {
+    width: 90%;
+    height: 70vh;
+    margin: 100px auto;
+    .signin__form {
+        .signin__titles {
+            @include flexRow;
+            div {
+                width: 50%;
+                button {
+                    width: 100%;
+                    border: none;
+                    background-color: $dark-color;
+                    color: $grey-color;
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    padding: 5px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                .active__auth {
+                    @include ActiveAuthOption();
+                }
+            }
+        }
+    }
+    .input__container {
+        height: 250px;
+        @include flexColumnAlignJustifyCenter();
+        background-color: $white-color;
+        input {
+            width: 85%;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            font-size: 1.1rem;
+            text-align: center;
+            &:focus {
+                @include InputFocused();
+            }
+        }
+    }
+    .active__auth {
+        @include ActiveAuthOption();
+    }
+    .button__container {
+        width: 100%;
+        @include flexRow();
+        div {
+            width: 50%;
+            @include flexColumnAlignJustifyCenter();
+            color: $red-color;
+            text-align: center;
+            padding: 5px;
+        }
+        button {
+            width: 50%;
+            text-align: center;
+            border: none;
+            background-color: white;
+            color: lighten($grey-color, 40%);
+            font-weight: bold;
+            padding: 10px;
+            font-size: 1.5rem;
+        }
+        .inputs__are {
+            color: $grey-color;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .signin__container {
+        width: 25%;
+        height: 40vh;
+        margin: 300px auto;
+        .signin__form {
+            .signin__titles {
+                @include flexRow;
+                div {
+                    button {
+                        font-size: 2rem;
+                    }
+                }
+            }
+            .input__container {
+                height: 320px;
+                input {
+                    width: 60%;
+                    margin: 15px;
+                    padding: 10px;
+                    font-size: 1.3rem;
+                }
+            }
+            .button__container {
+                div {
+                    font-size: 1.1rem;
+                }
+                button {
+                    text-align: right;
+                    padding: 15px;
+                    font-size: 2rem;
+                }
+                .inputs__are {
+                    color: $grey-color;
+                    &:hover {
+                        cursor: pointer;
+                        color: darken($green-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}

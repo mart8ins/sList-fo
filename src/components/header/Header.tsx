@@ -28,9 +28,7 @@ const Header = (props: Props) => {
                             Logout
                         </Link>
                     ) : (
-                        <Link onClick={signIn} to="auth">
-                            Sign in
-                        </Link>
+                        <Link to="auth">Sign in</Link>
                     )}
                 </div>
             </div>

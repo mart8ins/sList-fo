@@ -1,0 +1,173 @@
+.signin__container {
+  width: 90%;
+  height: 70vh;
+  margin: 100px auto;
+}
+
+.signin__container .signin__form .signin__titles {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.signin__container .signin__form .signin__titles div {
+  width: 50%;
+}
+
+.signin__container .signin__form .signin__titles div button {
+  width: 100%;
+  border: none;
+  background-color: #292929;
+  color: #778899;
+  font-weight: bold;
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+.signin__container .signin__form .signin__titles div button:hover {
+  cursor: pointer;
+}
+
+.signin__container .signin__form .signin__titles div .active__auth {
+  color: #f2f2ff;
+  background-color: #778899;
+}
+
+.signin__container .input__container {
+  height: 250px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  background-color: #f2f2ff;
+}
+
+.signin__container .input__container input {
+  width: 85%;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.signin__container .input__container input:focus {
+  outline: none;
+  border-left: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+  -webkit-box-shadow: 0px 1px 5px #292929;
+          box-shadow: 0px 1px 5px #292929;
+}
+
+.signin__container .active__auth {
+  color: #f2f2ff;
+  background-color: #778899;
+}
+
+.signin__container .button__container {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.signin__container .button__container div {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #ff0000;
+  text-align: center;
+  padding: 5px;
+}
+
+.signin__container .button__container button {
+  width: 50%;
+  text-align: center;
+  border: none;
+  background-color: white;
+  color: #eceef0;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 1.5rem;
+}
+
+.signin__container .button__container .inputs__are {
+  color: #778899;
+}
+
+.signin__container .button__container .inputs__are:hover {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 786px) {
+  .signin__container {
+    width: 25%;
+    height: 40vh;
+    margin: 300px auto;
+  }
+  .signin__container .signin__form .signin__titles {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .signin__container .signin__form .signin__titles div button {
+    font-size: 2rem;
+  }
+  .signin__container .signin__form .input__container {
+    height: 320px;
+  }
+  .signin__container .signin__form .input__container input {
+    width: 60%;
+    margin: 15px;
+    padding: 10px;
+    font-size: 1.3rem;
+  }
+  .signin__container .signin__form .button__container div {
+    font-size: 1.1rem;
+  }
+  .signin__container .signin__form .button__container button {
+    text-align: right;
+    padding: 15px;
+    font-size: 2rem;
+  }
+  .signin__container .signin__form .button__container .inputs__are {
+    color: #778899;
+  }
+  .signin__container .signin__form .button__container .inputs__are:hover {
+    cursor: pointer;
+    color: #63c900;
+  }
+}

@@ -1,0 +1,13 @@
+$dark-color: #292929;
+$grey-color: #778899;
+$white-color: #f2f2ff;
+$orange-color: #ffa343;
+$green-color: #7cfc00;
+$red-color: #ff0000;
+
+@mixin InputFocused {
+    outline: none;
+    border-left: 3px solid $dark-color;
+    border-bottom: 3px solid $dark-color;
+    box-shadow: 0px 1px 5px $dark-color;
+}
