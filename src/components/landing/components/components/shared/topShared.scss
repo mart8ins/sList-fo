@@ -1,0 +1,116 @@
+@import "../../../../../scss/layout";
+@import "../../../../../scss/styles";
+
+.add__new__container {
+    .modal__close {
+        @include flexRowFlexEnd();
+        margin: 20px 10px;
+        button {
+            border: none;
+            padding: 10px;
+            border-radius: 50px;
+            background-color: $dark-color;
+            color: $white-color;
+            font-weight: bold;
+            font-size: 0.8rem;
+            box-shadow: 1px 2px 5px $grey-color;
+        }
+    }
+
+    .title__save {
+        @include flexRowSpaceBetween();
+        width: 80%;
+        margin: 30px auto;
+        div {
+            p {
+                margin: 0;
+                font-size: 1rem;
+                font-weight: bold;
+                color: $grey-color;
+            }
+        }
+        .save__button {
+            border: none;
+            padding: 5px 12px;
+            border-radius: 5px;
+            background-color: lighten($grey-color, 35%);
+            color: $white-color;
+            font-weight: bold;
+        }
+    }
+
+    .enter__title {
+        width: 80%;
+        margin: 30px auto;
+        @include flexCenter();
+        input {
+            width: 80%;
+            padding: 10px 15px;
+            font-size: 0.9rem;
+            border: none;
+            background-color: $white-color;
+            color: $dark-color;
+            border-radius: 5px;
+            &:focus {
+                @include InputFocused();
+            }
+        }
+        p {
+            margin: 10px 20px;
+            font-size: 1.4rem;
+            color: $green-color;
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .add__new__container {
+        width: 60%;
+        margin: 10px auto;
+        .modal__close {
+            button {
+                font-size: 1.2rem;
+                &:hover {
+                    cursor: pointer;
+                    background-color: lighten($dark-color, 10%);
+                }
+            }
+        }
+
+        .title__save {
+            margin: 50px auto;
+            div {
+                p {
+                    font-size: 1.6rem;
+                }
+                h3 {
+                    font-size: 2.1rem;
+                }
+            }
+            .save__button {
+                padding: 5px 22px;
+                font-size: 1.1rem;
+            }
+            .active__save {
+                background-color: $green-color;
+                color: $grey-color;
+                &:hover {
+                    cursor: pointer;
+                    background-color: darken($green-color, 4%);
+                }
+            }
+        }
+
+        .enter__title {
+            input {
+                width: 40%;
+                padding: 20px 25px;
+                font-size: 1.1rem;
+            }
+            p {
+                font-size: 1.8rem;
+            }
+        }
+    }
+   
+}

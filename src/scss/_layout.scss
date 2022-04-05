@@ -2,6 +2,17 @@
     display: flex;
     flex-direction: row;
 }
+@mixin flexRowSpaceBetween() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+@mixin flexRowFlexEnd() {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
 @mixin flexColumn() {
     display: flex;
     flex-direction: column;

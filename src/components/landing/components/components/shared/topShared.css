@@ -1,0 +1,141 @@
+.add__new__container .modal__close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 20px 10px;
+}
+
+.add__new__container .modal__close button {
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #292929;
+  color: #f2f2ff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  -webkit-box-shadow: 1px 2px 5px #778899;
+          box-shadow: 1px 2px 5px #778899;
+}
+
+.add__new__container .title__save {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 80%;
+  margin: 30px auto;
+}
+
+.add__new__container .title__save div p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #778899;
+}
+
+.add__new__container .title__save .save__button {
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  background-color: #dde1e6;
+  color: #f2f2ff;
+  font-weight: bold;
+}
+
+.add__new__container .enter__title {
+  width: 80%;
+  margin: 30px auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.add__new__container .enter__title input {
+  width: 80%;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  border: none;
+  background-color: #f2f2ff;
+  color: #292929;
+  border-radius: 5px;
+}
+
+.add__new__container .enter__title input:focus {
+  outline: none;
+  border-left: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+  -webkit-box-shadow: 0px 1px 5px #292929;
+          box-shadow: 0px 1px 5px #292929;
+}
+
+.add__new__container .enter__title p {
+  margin: 10px 20px;
+  font-size: 1.4rem;
+  color: #7cfc00;
+}
+
+@media screen and (min-width: 786px) {
+  .add__new__container {
+    width: 60%;
+    margin: 10px auto;
+  }
+  .add__new__container .modal__close button {
+    font-size: 1.2rem;
+  }
+  .add__new__container .modal__close button:hover {
+    cursor: pointer;
+    background-color: #434343;
+  }
+  .add__new__container .title__save {
+    margin: 50px auto;
+  }
+  .add__new__container .title__save div p {
+    font-size: 1.6rem;
+  }
+  .add__new__container .title__save div h3 {
+    font-size: 2.1rem;
+  }
+  .add__new__container .title__save .save__button {
+    padding: 5px 22px;
+    font-size: 1.1rem;
+  }
+  .add__new__container .title__save .active__save {
+    background-color: #7cfc00;
+    color: #778899;
+  }
+  .add__new__container .title__save .active__save:hover {
+    cursor: pointer;
+    background-color: #72e800;
+  }
+  .add__new__container .enter__title input {
+    width: 40%;
+    padding: 20px 25px;
+    font-size: 1.1rem;
+  }
+  .add__new__container .enter__title p {
+    font-size: 1.8rem;
+  }
+}
