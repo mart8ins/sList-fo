@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import { useContext } from "react";
 import "./landing.css";
 import CreateContent from "./components/CreateContent";
+import { userContext } from "../../context/AuthContext";
 
 type Props = {};
 
 const Landing = (props: Props) => {
-    const [userIs, SetUserIs] = useState(true);
+    const { user } = useContext(userContext);
 
     return (
         <div className="landing">
-            {userIs ? (
+            {user.status ? (
                 <CreateContent />
             ) : (
                 <div className="landing__container">

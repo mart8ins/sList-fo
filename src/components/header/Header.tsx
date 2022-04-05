@@ -1,18 +1,27 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
+import { userContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 type Props = {};
 
 const Header = (props: Props) => {
-    const [auth, setAuth] = useState(true);
-    // const auth = true;
+    const navigate = useNavigate();
+    const { user, updateUser } = useContext(userContext);
+
     const recipesLength = true;
     const shoppingListLength = true;
     const activeShoppingList = true;
 
-    const signIn = () => {
-        setAuth(!auth);
+    const signOut = () => {
+        updateUser({
+            username: "",
+            email: "",
+            password: "",
+            status: false,
+        });
+        navigate("/");
     };
 
     return (
@@ -23,8 +32,8 @@ const Header = (props: Props) => {
                     <Link to="/">S-list</Link>
                 </div>
                 <div className="auth__false">
-                    {auth ? (
-                        <Link onClick={signIn} to="/">
+                    {user.status ? (
+                        <Link onClick={signOut} to="/">
                             Logout
                         </Link>
                     ) : (
@@ -33,7 +42,7 @@ const Header = (props: Props) => {
                 </div>
             </div>
 
-            {auth && (
+            {user.status && (
                 <div className="bottom">
                     {recipesLength && <Link to="recipes">Recipes</Link>}
                     {shoppingListLength && (
