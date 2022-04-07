@@ -55,6 +55,16 @@
   font-weight: bold;
 }
 
+.add__new__container .title__save .active__save {
+  background-color: #7cfc00;
+  color: #778899;
+}
+
+.add__new__container .title__save .active__save:hover {
+  cursor: pointer;
+  background-color: #72e800;
+}
+
 .add__new__container .enter__title {
   width: 80%;
   margin: 30px auto;
@@ -122,14 +132,6 @@
   .add__new__container .title__save .save__button {
     padding: 5px 22px;
     font-size: 1.1rem;
-  }
-  .add__new__container .title__save .active__save {
-    background-color: #7cfc00;
-    color: #778899;
-  }
-  .add__new__container .title__save .active__save:hover {
-    cursor: pointer;
-    background-color: #72e800;
   }
   .add__new__container .enter__title input {
     width: 40%;

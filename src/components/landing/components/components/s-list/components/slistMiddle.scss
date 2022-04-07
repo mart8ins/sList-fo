@@ -1,5 +1,5 @@
-@import "../../../../../scss/layout";
-@import "../../../../../scss/styles";
+@import "../../../../../../scss/layout";
+@import "../../../../../../scss/styles";
 
 .grocery__option {
     @include flexColumnAlignJustifyCenter();
@@ -85,9 +85,17 @@
         margin-top: 20px;
         padding: 10px;
         font-size: 2rem;
-        box-shadow: 0 0 5px $grey-color;
+        box-shadow: 0 0 5px $green-color;
         border-radius: 50%;
         color: $grey-color;
+    }
+
+    .add__btn__disabled {
+        box-shadow: none;
+        &:hover {
+            cursor:auto;
+            box-shadow: none;
+        }
     }
 }
 
@@ -141,14 +149,22 @@
             margin: 0 0 0 20px;
             padding: 10px;
             font-size: 2.4rem;
-            box-shadow: 0 0 5px $grey-color;
-            border-radius: 50%;
-            color: $grey-color;
+            box-shadow: 0 0 5px $green-color;
             &:hover {
                 cursor: pointer;
                 box-shadow: 0 0 10px $grey-color;
                 color: $dark-color;
             }
         }
+        .add__btn__disabled {
+            box-shadow: none;
+            &:hover {
+                cursor:auto;
+                box-shadow: none;
+                color: $grey-color;
+            }
+        }
+
+      
     }
 }

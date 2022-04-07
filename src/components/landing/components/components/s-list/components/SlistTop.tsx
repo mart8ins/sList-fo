@@ -1,24 +1,30 @@
-import "./topShared.css";
+import { useContext, useEffect, useState } from "react";
+import "./slistTop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
+import { createSListContext } from "../../../../../../context/CreateSListContext";
 
 type Props = {
-    canSave: boolean;
-    title: string;
     modalContentType: string;
-    saveNew: () => void;
-    handleTitle: (e: any) => void;
     closeModal: () => void;
 };
 
-function TopShared({
-    canSave,
-    title,
-    modalContentType,
-    saveNew,
-    handleTitle,
-    closeModal,
-}: Props) {
+function SlistTop({ modalContentType, closeModal }: Props) {
+    const { listTitle, groceriesList, updateTitle, saveSList } =
+        useContext(createSListContext);
+    const [canSave, setCanSave] = useState(false);
+
+    useEffect(() => {
+        if (listTitle && listTitle.length > 0 && groceriesList.length > 0) {
+            setCanSave(true);
+        } else {
+            setCanSave(false);
+        }
+    }, [listTitle, groceriesList]);
+
+    const handleTitle = (e: any) => {
+        updateTitle(e.target.value);
+    };
     return (
         <div>
             <div className="modal__close">
@@ -31,7 +37,7 @@ function TopShared({
                     <h3>{modalContentType === "s-list" && "Shopping list"}</h3>
                 </div>
                 <button
-                    onClick={saveNew}
+                    onClick={saveSList}
                     disabled={!canSave}
                     className={`save__button ${canSave && "active__save"}`}
                 >
@@ -42,14 +48,14 @@ function TopShared({
             <div className="enter__title">
                 <input
                     onChange={handleTitle}
-                    value={title}
+                    value={listTitle}
                     type="text"
                     placeholder="Enter title"
                 />
-                <p>{title && <FontAwesomeIcon icon={faArrowTurnDown} />}</p>
+                <p>{listTitle && <FontAwesomeIcon icon={faArrowTurnDown} />}</p>
             </div>
         </div>
     );
 }
 
-export default TopShared;
+export default SlistTop;

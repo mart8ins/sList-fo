@@ -1,0 +1,11 @@
+.list__items__container {
+    width: 95%;
+    margin: 30px auto;
+}
+
+@media screen and (min-width: 786px) {
+    .list__items__container {
+        width: 50%;
+        margin: 50px auto;
+    }
+}

@@ -1,20 +1,34 @@
-import { useState, useContext } from "react";
-import "./middleShared.css";
+import { useState, useContext, useEffect } from "react";
+import "./slistMiddle.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
-import { Grocery } from "../../../../../models/models";
-import { createSListContext } from "../../../../../context/CreateSListContext";
+import { Grocery } from "../../../../../../models/models";
+import { createSListContext } from "../../../../../../context/CreateSListContext";
 
 // type Props = {};
 
-function MiddleShared() {
+function SlistMiddle() {
     const { groceriesNameDB, updateGroceries } = useContext(createSListContext);
+
+    const [canAdd, setCanAdd] = useState(false);
 
     const [grocery, setGrocery] = useState<Grocery>({
         grocery: "",
         quantity: "",
         unit: "",
     });
+
+    useEffect(() => {
+        if (
+            grocery.grocery.length > 0 &&
+            grocery.quantity.length > 0 &&
+            grocery.unit.length > 0
+        ) {
+            setCanAdd(true);
+        } else {
+            setCanAdd(false);
+        }
+    }, [grocery]);
 
     const handleChange = (e: any) => {
         setGrocery({
@@ -24,6 +38,7 @@ function MiddleShared() {
     };
 
     const addGroceryToList = () => {
+        console.log("uuuu");
         updateGroceries(grocery);
         setGrocery({
             grocery: "",
@@ -85,17 +100,17 @@ function MiddleShared() {
                 </div>
 
                 <button
+                    disabled={!canAdd}
                     onClick={addGroceryToList}
-                    className="pluss__icon__container"
+                    className={`pluss__icon__container ${
+                        !canAdd && "add__btn__disabled"
+                    }`}
                 >
-                    <FontAwesomeIcon
-                        className="pluss__icon"
-                        icon={faCirclePlus}
-                    />
+                    <FontAwesomeIcon icon={faCirclePlus} />
                 </button>
             </div>
         </div>
     );
 }
 
-export default MiddleShared;
+export default SlistMiddle;

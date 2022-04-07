@@ -1,0 +1,73 @@
+@import "../../../../../scss/layout";
+@import "../../../../../scss/styles";
+
+.single__list__item {
+    width: 95%;
+    margin: 8px auto;
+    @include flexRowSpaceBetween();
+    box-shadow: 2px 4px 4px $grey-color;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: lighten($grey-color, 45%);
+
+    .single__item__data {
+        @include flexRowSpaceBetween();
+        align-items: center;
+        width: 80%;
+
+        h3 {
+            font-size: 1.1rem;
+        }
+        
+        .quantity__unit {
+            @include flexRow();
+            background-color: $dark-color;
+            
+            padding: 2px 5px;
+            border-radius: 4px;
+            p {
+                margin: 0 2px;
+                font-size: 1.1rem;
+                color: $white-color;
+            }
+            p:nth-child(1) {
+                font-weight: bold;  
+            }
+        }
+    };
+
+    .delete__icon {
+        @include flexColumnAlignJustifyCenter();
+        margin-right: 10px;
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .single__list__item {
+        width: 75%;
+        box-shadow: 4px 6px 8px $grey-color;
+        padding: 8px;
+    
+        .single__item__data {
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            .quantity__unit {
+                padding: 3px 6px;
+                p {
+                    font-size: 1.3rem;
+                }
+            }
+        };
+    
+        .delete__icon {
+            font-size: 1.8rem;
+            &:hover {
+                cursor: pointer;
+                color: $red-color;
+            }
+        }
+    }
+}

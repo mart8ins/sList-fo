@@ -159,10 +159,21 @@
   margin-top: 20px;
   padding: 10px;
   font-size: 2rem;
-  -webkit-box-shadow: 0 0 5px #778899;
-          box-shadow: 0 0 5px #778899;
+  -webkit-box-shadow: 0 0 5px #7cfc00;
+          box-shadow: 0 0 5px #7cfc00;
   border-radius: 50%;
   color: #778899;
+}
+
+.grocery__inputs__container .add__btn__disabled {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.grocery__inputs__container .add__btn__disabled:hover {
+  cursor: auto;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 @media screen and (min-width: 786px) {
@@ -240,15 +251,23 @@
     margin: 0 0 0 20px;
     padding: 10px;
     font-size: 2.4rem;
-    -webkit-box-shadow: 0 0 5px #778899;
-            box-shadow: 0 0 5px #778899;
-    border-radius: 50%;
-    color: #778899;
+    -webkit-box-shadow: 0 0 5px #7cfc00;
+            box-shadow: 0 0 5px #7cfc00;
   }
   .grocery__inputs__container .pluss__icon__container:hover {
     cursor: pointer;
     -webkit-box-shadow: 0 0 10px #778899;
             box-shadow: 0 0 10px #778899;
     color: #292929;
+  }
+  .grocery__inputs__container .add__btn__disabled {
+    -webkit-box-shadow: none;
+            box-shadow: none;
+  }
+  .grocery__inputs__container .add__btn__disabled:hover {
+    cursor: auto;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    color: #778899;
   }
 }

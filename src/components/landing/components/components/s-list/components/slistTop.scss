@@ -1,5 +1,5 @@
-@import "../../../../../scss/layout";
-@import "../../../../../scss/styles";
+@import "../../../../../../scss/layout";
+@import "../../../../../../scss/styles";
 
 .add__new__container {
     .modal__close {
@@ -36,6 +36,14 @@
             background-color: lighten($grey-color, 35%);
             color: $white-color;
             font-weight: bold;
+        }
+        .active__save {
+            background-color: $green-color;
+            color: $grey-color;
+            &:hover {
+                cursor: pointer;
+                background-color: darken($green-color, 4%);
+            }
         }
     }
 
@@ -85,14 +93,6 @@
             .save__button {
                 padding: 5px 22px;
                 font-size: 1.1rem;
-            }
-            .active__save {
-                background-color: $green-color;
-                color: $grey-color;
-                &:hover {
-                    cursor: pointer;
-                    background-color: darken($green-color, 4%);
-                }
             }
         }
 
