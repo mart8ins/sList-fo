@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./newSList.css";
 import TopShared from "../shared/TopShared";
 import MiddleShared from "../shared/MiddleShared";
@@ -10,9 +10,9 @@ type Props = {
 };
 
 function NewSList({ closeModal, modalContentType }: Props) {
-    const [canSave] = useState(false);
+    const [canSave, setCanSave] = useState(false);
     const [title, setTitle] = useState("");
-    const [groceries, setGroceries] = useState([]);
+    const [groceries] = useState([]);
 
     const saveNew = () => {
         console.log("heiii");
@@ -21,6 +21,14 @@ function NewSList({ closeModal, modalContentType }: Props) {
     const handleTitle = (e: any) => {
         setTitle(e.target.value);
     };
+
+    useEffect(() => {
+        if (title.length > 0 && groceries.length > 0) {
+            setCanSave(true);
+        } else {
+            setCanSave(false);
+        }
+    }, [title, groceries]);
 
     return (
         <div className="add__new__container">

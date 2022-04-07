@@ -1,0 +1,154 @@
+@import "../../../../../scss/layout";
+@import "../../../../../scss/styles";
+
+.grocery__option {
+    @include flexColumnAlignJustifyCenter();
+    width: 80%;
+    margin: 10px auto;
+
+    p {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: $grey-color;
+        margin: 5px;
+    }
+
+    select {
+        background-color: $dark-color;
+        color: $white-color;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        width: 85%;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 15px;
+        font-size: 1rem;
+        option {
+            margin-top: 15px;
+            padding: 15px;
+            font-size: 1rem;
+        }
+    }
+    div {
+        p {
+            margin: 10px 20px;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: $green-color;
+        }
+    }
+}
+
+.grocery__inputs__container {
+    @include flexColumnAlignJustifyCenter();
+    width: 80%;
+    margin: 10px auto;
+    .grocery__inputs {
+        @include flexColumnAlignJustifyCenter();
+        input {
+            @include InputBasic();
+            font-size: 0.9rem;
+            &:focus {
+                @include InputFocused();
+            }
+        }
+        .grocery__quantity {
+            width: 20%;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        select {
+            @include InputBasic();
+            letter-spacing: 1px;
+            width: 35%;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            &:focus {
+                @include InputFocused();
+            }
+            option {
+                font-size: 1.1rem;
+            }
+        }
+    }
+    .pluss__icon__container {
+        @include flexCenter();
+        border: none;
+        background-color: $white-color;
+        margin-top: 20px;
+        padding: 10px;
+        font-size: 2rem;
+        box-shadow: 0 0 5px $grey-color;
+        border-radius: 50%;
+        color: $grey-color;
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .grocery__option {
+        @include flexRow();
+        width: 50%;
+        p {
+            font-size: 1.4rem;
+            margin: 15px;
+            width: 55%;
+        }
+        select {
+            width: 45%;
+            padding: 15px;
+            font-size: 1rem;
+            option {
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+    .grocery__inputs__container {
+        @include flexRow();
+        
+        .grocery__inputs {
+            @include flexRow();
+            input {
+                padding: 20px 25px;
+                font-size: 1.1rem;
+            }
+            .grocery__quantity {
+                padding: 15px 10px;
+                font-size: 1.5rem;
+            }
+            select {
+                @include InputBasic();
+                padding: 15px 10px;
+                letter-spacing: 1px;
+                width: 22%;
+                
+                font-size: 1.5em;
+                font-weight:normal;
+                &:focus {
+                    @include InputFocused();
+                }
+            }
+        }
+
+        .pluss__icon__container {
+            margin: 0 0 0 20px;
+            padding: 10px;
+            font-size: 2.4rem;
+            box-shadow: 0 0 5px $grey-color;
+            border-radius: 50%;
+            color: $grey-color;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 0 10px $grey-color;
+                color: $dark-color;
+            }
+        }
+    }
+}

@@ -1,1 +1,254 @@
-/* No CSS */
+.grocery__option {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.grocery__option p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #778899;
+  margin: 5px;
+}
+
+.grocery__option select {
+  background-color: #292929;
+  color: #f2f2ff;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  width: 85%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  font-size: 1rem;
+}
+
+.grocery__option select option {
+  margin-top: 15px;
+  padding: 15px;
+  font-size: 1rem;
+}
+
+.grocery__option div p {
+  margin: 10px 20px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #7cfc00;
+}
+
+.grocery__inputs__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+}
+
+.grocery__inputs__container .grocery__inputs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.grocery__inputs__container .grocery__inputs input {
+  width: 80%;
+  padding: 10px 15px;
+  border: none;
+  background-color: #f2f2ff;
+  color: #292929;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 0.9rem;
+}
+
+.grocery__inputs__container .grocery__inputs input:focus {
+  outline: none;
+  border-left: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+  -webkit-box-shadow: 0px 1px 5px #292929;
+          box-shadow: 0px 1px 5px #292929;
+}
+
+.grocery__inputs__container .grocery__inputs .grocery__quantity {
+  width: 20%;
+  padding: 10px 20px;
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.grocery__inputs__container .grocery__inputs select {
+  width: 80%;
+  padding: 10px 15px;
+  border: none;
+  background-color: #f2f2ff;
+  color: #292929;
+  border-radius: 5px;
+  margin: 5px;
+  letter-spacing: 1px;
+  width: 35%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.grocery__inputs__container .grocery__inputs select:focus {
+  outline: none;
+  border-left: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+  -webkit-box-shadow: 0px 1px 5px #292929;
+          box-shadow: 0px 1px 5px #292929;
+}
+
+.grocery__inputs__container .grocery__inputs select option {
+  font-size: 1.1rem;
+}
+
+.grocery__inputs__container .pluss__icon__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: none;
+  background-color: #f2f2ff;
+  margin-top: 20px;
+  padding: 10px;
+  font-size: 2rem;
+  -webkit-box-shadow: 0 0 5px #778899;
+          box-shadow: 0 0 5px #778899;
+  border-radius: 50%;
+  color: #778899;
+}
+
+@media screen and (min-width: 786px) {
+  .grocery__option {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 50%;
+  }
+  .grocery__option p {
+    font-size: 1.4rem;
+    margin: 15px;
+    width: 55%;
+  }
+  .grocery__option select {
+    width: 45%;
+    padding: 15px;
+    font-size: 1rem;
+  }
+  .grocery__option select option {
+    font-size: 1.2rem;
+  }
+  .grocery__inputs__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .grocery__inputs__container .grocery__inputs {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .grocery__inputs__container .grocery__inputs input {
+    padding: 20px 25px;
+    font-size: 1.1rem;
+  }
+  .grocery__inputs__container .grocery__inputs .grocery__quantity {
+    padding: 15px 10px;
+    font-size: 1.5rem;
+  }
+  .grocery__inputs__container .grocery__inputs select {
+    width: 80%;
+    padding: 10px 15px;
+    border: none;
+    background-color: #f2f2ff;
+    color: #292929;
+    border-radius: 5px;
+    margin: 5px;
+    padding: 15px 10px;
+    letter-spacing: 1px;
+    width: 22%;
+    font-size: 1.5em;
+    font-weight: normal;
+  }
+  .grocery__inputs__container .grocery__inputs select:focus {
+    outline: none;
+    border-left: 3px solid #292929;
+    border-bottom: 3px solid #292929;
+    -webkit-box-shadow: 0px 1px 5px #292929;
+            box-shadow: 0px 1px 5px #292929;
+  }
+  .grocery__inputs__container .pluss__icon__container {
+    margin: 0 0 0 20px;
+    padding: 10px;
+    font-size: 2.4rem;
+    -webkit-box-shadow: 0 0 5px #778899;
+            box-shadow: 0 0 5px #778899;
+    border-radius: 50%;
+    color: #778899;
+  }
+  .grocery__inputs__container .pluss__icon__container:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 0 10px #778899;
+            box-shadow: 0 0 10px #778899;
+    color: #292929;
+  }
+}

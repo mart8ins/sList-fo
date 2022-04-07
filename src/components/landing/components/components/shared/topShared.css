@@ -76,11 +76,12 @@
 .add__new__container .enter__title input {
   width: 80%;
   padding: 10px 15px;
-  font-size: 0.9rem;
   border: none;
   background-color: #f2f2ff;
   color: #292929;
   border-radius: 5px;
+  margin: 5px;
+  font-size: 0.9rem;
 }
 
 .add__new__container .enter__title input:focus {

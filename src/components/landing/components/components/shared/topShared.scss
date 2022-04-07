@@ -44,13 +44,8 @@
         margin: 30px auto;
         @include flexCenter();
         input {
-            width: 80%;
-            padding: 10px 15px;
+            @include InputBasic();
             font-size: 0.9rem;
-            border: none;
-            background-color: $white-color;
-            color: $dark-color;
-            border-radius: 5px;
             &:focus {
                 @include InputFocused();
             }

@@ -7,19 +7,22 @@ import Landing from "./components/landing/Landing";
 import SignIn from "./components/signin/SignIn";
 
 import AuthContext from "./context/AuthContext";
+import CreateSListContextProvider from "./context/CreateSListContext";
 
 function App() {
     return (
         <AuthContext>
-            <div className="App">
-                <Header />
-                <Routes>
-                    <Route path="/" element={<Landing />} />
-                    <Route path="auth" element={<SignIn />} />
-                    <Route path="recipes" element={<Recipes />} />
-                    <Route path="shopping-list" element={<SList />} />
-                </Routes>
-            </div>
+            <CreateSListContextProvider>
+                <div className="App">
+                    <Header />
+                    <Routes>
+                        <Route path="/" element={<Landing />} />
+                        <Route path="auth" element={<SignIn />} />
+                        <Route path="recipes" element={<Recipes />} />
+                        <Route path="shopping-list" element={<SList />} />
+                    </Routes>
+                </div>
+            </CreateSListContextProvider>
         </AuthContext>
     );
 }

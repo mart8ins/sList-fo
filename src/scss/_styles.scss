@@ -5,6 +5,16 @@ $orange-color: #ffa343;
 $green-color: #7cfc00;
 $red-color: #ff0000;
 
+@mixin InputBasic {
+    width: 80%;
+    padding: 10px 15px;
+    border: none;
+    background-color: $white-color;
+    color: $dark-color;
+    border-radius: 5px;
+    margin: 5px;
+}
+
 @mixin InputFocused {
     outline: none;
     border-left: 3px solid $dark-color;
