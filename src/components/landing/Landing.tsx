@@ -2,7 +2,7 @@ import { useContext } from "react";
 import "./landing.css";
 
 import CreateContent from "./components/CreateContent";
-import { userContext } from "../../context/AuthContext";
+import { userContext } from "../../context/UserContext";
 
 type Props = {};
 

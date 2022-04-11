@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./header.css";
-import { userContext } from "../../context/AuthContext";
+import { userContext } from "../../context/UserContext";
 import { createSListContext } from "../../context/CreateSListContext";
 import { useNavigate } from "react-router-dom";
 
@@ -28,6 +28,7 @@ const Header = (props: Props) => {
 
     const signOut = () => {
         updateUser({
+            id: "",
             username: "",
             email: "",
             password: "",

@@ -1,7 +1,8 @@
 import { useState, useContext, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signin.css";
-import { userContext } from "../../context/AuthContext";
+import { userContext } from "../../context/UserContext";
+import { ValidateForm } from "./Validate";
 
 function SignIn() {
     const navigate = useNavigate();
@@ -13,39 +14,56 @@ function SignIn() {
 
     const [login, setLogin] = useState(true); // choosen option for auth
 
+    const [error, setError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+
     const canLogin = true; // all data is filled
 
-    const error = false; // if data is not valid
-    const errorMessage = "Invalid input, please check again!";
-
     const signInUser = () => {
+        // VALIDĀCIJA USERA INPUTAM, PĒC KURAS IR TRUE UN VAR IET TĀLĀK
+        const inputValid = ValidateForm(username, email, password, login);
+
         // CALL TO BACKEND
-        const status = true;
-        if (email && password) {
+        if (inputValid.isValid) {
+            setError(false);
+            setErrorMessage("");
             if (login) {
+                // CALL TO BACKEND
+                // ***************
+                // CALL TO BACKEND
+                // - RESPONSE .....
                 updateUser(
                     {
+                        id: "",
                         username: username,
                         email: email,
                         password: password,
-                        status: status,
+                        status: true,
                     },
                     true
                 );
                 navigate("/");
             }
             if (!login && username) {
+                // CALL TO BACKEND
+                // ***************
+                // CALL TO BACKEND
+                // - RESPONSE .....
                 updateUser(
                     {
+                        id: "",
                         username: username,
                         email: email,
                         password: password,
-                        status: status,
+                        status: true,
                     },
                     false
                 );
                 navigate("/");
             }
+        } else {
+            setError(true);
+            setErrorMessage(inputValid.errorMessage);
         }
     };
 

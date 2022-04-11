@@ -6,12 +6,12 @@ import Header from "./components/header/Header";
 import Landing from "./components/landing/Landing";
 import SignIn from "./components/signin/SignIn";
 
-import AuthContext from "./context/AuthContext";
+import UserContextProvider from "./context/UserContext";
 import CreateSListContextProvider from "./context/CreateSListContext";
 
 function App() {
     return (
-        <AuthContext>
+        <UserContextProvider>
             <CreateSListContextProvider>
                 <div className="App">
                     <Header />
@@ -23,7 +23,7 @@ function App() {
                     </Routes>
                 </div>
             </CreateSListContextProvider>
-        </AuthContext>
+        </UserContextProvider>
     );
 }
 

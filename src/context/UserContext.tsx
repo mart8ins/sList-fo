@@ -1,30 +1,23 @@
 import { createContext, useState } from "react";
-
-type UserData = {
-    username: string;
-    email: string;
-    password: string;
-    status: boolean;
-};
-interface User {
-    user: UserData;
-    updateUser: (user: UserData, login?: boolean) => void;
-}
+import { UserData } from "../models/models";
+import { User } from "../models/models";
 
 export const userContext = createContext({} as User);
 
-function AuthContext({ children }: { children: any }) {
+function UserContextProvider({ children }: { children: any }) {
     const [user, setUser] = useState({
+        id: "",
         username: "",
         email: "",
         password: "",
-        status: true,
+        status: false,
     });
 
     const updateUser = (user: UserData, login?: boolean) => {
         if (login) {
             // call to backend un kontkstā nostoro tikai, ja ir ok response
             setUser({
+                id: "1",
                 username: "",
                 email: user.email,
                 password: user.password,
@@ -33,6 +26,7 @@ function AuthContext({ children }: { children: any }) {
         } else {
             // call to backend un kontkstā nostoro tikai, ja ir ok response
             setUser({
+                id: "1",
                 username: user.username,
                 email: user.email,
                 password: user.password,
@@ -53,4 +47,4 @@ function AuthContext({ children }: { children: any }) {
     );
 }
 
-export default AuthContext;
+export default UserContextProvider;

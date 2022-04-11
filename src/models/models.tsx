@@ -25,3 +25,15 @@ export interface CreateSList {
     openCreateListModal: () => void;
     closeCreateListModal: () => void;
 }
+
+export type UserData = {
+    id: string;
+    username: string;
+    email: string;
+    password: string;
+    status: boolean;
+};
+export interface User {
+    user: UserData;
+    updateUser: (user: UserData, login?: boolean) => void;
+}
