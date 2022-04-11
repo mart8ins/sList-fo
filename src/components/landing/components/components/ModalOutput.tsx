@@ -2,6 +2,8 @@ import { useContext } from "react";
 import Modal from "react-modal";
 import { createSListContext } from "../../../../context/CreateSListContext";
 import NewSList from "./s-list/NewSList";
+import NewRecipe from "./recipe/NewRecipe";
+
 Modal.setAppElement("#root");
 
 const customStyles = {
@@ -15,7 +17,7 @@ const customStyles = {
 
 type Props = {
     createListModalIsOpen: boolean;
-    closeCreateListModal: Function;
+    closeCreateListModal: () => void;
     modalContentType: string;
 };
 
@@ -44,6 +46,12 @@ const ModalOutput = ({
         >
             {modalContentType === "s-list" && (
                 <NewSList
+                    closeModal={closeModal}
+                    modalContentType={modalContentType}
+                />
+            )}
+            {modalContentType === "recipe" && (
+                <NewRecipe
                     closeModal={closeModal}
                     modalContentType={modalContentType}
                 />

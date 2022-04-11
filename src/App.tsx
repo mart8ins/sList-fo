@@ -8,20 +8,23 @@ import SignIn from "./components/signin/SignIn";
 
 import UserContextProvider from "./context/UserContext";
 import CreateSListContextProvider from "./context/CreateSListContext";
+import CreateRecipeContextProvider from "./context/CreateRecipeContext";
 
 function App() {
     return (
         <UserContextProvider>
             <CreateSListContextProvider>
-                <div className="App">
-                    <Header />
-                    <Routes>
-                        <Route path="/" element={<Landing />} />
-                        <Route path="auth" element={<SignIn />} />
-                        <Route path="recipes" element={<Recipes />} />
-                        <Route path="shopping-list" element={<SList />} />
-                    </Routes>
-                </div>
+                <CreateRecipeContextProvider>
+                    <div className="App">
+                        <Header />
+                        <Routes>
+                            <Route path="/" element={<Landing />} />
+                            <Route path="auth" element={<SignIn />} />
+                            <Route path="recipes" element={<Recipes />} />
+                            <Route path="shopping-list" element={<SList />} />
+                        </Routes>
+                    </div>
+                </CreateRecipeContextProvider>
             </CreateSListContextProvider>
         </UserContextProvider>
     );

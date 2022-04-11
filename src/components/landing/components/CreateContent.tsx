@@ -31,7 +31,7 @@ function CreateContent() {
                 </div>
             </div>
 
-            <div onClick={() => openModal("recipes")} className="option">
+            <div onClick={() => openModal("recipe")} className="option">
                 <h3>Create</h3>
                 <h1>Recipe</h1>
                 <div>

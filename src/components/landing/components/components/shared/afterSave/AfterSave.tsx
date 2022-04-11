@@ -12,6 +12,7 @@ type Props = {
 function AfterSave({ type, closeModal }: Props) {
     const { hideListIsSavedView } = useContext(createSListContext);
     const activeTitle = type === "s-list" ? "Shopping list" : "Recipe";
+    const activeLink = type === "s-list" ? "s-list" : "recipe";
     return (
         <div>
             <CloseModalButton closeModal={closeModal} />
@@ -21,8 +22,10 @@ function AfterSave({ type, closeModal }: Props) {
                     <button onClick={() => hideListIsSavedView()}>
                         New {activeTitle}
                     </button>
-                    <button>
-                        <Link to="s-list/1">View created {activeTitle}</Link>
+                    <button onClick={() => closeModal()}>
+                        <Link to={`${activeLink}/1`}>
+                            View created {activeTitle}
+                        </Link>
                     </button>
                 </div>
             </div>

@@ -37,3 +37,8 @@ export interface User {
     user: UserData;
     updateUser: (user: UserData, login?: boolean) => void;
 }
+
+export type CreateNewProps = {
+    closeModal: () => void;
+    modalContentType: string;
+};

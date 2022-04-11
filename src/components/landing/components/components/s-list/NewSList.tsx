@@ -1,17 +1,14 @@
 import { useContext } from "react";
 import "./newSList.css";
-import SlistTop from "./components/SlistTop";
+import ContentTitleAndSave from "../shared/contentTitleAndSave/ContentTitleAndSave";
 import SlistMiddle from "./components/SlistMiddle";
 import SlistBottom from "./components/SlistBottom";
 import AfterSave from "../shared/afterSave/AfterSave";
 import { createSListContext } from "../../../../../context/CreateSListContext";
+import { CreateNewProps } from "../../../../../models/models";
+import CloseModalButton from "../shared/closeModalButton/CloseModalButton";
 
-type Props = {
-    closeModal: () => void;
-    modalContentType: string;
-};
-
-function NewSList({ closeModal, modalContentType }: Props) {
+function NewSList({ closeModal, modalContentType }: CreateNewProps) {
     const { listTitle, groceriesList, listSaved } =
         useContext(createSListContext);
 
@@ -19,13 +16,9 @@ function NewSList({ closeModal, modalContentType }: Props) {
         <div className="add__new__container">
             {!listSaved ? (
                 <>
-                    <SlistTop
-                        modalContentType={modalContentType}
-                        closeModal={closeModal}
-                    />
-
+                    <CloseModalButton closeModal={closeModal} />
+                    <ContentTitleAndSave modalContentType={modalContentType} />
                     {listTitle && <SlistMiddle />}
-
                     {listTitle && groceriesList.length > 0 && <SlistBottom />}
                 </>
             ) : (
