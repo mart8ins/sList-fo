@@ -9,9 +9,16 @@ type Props = {
     grocery: string;
     quantity: string;
     unit: string;
+    modalContentType: string;
 };
 
-function SingleListItem({ grocery, quantity, unit, id }: Props) {
+function SingleListItem({
+    grocery,
+    quantity,
+    unit,
+    id,
+    modalContentType,
+}: Props) {
     const { deleteGrocery } = useContext(createSListContext);
     return (
         <div className="single__list__item">

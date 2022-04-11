@@ -4,6 +4,7 @@ import { CreateNewProps } from "../../../../../models/models";
 import CloseModalButton from "../shared/closeModalButton/CloseModalButton";
 import ContentTitleAndSave from "../shared/contentTitleAndSave/ContentTitleAndSave";
 import GroceryInputs from "../shared/groceryInputs/GroceryInputs";
+import GroceriesListPreview from "../shared/groceriesListPreview/GroceriesListPreview";
 import AfterSave from "../shared/afterSave/AfterSave";
 
 function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
@@ -11,6 +12,7 @@ function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
     const recipeTitle = true;
     const recipeDescription = true;
     const recipeCals = true;
+    const recipeHasAddedGroceries = true;
 
     return (
         <div className="add__new__container">
@@ -21,6 +23,14 @@ function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
                     {recipeTitle && recipeDescription && recipeCals && (
                         <GroceryInputs modalContentType={modalContentType} />
                     )}
+                    {recipeTitle &&
+                        recipeDescription &&
+                        recipeCals &&
+                        recipeHasAddedGroceries && (
+                            <GroceriesListPreview
+                                modalContentType={modalContentType}
+                            />
+                        )}
                 </>
             ) : (
                 <AfterSave type={"recipe"} closeModal={closeModal} />
