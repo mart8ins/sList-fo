@@ -29,7 +29,7 @@ function NewSList({ closeModal, modalContentType }: Props) {
                     {listTitle && groceriesList.length > 0 && <SlistBottom />}
                 </>
             ) : (
-                <AfterSave />
+                <AfterSave type={"s-list"} closeModal={closeModal} />
             )}
         </div>
     );

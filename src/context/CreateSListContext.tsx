@@ -1,25 +1,24 @@
 import { createContext, useState, useEffect } from "react";
 import { Grocery, ShoppingList } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
-
-interface CreateSList {
-    listSaved: boolean;
-    listTitle: string;
-    groceriesList: object[];
-    groceriesNameDB: string[];
-    updateTitle: (title: string) => void;
-    updateGroceries: (grocery: Grocery) => void;
-    deleteGrocery: (id: string) => void;
-    saveSList: () => void;
-}
+import { CreateSList } from "../models/models";
 
 export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
-    const [listSaved, setlistSaved] = useState(false);
+    const [createListModalIsOpen, setCreateListModalIsOpen] = useState(false);
+    const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
     const [groceriesNameDB, setGroceriesNameDB] = useState<string[]>([]);
+
+    // pirmais app renders
+    useEffect(() => {
+        // GET GROCERY NAMES FROM DB
+        // **************************
+        const result = ["Piens", "Maize", "Griķi", "Avokado"];
+        setGroceriesNameDB(result);
+    }, []);
 
     const updateTitle = (title: string) => {
         setListTitle(title);
@@ -46,14 +45,6 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
         setGroceriesList(newArr);
     };
 
-    // pirmais app renders
-    useEffect(() => {
-        // GET GROCERY NAMES FROM DB
-        // **************************
-        const result = ["Piens", "Maize", "Griķi", "Avokado"];
-        setGroceriesNameDB(result);
-    }, []);
-
     const saveSList = () => {
         // SAVE LIST TO DB
         // **************************
@@ -62,10 +53,23 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             title: listTitle,
             groceries: groceriesList,
         };
-        setlistSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
+        setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
         setListTitle("");
         setGroceriesList([]);
         // CALL TO BACKEND
+    };
+
+    // hide list creation success component when modal is closed
+    const hideListIsSavedView = () => {
+        setListSaved(false);
+    };
+
+    // to open/close Create List modal with existing data from header
+    const openCreateListModal = () => {
+        setCreateListModalIsOpen(true);
+    };
+    const closeCreateListModal = () => {
+        setCreateListModalIsOpen(false);
     };
 
     return (
@@ -79,6 +83,10 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 updateGroceries,
                 deleteGrocery,
                 saveSList,
+                hideListIsSavedView,
+                createListModalIsOpen,
+                openCreateListModal,
+                closeCreateListModal,
             }}
         >
             {children}

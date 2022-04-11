@@ -1,0 +1,32 @@
+@import "../../../../../../scss/layout";
+@import "../../../../../../scss/styles";
+
+
+.modal__close {
+    @include flexRowFlexEnd();
+    margin: 20px 10px;
+    button {
+
+        border: none;
+        padding: 10px;
+        border-radius: 50px;
+        background-color: $dark-color;
+        color: $white-color;
+        font-weight: bold;
+        font-size: 0.8rem;
+        box-shadow: 1px 2px 5px $grey-color;
+    }
+}
+
+
+@media screen and (min-width: 786px) {
+    .modal__close {
+        button {
+            font-size: 1.2rem;
+            &:hover {
+                cursor: pointer;
+                background-color: lighten($dark-color, 10%);
+            }
+        }
+    }
+}

@@ -2,21 +2,6 @@
 @import "../../../../../../scss/styles";
 
 .add__new__container {
-    .modal__close {
-        @include flexRowFlexEnd();
-        margin: 20px 10px;
-        button {
-            border: none;
-            padding: 10px;
-            border-radius: 50px;
-            background-color: $dark-color;
-            color: $white-color;
-            font-weight: bold;
-            font-size: 0.8rem;
-            box-shadow: 1px 2px 5px $grey-color;
-        }
-    }
-
     .title__save {
         @include flexRowSpaceBetween();
         width: 80%;
@@ -70,16 +55,6 @@
     .add__new__container {
         width: 60%;
         margin: 10px auto;
-        .modal__close {
-            button {
-                font-size: 1.2rem;
-                &:hover {
-                    cursor: pointer;
-                    background-color: lighten($dark-color, 10%);
-                }
-            }
-        }
-
         .title__save {
             margin: 50px auto;
             div {

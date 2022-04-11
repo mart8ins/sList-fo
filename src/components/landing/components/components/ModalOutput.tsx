@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Modal from "react-modal";
+import { createSListContext } from "../../../../context/CreateSListContext";
 import NewSList from "./s-list/NewSList";
 Modal.setAppElement("#root");
 
@@ -12,18 +14,20 @@ const customStyles = {
 };
 
 type Props = {
-    modalIsOpen: boolean;
-    setModalIsOpen: Function;
+    createListModalIsOpen: boolean;
+    closeCreateListModal: Function;
     modalContentType: string;
 };
 
 const ModalOutput = ({
-    modalIsOpen,
-    setModalIsOpen,
+    createListModalIsOpen,
+    closeCreateListModal,
     modalContentType,
 }: Props) => {
+    const { hideListIsSavedView } = useContext(createSListContext);
     const closeModal = () => {
-        setModalIsOpen(false);
+        closeCreateListModal();
+        hideListIsSavedView();
     };
 
     function afterOpenModal() {
@@ -32,7 +36,7 @@ const ModalOutput = ({
 
     return (
         <Modal
-            isOpen={modalIsOpen}
+            isOpen={createListModalIsOpen}
             onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             style={customStyles}

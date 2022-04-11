@@ -1,0 +1,95 @@
+.slist__success__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 70vh;
+}
+
+.slist__success__container p {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #778899;
+  margin: 15px;
+}
+
+.slist__success__container .button__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.slist__success__container .button__container button {
+  border: none;
+  background-color: #292929;
+  color: #f2f2ff;
+  border-bottom: 2px solid #778899;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 2px 2px #778899;
+          box-shadow: 0px 2px 2px #778899;
+  margin: 10px;
+  padding: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.slist__success__container .button__container button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0px 5px 2px #778899;
+          box-shadow: 0px 5px 2px #778899;
+  background-color: #434343;
+}
+
+.slist__success__container .button__container button a {
+  text-decoration: none;
+  color: #f2f2ff;
+}
+
+@media screen and (min-width: 768px) {
+  .slist__success__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .slist__success__container p {
+    font-size: 2.2rem;
+  }
+  .slist__success__container .button__container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .slist__success__container .button__container button {
+    margin: 15px;
+    padding: 8px 15px;
+    font-weight: bold;
+    font-size: 1.3rem;
+  }
+}

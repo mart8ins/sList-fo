@@ -1,0 +1,57 @@
+@import "../../../../../../scss/styles";
+@import "../../../../../../scss/layout";
+
+.slist__success__container {
+    @include flexColumnAlignJustifyCenter();
+    height: 70vh;
+    p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $grey-color;
+        margin: 15px;
+    }
+    .button__container {
+        @include flexColumn();
+        button {
+            border: none;
+            background-color: $dark-color;
+            color: $white-color;
+            border-bottom: 2px solid $grey-color;
+            border-radius: 5px;
+            box-shadow: 0px 2px 2px $grey-color;
+            margin: 10px;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 1rem;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0px 5px 2px $grey-color;
+                background-color: lighten($dark-color, 10%);
+            }
+
+            a {
+                text-decoration: none;
+                color: $white-color;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width: 768px) {
+    .slist__success__container {
+        p {
+            font-size: 2.2rem;
+        }
+        @include flexColumnAlignJustifyCenter();
+        .button__container {
+            @include flexRow();
+            button {
+                margin: 15px;
+                padding: 8px 15px;
+                font-weight: bold;
+                font-size: 1.3rem;
+            }
+        }
+    }
+}

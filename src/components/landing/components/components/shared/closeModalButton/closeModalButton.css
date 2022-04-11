@@ -1,0 +1,35 @@
+.modal__close {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  margin: 20px 10px;
+}
+
+.modal__close button {
+  border: none;
+  padding: 10px;
+  border-radius: 50px;
+  background-color: #292929;
+  color: #f2f2ff;
+  font-weight: bold;
+  font-size: 0.8rem;
+  -webkit-box-shadow: 1px 2px 5px #778899;
+          box-shadow: 1px 2px 5px #778899;
+}
+
+@media screen and (min-width: 786px) {
+  .modal__close button {
+    font-size: 1.2rem;
+  }
+  .modal__close button:hover {
+    cursor: pointer;
+    background-color: #434343;
+  }
+}

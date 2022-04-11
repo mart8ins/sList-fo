@@ -71,6 +71,23 @@
           transform: scale(1.05);
 }
 
+.header .bottom button {
+  border: none;
+  background-color: #778899;
+  color: #7cfc00;
+  padding: 7px;
+  border-radius: 4px;
+  font-weight: bold;
+  -webkit-box-shadow: 2px 2px 2px #778899;
+          box-shadow: 2px 2px 2px #778899;
+  font-size: 0.8rem;
+}
+
+.header .bottom button:hover {
+  cursor: pointer;
+  background-color: #5f6f7e;
+}
+
 @media screen and (min-width: 768px) {
   .header .top {
     display: -webkit-box;
@@ -118,5 +135,8 @@
     margin: 5px 15px;
     padding: 2px 11px;
     font-size: 1.3rem;
+  }
+  .header .bottom button {
+    font-size: 1rem;
   }
 }

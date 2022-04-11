@@ -3,6 +3,7 @@ import "./slistTop.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
+import CloseModalButton from "../../shared/closeModalButton/CloseModalButton";
 
 type Props = {
     modalContentType: string;
@@ -27,9 +28,7 @@ function SlistTop({ modalContentType, closeModal }: Props) {
     };
     return (
         <div>
-            <div className="modal__close">
-                <button onClick={closeModal}>Close</button>
-            </div>
+            <CloseModalButton closeModal={closeModal} />
 
             <div className="title__save">
                 <div>
