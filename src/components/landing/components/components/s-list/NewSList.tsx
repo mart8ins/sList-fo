@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import "./newSList.css";
 import ContentTitleAndSave from "../shared/contentTitleAndSave/ContentTitleAndSave";
-import SlistMiddle from "./components/SlistMiddle";
+import GroceryInputs from "../shared/groceryInputs/GroceryInputs";
 import SlistBottom from "./components/SlistBottom";
 import AfterSave from "../shared/afterSave/AfterSave";
 import { createSListContext } from "../../../../../context/CreateSListContext";
@@ -18,7 +18,9 @@ function NewSList({ closeModal, modalContentType }: CreateNewProps) {
                 <>
                     <CloseModalButton closeModal={closeModal} />
                     <ContentTitleAndSave modalContentType={modalContentType} />
-                    {listTitle && <SlistMiddle />}
+                    {listTitle && (
+                        <GroceryInputs modalContentType={modalContentType} />
+                    )}
                     {listTitle && groceriesList.length > 0 && <SlistBottom />}
                 </>
             ) : (

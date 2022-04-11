@@ -1,17 +1,22 @@
 import { useState, useContext, useEffect } from "react";
-import "./slistMiddle.css";
+import "./groceryInputs.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { Grocery } from "../../../../../../models/models";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
 
-// type Props = {};
+type Props = {
+    modalContentType: string;
+};
 
-function SlistMiddle() {
+function GroceryInputs({ modalContentType }: Props) {
+    // SHOPPING LIST CONTEXT
     const { groceriesNameDB, updateGroceries } = useContext(createSListContext);
 
-    const [canAdd, setCanAdd] = useState(false);
+    // RECIPES CONTEXT
+    const [recipeGroceries, setRecipeGroceries] = useState<Grocery[]>([]);
 
+    const [canAdd, setCanAdd] = useState(false);
     const [grocery, setGrocery] = useState<Grocery>({
         grocery: "",
         quantity: "",
@@ -38,8 +43,12 @@ function SlistMiddle() {
     };
 
     const addGroceryToList = () => {
-        console.log("uuuu");
-        updateGroceries(grocery);
+        if (modalContentType === "s-list") {
+            updateGroceries(grocery);
+        }
+        if (modalContentType === "recipe") {
+            setRecipeGroceries([grocery, ...recipeGroceries]);
+        }
         setGrocery({
             grocery: "",
             quantity: "",
@@ -113,4 +122,4 @@ function SlistMiddle() {
     );
 }
 
-export default SlistMiddle;
+export default GroceryInputs;
