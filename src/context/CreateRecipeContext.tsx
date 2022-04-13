@@ -26,6 +26,7 @@ export const createRecipeContext = createContext({} as CreateRecipe);
 
 const CreateRecipeContextProvider = ({ children }: { children: any }) => {
     const [recipeSaved, setRecipeSaved] = useState(false);
+
     const [recipeTitle, setRecipeTitle] = useState("");
     const [preperation, setPreperation] = useState("");
     const [cals, setCals] = useState("");
@@ -51,14 +52,14 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
     };
 
     const saveRecipe = () => {
-        const rec = {
-            id: uuidv4(),
-            authorId: uuidv4(),
-            recipeTitle,
-            preperation,
-            cals,
-            recipeGroceriesList,
-        };
+        // const rec = {
+        //     id: uuidv4(),
+        //     authorId: uuidv4(),
+        //     recipeTitle,
+        //     preperation,
+        //     cals,
+        //     recipeGroceriesList,
+        // };
         console.log("recepte noseivota");
         // BACKEND - SAVE REC
         setRecipeTitle("");

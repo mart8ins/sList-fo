@@ -78,6 +78,7 @@
           justify-content: center;
   margin-right: 10px;
   font-size: 1.4rem;
+  color: #ff0000;
 }
 
 @media screen and (min-width: 786px) {
@@ -98,6 +99,7 @@
   }
   .single__list__item .delete__icon {
     font-size: 1.8rem;
+    color: #292929;
   }
   .single__list__item .delete__icon:hover {
     cursor: pointer;

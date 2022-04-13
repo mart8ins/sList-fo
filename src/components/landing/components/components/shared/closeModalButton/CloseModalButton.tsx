@@ -1,10 +1,9 @@
+import { useContext } from "react";
+import { modalContext } from "../../../../../../context/ModalContext";
 import "./closeModalButton.css";
 
-type Props = {
-    closeModal: () => void;
-};
-
-function CloseModalButton({ closeModal }: Props) {
+function CloseModalButton() {
+    const { closeModal } = useContext(modalContext);
     return (
         <div className="modal__close">
             <button onClick={closeModal}>Close</button>

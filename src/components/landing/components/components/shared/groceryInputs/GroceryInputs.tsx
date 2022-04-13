@@ -5,12 +5,10 @@ import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { Grocery } from "../../../../../../models/models";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
 import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
+import { modalContext } from "../../../../../../context/ModalContext";
 
-type Props = {
-    modalContentType: string;
-};
-
-function GroceryInputs({ modalContentType }: Props) {
+function GroceryInputs() {
+    const { modalType } = useContext(modalContext);
     // SHOPPING LIST CONTEXT
     const { groceriesNameDB, updateGroceries } = useContext(createSListContext);
 
@@ -44,10 +42,10 @@ function GroceryInputs({ modalContentType }: Props) {
     };
 
     const addGroceryToList = () => {
-        if (modalContentType === "s-list") {
+        if (modalType === "s-list") {
             updateGroceries(grocery);
         }
-        if (modalContentType === "recipe") {
+        if (modalType === "recipe") {
             updateRecipeGroceries(grocery);
         }
         setGrocery({

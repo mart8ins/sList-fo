@@ -5,10 +5,9 @@ import GroceryInputs from "../shared/groceryInputs/GroceryInputs";
 import GroceriesListPreview from "../shared/groceriesListPreview/GroceriesListPreview";
 import AfterSave from "../shared/afterSave/AfterSave";
 import { createSListContext } from "../../../../../context/CreateSListContext";
-import { CreateNewProps } from "../../../../../models/models";
 import CloseModalButton from "../shared/closeModalButton/CloseModalButton";
 
-function NewSList({ closeModal, modalContentType }: CreateNewProps) {
+function NewSList() {
     const { listTitle, groceriesList, listSaved } =
         useContext(createSListContext);
 
@@ -16,19 +15,15 @@ function NewSList({ closeModal, modalContentType }: CreateNewProps) {
         <div className="add__new__container">
             {!listSaved ? (
                 <>
-                    <CloseModalButton closeModal={closeModal} />
-                    <ContentTitleAndSave modalContentType={modalContentType} />
-                    {listTitle && (
-                        <GroceryInputs modalContentType={modalContentType} />
-                    )}
+                    <CloseModalButton />
+                    <ContentTitleAndSave />
+                    {listTitle && <GroceryInputs />}
                     {listTitle && groceriesList.length > 0 && (
-                        <GroceriesListPreview
-                            modalContentType={modalContentType}
-                        />
+                        <GroceriesListPreview />
                     )}
                 </>
             ) : (
-                <AfterSave type={"s-list"} closeModal={closeModal} />
+                <AfterSave />
             )}
         </div>
     );

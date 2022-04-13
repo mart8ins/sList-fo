@@ -4,12 +4,10 @@ import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 import "./contentTitleAndSave.css";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
 import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
+import { modalContext } from "../../../../../../context/ModalContext";
 
-type Props = {
-    modalContentType: string;
-};
-
-function ContentTitleAndSave({ modalContentType }: Props) {
+function ContentTitleAndSave() {
+    const { modalType } = useContext(modalContext);
     const [canSave, setCanSave] = useState(false);
 
     // SHOPPING LIST CONTEXT
@@ -27,14 +25,14 @@ function ContentTitleAndSave({ modalContentType }: Props) {
     } = useContext(createRecipeContext);
 
     useEffect(() => {
-        if (modalContentType === "s-list") {
+        if (modalType === "s-list") {
             if (listTitle.length > 0 && groceriesList.length > 0) {
                 setCanSave(true);
             } else {
                 setCanSave(false);
             }
         }
-        if (modalContentType === "recipe") {
+        if (modalType === "recipe") {
             if (
                 recipeTitle.length > 0 &&
                 preperation.length > 0 &&
@@ -49,7 +47,7 @@ function ContentTitleAndSave({ modalContentType }: Props) {
             }
         }
     }, [
-        modalContentType,
+        modalType,
         listTitle,
         groceriesList,
         recipeTitle,
@@ -60,10 +58,10 @@ function ContentTitleAndSave({ modalContentType }: Props) {
 
     // HANDLE TITLE FOR CONTENT OF BOTH
     const handleTitle = (e: any) => {
-        if (modalContentType === "s-list") {
+        if (modalType === "s-list") {
             updateTitle(e.target.value);
         }
-        if (modalContentType === "recipe") {
+        if (modalType === "recipe") {
             updateRecipeTitle(e.target.value);
         }
     };
@@ -74,15 +72,11 @@ function ContentTitleAndSave({ modalContentType }: Props) {
                 <div>
                     <p>Create new</p>
                     <h3>
-                        {modalContentType === "s-list"
-                            ? "Shopping list"
-                            : "Recipe"}
+                        {modalType === "s-list" ? "Shopping list" : "Recipe"}
                     </h3>
                 </div>
                 <button
-                    onClick={
-                        modalContentType === "s-list" ? saveSList : saveRecipe
-                    }
+                    onClick={modalType === "s-list" ? saveSList : saveRecipe}
                     disabled={!canSave}
                     className={`save__button ${canSave && "active__save"}`}
                 >
@@ -93,9 +87,7 @@ function ContentTitleAndSave({ modalContentType }: Props) {
             <div className="enter__title">
                 <input
                     onChange={handleTitle}
-                    value={
-                        modalContentType === "s-list" ? listTitle : recipeTitle
-                    }
+                    value={modalType === "s-list" ? listTitle : recipeTitle}
                     type="text"
                     placeholder="Enter title"
                 />

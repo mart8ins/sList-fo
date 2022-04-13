@@ -10,16 +10,10 @@ type Props = {
     grocery: string;
     quantity: string;
     unit: string;
-    modalContentType: string;
+    modalType: string;
 };
 
-function SingleListItem({
-    grocery,
-    quantity,
-    unit,
-    id,
-    modalContentType,
-}: Props) {
+function SingleListItem({ grocery, quantity, unit, id, modalType }: Props) {
     // SHOPPING LIST CONTEXT
     const { deleteGrocery } = useContext(createSListContext);
 
@@ -38,7 +32,7 @@ function SingleListItem({
             <div
                 className="delete__icon"
                 onClick={() =>
-                    modalContentType === "s-list"
+                    modalType === "s-list"
                         ? deleteGrocery(id)
                         : deleteGroceryFromRecipe(id)
                 }

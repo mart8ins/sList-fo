@@ -5,14 +5,14 @@ export type Grocery = {
     unit: string;
 };
 
-export interface ShoppingList {
-    id: string;
-    title: string;
-    groceries: object[];
-}
+// export interface ShoppingList {
+//     id: string;
+//     title: string;
+//     groceries: object[];
+// }
 
 export interface CreateSList {
-    createListModalIsOpen: boolean;
+    // createListModalIsOpen: boolean;
     listSaved: boolean;
     listTitle: string;
     groceriesList: object[];
@@ -22,8 +22,6 @@ export interface CreateSList {
     deleteGrocery: (id: string) => void;
     saveSList: () => void;
     hideListIsSavedView: () => void;
-    openCreateListModal: () => void;
-    closeCreateListModal: () => void;
 }
 
 export type UserData = {
@@ -39,6 +37,6 @@ export interface User {
 }
 
 export type CreateNewProps = {
-    closeModal: () => void;
+    closeModal: (type: string) => void;
     modalContentType: string;
 };

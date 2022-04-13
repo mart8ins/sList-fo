@@ -1,14 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import "./groceriesListPreview.css";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
 import SingleListItem from "../../shared/singleListItem/SingleListItem";
 import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
+import { modalContext } from "../../../../../../context/ModalContext";
 
-type Props = {
-    modalContentType: string;
-};
-
-function GroceriesListPreview({ modalContentType }: Props) {
+function GroceriesListPreview() {
+    const { modalType } = useContext(modalContext);
     // SHOPPING LIST CONTEXT
     const { groceriesList } = useContext(createSListContext);
 
@@ -17,7 +15,7 @@ function GroceriesListPreview({ modalContentType }: Props) {
 
     return (
         <div className="list__items__container">
-            {modalContentType === "s-list" &&
+            {modalType === "s-list" &&
                 groceriesList.map(({ id, grocery, quantity, unit }: any) => {
                     return (
                         <SingleListItem
@@ -26,11 +24,11 @@ function GroceriesListPreview({ modalContentType }: Props) {
                             grocery={grocery}
                             quantity={quantity}
                             unit={unit}
-                            modalContentType={modalContentType}
+                            modalType={modalType}
                         />
                     );
                 })}
-            {modalContentType === "recipe" &&
+            {modalType === "recipe" &&
                 recipeGroceriesList.map(
                     ({ id, grocery, quantity, unit }: any) => {
                         return (
@@ -40,7 +38,7 @@ function GroceriesListPreview({ modalContentType }: Props) {
                                 grocery={grocery}
                                 quantity={quantity}
                                 unit={unit}
-                                modalContentType={modalContentType}
+                                modalType={modalType}
                             />
                         );
                     }

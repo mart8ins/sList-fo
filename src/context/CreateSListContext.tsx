@@ -1,12 +1,11 @@
 import { createContext, useState, useEffect } from "react";
-import { Grocery, ShoppingList } from "../models/models";
+import { Grocery } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
 import { CreateSList } from "../models/models";
 
 export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
-    const [createListModalIsOpen, setCreateListModalIsOpen] = useState(false);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
@@ -48,11 +47,11 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
     const saveSList = () => {
         // SAVE LIST TO DB
         // **************************
-        const listToSave: ShoppingList = {
-            id: uuidv4(),
-            title: listTitle,
-            groceries: groceriesList,
-        };
+        // const listToSave: ShoppingList = {
+        //     id: uuidv4(),
+        //     title: listTitle,
+        //     groceries: groceriesList,
+        // };
         setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
         setListTitle("");
         setGroceriesList([]);
@@ -62,14 +61,6 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
     // hide list creation success component when modal is closed
     const hideListIsSavedView = () => {
         setListSaved(false);
-    };
-
-    // to open/close Create List modal with existing data from header
-    const openCreateListModal = () => {
-        setCreateListModalIsOpen(true);
-    };
-    const closeCreateListModal = () => {
-        setCreateListModalIsOpen(false);
     };
 
     return (
@@ -84,9 +75,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 deleteGrocery,
                 saveSList,
                 hideListIsSavedView,
-                createListModalIsOpen,
-                openCreateListModal,
-                closeCreateListModal,
+                // createListModalIsOpen,
             }}
         >
             {children}

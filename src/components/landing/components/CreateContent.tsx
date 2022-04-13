@@ -1,28 +1,16 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import "./createContent.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import ModalOutput from "./components/ModalOutput";
-import { createSListContext } from "../../../context/CreateSListContext";
+import { modalContext } from "../../../context/ModalContext";
 
 function CreateContent() {
-    const { createListModalIsOpen, openCreateListModal, closeCreateListModal } =
-        useContext(createSListContext);
-
-    const [modalContentType, setModalContentType] = useState("");
-
-    const openModal = (type: string) => {
-        openCreateListModal();
-        setModalContentType(type);
-    };
+    const { openModal, modalIsOpen } = useContext(modalContext);
 
     return (
         <div className="create__options__container">
-            <ModalOutput
-                createListModalIsOpen={createListModalIsOpen}
-                closeCreateListModal={closeCreateListModal}
-                modalContentType={modalContentType}
-            />
+            {modalIsOpen && <ModalOutput />}
             <div onClick={() => openModal("s-list")} className="option">
                 <h3>Create</h3>
                 <h1>Shopping list</h1>

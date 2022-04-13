@@ -1,5 +1,5 @@
-@import "../../../../../scss/layout";
-@import "../../../../../scss/styles";
+@import "../../../../../../scss/layout";
+@import "../../../../../../scss/styles";
 
 .single__list__item {
     width: 95%;
@@ -40,6 +40,7 @@
         @include flexColumnAlignJustifyCenter();
         margin-right: 10px;
         font-size: 1.4rem;
+        color: $red-color;
     }
 }
 
@@ -64,6 +65,7 @@
     
         .delete__icon {
             font-size: 1.8rem;
+            color: $dark-color;
             &:hover {
                 cursor: pointer;
                 color: $red-color;

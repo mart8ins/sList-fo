@@ -1,6 +1,5 @@
 import { useContext } from "react";
 import "./newRecipe.css";
-import { CreateNewProps } from "../../../../../models/models";
 import CloseModalButton from "../shared/closeModalButton/CloseModalButton";
 import ContentTitleAndSave from "../shared/contentTitleAndSave/ContentTitleAndSave";
 import RecipePrep from "./components/RecipePrep";
@@ -9,7 +8,7 @@ import GroceriesListPreview from "../shared/groceriesListPreview/GroceriesListPr
 import AfterSave from "../shared/afterSave/AfterSave";
 import { createRecipeContext } from "../../../../../context/CreateRecipeContext";
 
-function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
+function NewRecipe() {
     const { recipeTitle, preperation, cals, recipeGroceriesList, recipeSaved } =
         useContext(createRecipeContext);
 
@@ -17,24 +16,22 @@ function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
         <div className="add__new__container">
             {!recipeSaved ? (
                 <>
-                    <CloseModalButton closeModal={closeModal} />
-                    <ContentTitleAndSave modalContentType={modalContentType} />
+                    <CloseModalButton />
+                    <ContentTitleAndSave />
                     {recipeTitle && <RecipePrep />}
                     {recipeTitle && preperation && cals && cals !== "0" && (
-                        <GroceryInputs modalContentType={modalContentType} />
+                        <GroceryInputs />
                     )}
                     {recipeTitle &&
                         preperation &&
                         cals &&
                         cals !== "0" &&
                         recipeGroceriesList.length > 0 && (
-                            <GroceriesListPreview
-                                modalContentType={modalContentType}
-                            />
+                            <GroceriesListPreview />
                         )}
                 </>
             ) : (
-                <AfterSave type={"recipe"} closeModal={closeModal} />
+                <AfterSave />
             )}
         </div>
     );

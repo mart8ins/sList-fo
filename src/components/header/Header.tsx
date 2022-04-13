@@ -4,16 +4,23 @@ import "./header.css";
 import { userContext } from "../../context/UserContext";
 import { createSListContext } from "../../context/CreateSListContext";
 import { useNavigate } from "react-router-dom";
+import { createRecipeContext } from "../../context/CreateRecipeContext";
+import { modalContext } from "../../context/ModalContext";
 
-type Props = {};
+const Header = () => {
+    // from db
+    const recipesLength = true;
+    const shoppingListLength = true;
 
-const Header = (props: Props) => {
     const navigate = useNavigate();
     const [listIsPending, setListIsPending] = useState(false);
+    const [recipeIsPending, setRecipeIsPending] = useState(false);
 
     const { user, updateUser } = useContext(userContext);
-    const { listTitle, groceriesList, openCreateListModal } =
-        useContext(createSListContext);
+    const { openModal } = useContext(modalContext);
+    const { listTitle, groceriesList } = useContext(createSListContext);
+    const { recipeTitle, preperation, cals, recipeGroceriesList } =
+        useContext(createRecipeContext);
 
     useEffect(() => {
         if (listTitle.length > 0 || groceriesList.length > 0) {
@@ -21,10 +28,25 @@ const Header = (props: Props) => {
         } else {
             setListIsPending(false);
         }
-    }, [listTitle, groceriesList]);
 
-    const recipesLength = true;
-    const shoppingListLength = true;
+        if (
+            recipeTitle.length > 0 ||
+            preperation.length > 0 ||
+            cals.length > 0 ||
+            recipeGroceriesList.length > 0
+        ) {
+            setRecipeIsPending(true);
+        } else {
+            setRecipeIsPending(false);
+        }
+    }, [
+        listTitle,
+        groceriesList,
+        recipeTitle,
+        preperation,
+        cals,
+        recipeGroceriesList,
+    ]);
 
     const signOut = () => {
         updateUser({
@@ -62,8 +84,13 @@ const Header = (props: Props) => {
                         <Link to="s-list">Shopping lists</Link>
                     )}
                     {listIsPending && (
-                        <button onClick={openCreateListModal}>
+                        <button onClick={() => openModal("s-list")}>
                             Finish your list
+                        </button>
+                    )}
+                    {recipeIsPending && (
+                        <button onClick={() => openModal("recipe")}>
+                            Finish your recipe
                         </button>
                     )}
                 </div>

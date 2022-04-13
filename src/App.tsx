@@ -9,21 +9,27 @@ import SignIn from "./components/signin/SignIn";
 import UserContextProvider from "./context/UserContext";
 import CreateSListContextProvider from "./context/CreateSListContext";
 import CreateRecipeContextProvider from "./context/CreateRecipeContext";
+import ModalContextProvider from "./context/ModalContext";
 
 function App() {
     return (
         <UserContextProvider>
             <CreateSListContextProvider>
                 <CreateRecipeContextProvider>
-                    <div className="App">
-                        <Header />
-                        <Routes>
-                            <Route path="/" element={<Landing />} />
-                            <Route path="auth" element={<SignIn />} />
-                            <Route path="recipes" element={<Recipes />} />
-                            <Route path="shopping-list" element={<SList />} />
-                        </Routes>
-                    </div>
+                    <ModalContextProvider>
+                        <div className="App">
+                            <Header />
+                            <Routes>
+                                <Route path="/" element={<Landing />} />
+                                <Route path="auth" element={<SignIn />} />
+                                <Route path="recipes" element={<Recipes />} />
+                                <Route
+                                    path="shopping-list"
+                                    element={<SList />}
+                                />
+                            </Routes>
+                        </div>
+                    </ModalContextProvider>
                 </CreateRecipeContextProvider>
             </CreateSListContextProvider>
         </UserContextProvider>
