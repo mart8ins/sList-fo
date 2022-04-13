@@ -3,6 +3,7 @@ import "./singleListItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
+import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
 
 type Props = {
     id: string;
@@ -19,7 +20,12 @@ function SingleListItem({
     id,
     modalContentType,
 }: Props) {
+    // SHOPPING LIST CONTEXT
     const { deleteGrocery } = useContext(createSListContext);
+
+    // RECIPES CONTEXT
+    const { deleteGroceryFromRecipe } = useContext(createRecipeContext);
+
     return (
         <div className="single__list__item">
             <div className="single__item__data">
@@ -29,7 +35,14 @@ function SingleListItem({
                     <p>{unit}</p>
                 </div>
             </div>
-            <div className="delete__icon" onClick={() => deleteGrocery(id)}>
+            <div
+                className="delete__icon"
+                onClick={() =>
+                    modalContentType === "s-list"
+                        ? deleteGrocery(id)
+                        : deleteGroceryFromRecipe(id)
+                }
+            >
                 <FontAwesomeIcon icon={faXmark} />
             </div>
         </div>

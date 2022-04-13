@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowTurnDown } from "@fortawesome/free-solid-svg-icons";
 import "./contentTitleAndSave.css";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
+import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
 
 type Props = {
     modalContentType: string;
@@ -16,26 +17,46 @@ function ContentTitleAndSave({ modalContentType }: Props) {
         useContext(createSListContext);
 
     // RECIPE CONTEXT
-    const [recipeTitle, setRecipeTitle] = useState("");
-    const saveContent = () => {}; // JĀIELIEK KONTEKSTĀ
+    const {
+        recipeTitle,
+        preperation,
+        cals,
+        recipeGroceriesList,
+        updateRecipeTitle,
+        saveRecipe,
+    } = useContext(createRecipeContext);
 
     useEffect(() => {
         if (modalContentType === "s-list") {
-            if (listTitle && listTitle.length > 0 && groceriesList.length > 0) {
+            if (listTitle.length > 0 && groceriesList.length > 0) {
                 setCanSave(true);
             } else {
                 setCanSave(false);
             }
         }
         if (modalContentType === "recipe") {
-            if (recipeTitle && recipeTitle.length > 0) {
+            if (
+                recipeTitle.length > 0 &&
+                preperation.length > 0 &&
+                cals &&
+                cals !== "0" &&
+                recipeGroceriesList.length > 0
+            ) {
                 // PAPILDINĀT
                 setCanSave(true);
             } else {
                 setCanSave(false);
             }
         }
-    }, [modalContentType, listTitle, groceriesList, recipeTitle]);
+    }, [
+        modalContentType,
+        listTitle,
+        groceriesList,
+        recipeTitle,
+        preperation,
+        cals,
+        recipeGroceriesList,
+    ]);
 
     // HANDLE TITLE FOR CONTENT OF BOTH
     const handleTitle = (e: any) => {
@@ -43,7 +64,7 @@ function ContentTitleAndSave({ modalContentType }: Props) {
             updateTitle(e.target.value);
         }
         if (modalContentType === "recipe") {
-            setRecipeTitle(e.target.value);
+            updateRecipeTitle(e.target.value);
         }
     };
 
@@ -60,7 +81,7 @@ function ContentTitleAndSave({ modalContentType }: Props) {
                 </div>
                 <button
                     onClick={
-                        modalContentType === "s-list" ? saveSList : saveContent
+                        modalContentType === "s-list" ? saveSList : saveRecipe
                     }
                     disabled={!canSave}
                     className={`save__button ${canSave && "active__save"}`}

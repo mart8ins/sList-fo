@@ -3,16 +3,15 @@ import "./newRecipe.css";
 import { CreateNewProps } from "../../../../../models/models";
 import CloseModalButton from "../shared/closeModalButton/CloseModalButton";
 import ContentTitleAndSave from "../shared/contentTitleAndSave/ContentTitleAndSave";
+import RecipePrep from "./components/RecipePrep";
 import GroceryInputs from "../shared/groceryInputs/GroceryInputs";
 import GroceriesListPreview from "../shared/groceriesListPreview/GroceriesListPreview";
 import AfterSave from "../shared/afterSave/AfterSave";
+import { createRecipeContext } from "../../../../../context/CreateRecipeContext";
 
 function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
-    const recipeSaved = false;
-    const recipeTitle = true;
-    const recipeDescription = true;
-    const recipeCals = true;
-    const recipeHasAddedGroceries = true;
+    const { recipeTitle, preperation, cals, recipeGroceriesList, recipeSaved } =
+        useContext(createRecipeContext);
 
     return (
         <div className="add__new__container">
@@ -20,13 +19,15 @@ function NewRecipe({ closeModal, modalContentType }: CreateNewProps) {
                 <>
                     <CloseModalButton closeModal={closeModal} />
                     <ContentTitleAndSave modalContentType={modalContentType} />
-                    {recipeTitle && recipeDescription && recipeCals && (
+                    {recipeTitle && <RecipePrep />}
+                    {recipeTitle && preperation && cals && cals !== "0" && (
                         <GroceryInputs modalContentType={modalContentType} />
                     )}
                     {recipeTitle &&
-                        recipeDescription &&
-                        recipeCals &&
-                        recipeHasAddedGroceries && (
+                        preperation &&
+                        cals &&
+                        cals !== "0" &&
+                        recipeGroceriesList.length > 0 && (
                             <GroceriesListPreview
                                 modalContentType={modalContentType}
                             />

@@ -1,9 +1,9 @@
-export interface Grocery {
+export type Grocery = {
     id?: string;
     grocery: string;
     quantity: string;
     unit: string;
-}
+};
 
 export interface ShoppingList {
     id: string;

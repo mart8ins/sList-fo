@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import { createSListContext } from "../../../../context/CreateSListContext";
 import NewSList from "./s-list/NewSList";
 import NewRecipe from "./recipe/NewRecipe";
+import { createRecipeContext } from "../../../../context/CreateRecipeContext";
 
 Modal.setAppElement("#root");
 
@@ -27,9 +28,11 @@ const ModalOutput = ({
     modalContentType,
 }: Props) => {
     const { hideListIsSavedView } = useContext(createSListContext);
+    const { hideRecipeSavedView } = useContext(createRecipeContext);
     const closeModal = () => {
         closeCreateListModal();
         hideListIsSavedView();
+        hideRecipeSavedView();
     };
 
     function afterOpenModal() {

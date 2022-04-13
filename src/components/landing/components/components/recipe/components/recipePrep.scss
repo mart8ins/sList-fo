@@ -1,0 +1,63 @@
+@import "../../../../../../scss/layout";
+@import "../../../../../../scss/styles";
+
+.preperation__container {
+    width: 95%;
+    margin: 30px auto;
+    @include flexColumnAlignJustifyCenter();
+    textarea {
+        @include InputBasic();
+        resize: none;
+        width: 90%;
+        height: 160px;
+        padding: 12px;
+        color: $grey-color;
+        font-size: 0.9rem;
+        &:focus {
+            @include InputFocused();
+        }
+    }
+
+    .cals__container {
+        margin-top: 30px;
+        @include flexColumnAlignJustifyCenter();
+        p {
+            font-size: 1rem;
+            font-weight: bold;
+            color: $grey-color;
+        }
+        input {
+            @include InputBasic();
+            width: 70px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: $grey-color;
+            &:focus {
+                @include InputFocused();
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .preperation__container {
+        width: 65%;
+        textarea {
+            height: 200px;
+            padding: 20px;
+            font-size: 1.1rem;
+        }
+        .cals__container {
+            p {
+                font-size: 1.2rem;
+            }
+            input {
+                @include InputBasic();
+                width: 90px;
+                font-size: 1.4rem;
+                color: $grey-color;
+            }
+        }
+    }
+}

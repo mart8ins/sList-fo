@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
 import { Grocery } from "../../../../../../models/models";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
+import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
 
 type Props = {
     modalContentType: string;
@@ -14,7 +15,7 @@ function GroceryInputs({ modalContentType }: Props) {
     const { groceriesNameDB, updateGroceries } = useContext(createSListContext);
 
     // RECIPES CONTEXT
-    const [recipeGroceries, setRecipeGroceries] = useState<Grocery[]>([]);
+    const { updateRecipeGroceries } = useContext(createRecipeContext);
 
     const [canAdd, setCanAdd] = useState(false);
     const [grocery, setGrocery] = useState<Grocery>({
@@ -47,7 +48,7 @@ function GroceryInputs({ modalContentType }: Props) {
             updateGroceries(grocery);
         }
         if (modalContentType === "recipe") {
-            setRecipeGroceries([grocery, ...recipeGroceries]);
+            updateRecipeGroceries(grocery);
         }
         setGrocery({
             grocery: "",

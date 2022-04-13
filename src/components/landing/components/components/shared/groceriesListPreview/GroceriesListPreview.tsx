@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import "./groceriesListPreview.css";
 import { createSListContext } from "../../../../../../context/CreateSListContext";
 import SingleListItem from "../../shared/singleListItem/SingleListItem";
+import { createRecipeContext } from "../../../../../../context/CreateRecipeContext";
 
 type Props = {
     modalContentType: string;
@@ -12,9 +13,7 @@ function GroceriesListPreview({ modalContentType }: Props) {
     const { groceriesList } = useContext(createSListContext);
 
     // RECIPES CONTEXT
-    const [groceriesInRecipe] = useState([
-        { id: "2", grocery: "Piens", quantity: "1", unit: "l" },
-    ]);
+    const { recipeGroceriesList } = useContext(createRecipeContext);
 
     return (
         <div className="list__items__container">
@@ -32,7 +31,7 @@ function GroceriesListPreview({ modalContentType }: Props) {
                     );
                 })}
             {modalContentType === "recipe" &&
-                groceriesInRecipe.map(
+                recipeGroceriesList.map(
                     ({ id, grocery, quantity, unit }: any) => {
                         return (
                             <SingleListItem

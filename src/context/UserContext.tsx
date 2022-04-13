@@ -10,7 +10,7 @@ function UserContextProvider({ children }: { children: any }) {
         username: "",
         email: "",
         password: "",
-        status: false,
+        status: true,
     });
 
     const updateUser = (user: UserData, login?: boolean) => {
@@ -34,7 +34,6 @@ function UserContextProvider({ children }: { children: any }) {
             });
         }
     };
-    console.log(user, "kontekstā user");
     return (
         <userContext.Provider
             value={{
