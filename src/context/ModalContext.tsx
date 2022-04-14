@@ -1,12 +1,13 @@
 import { createContext, useState } from "react";
 
-type ModalType = "s-list" | "recipe" | null;
+type ModalType = "s-list" | "recipe" | "list-details" | null;
 
 interface Modal {
     modalIsOpen: boolean;
     modalType: ModalType;
-    openModal: (type: ModalType) => void;
+    openModal: (type: ModalType, listId?: string) => void;
     closeModal: () => void;
+    listId: string;
 }
 
 export const modalContext = createContext({} as Modal);
@@ -14,8 +15,12 @@ export const modalContext = createContext({} as Modal);
 function ModalContextProvider({ children }: { children: any }) {
     const [modalIsOpen, setIsModalIsOpen] = useState(false);
     const [modalType, setModalType] = useState<ModalType>(null);
+    const [listId, setListId] = useState("");
 
-    const openModal = (type: ModalType) => {
+    const openModal = (type: ModalType, listId?: string) => {
+        if (listId) {
+            setListId(listId);
+        }
         setIsModalIsOpen(true);
         setModalType(type);
     };
@@ -27,7 +32,7 @@ function ModalContextProvider({ children }: { children: any }) {
 
     return (
         <modalContext.Provider
-            value={{ modalIsOpen, modalType, openModal, closeModal }}
+            value={{ modalIsOpen, modalType, openModal, closeModal, listId }}
         >
             {children}
         </modalContext.Provider>

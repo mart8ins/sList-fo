@@ -20,6 +20,7 @@ function GroceryInputs() {
         grocery: "",
         quantity: "",
         unit: "",
+        checked: false,
     });
 
     useEffect(() => {
@@ -52,6 +53,7 @@ function GroceryInputs() {
             grocery: "",
             quantity: "",
             unit: "",
+            checked: false,
         });
     };
 

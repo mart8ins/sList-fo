@@ -3,16 +3,18 @@ export type Grocery = {
     grocery: string;
     quantity: string;
     unit: string;
+    checked: boolean;
 };
 
-// export interface ShoppingList {
-//     id: string;
-//     title: string;
-//     groceries: object[];
-// }
+export interface ShoppingList {
+    authorId: string;
+    id: string;
+    title: string;
+    groceries: object[];
+    completed: boolean;
+}
 
 export interface CreateSList {
-    // createListModalIsOpen: boolean;
     listSaved: boolean;
     listTitle: string;
     groceriesList: object[];
@@ -36,7 +38,22 @@ export interface User {
     updateUser: (user: UserData, login?: boolean) => void;
 }
 
-export type CreateNewProps = {
-    closeModal: (type: string) => void;
-    modalContentType: string;
-};
+export interface Recipe {
+    authorId?: string;
+    id?: string;
+    recipeTitle: string;
+    preperation: string;
+    cals: string;
+    recipeGroceriesList: Grocery[];
+}
+
+export interface CreateRecipe extends Recipe {
+    recipeSaved: boolean;
+    updateRecipeTitle: (title: string) => void;
+    updatePreperation: (title: string) => void;
+    updateCals: (title: string) => void;
+    updateRecipeGroceries: (grocery: Grocery) => void;
+    saveRecipe: () => void;
+    deleteGroceryFromRecipe: (id: string) => void;
+    hideRecipeSavedView: () => void;
+}

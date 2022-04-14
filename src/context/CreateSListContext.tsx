@@ -1,11 +1,13 @@
-import { createContext, useState, useEffect } from "react";
-import { Grocery } from "../models/models";
+import { createContext, useState, useEffect, useContext } from "react";
+import { Grocery, ShoppingList } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
 import { CreateSList } from "../models/models";
+import { userContext } from "./UserContext";
 
 export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
+    const { user } = useContext(userContext);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
@@ -27,6 +29,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
         const groc = {
             id: uuidv4(),
             ...grocery,
+            checked: false,
         };
         // update groceries names
         const name = grocery.grocery;
@@ -46,16 +49,21 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
 
     const saveSList = () => {
         // SAVE LIST TO DB
-        // **************************
-        // const listToSave: ShoppingList = {
-        //     id: uuidv4(),
-        //     title: listTitle,
-        //     groceries: groceriesList,
-        // };
-        setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
-        setListTitle("");
-        setGroceriesList([]);
-        // CALL TO BACKEND
+        if (user.id && listTitle.length > 0 && groceriesList.length > 0) {
+            const listToSave: ShoppingList = {
+                authorId: user.id,
+                id: uuidv4(),
+                title: listTitle,
+                groceries: groceriesList,
+                completed: false,
+            };
+            console.log(listToSave, "list To Save");
+            setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
+            setListTitle("");
+            setGroceriesList([]);
+        } else {
+            console.log("Cant save shopping list because data is missing");
+        }
     };
 
     // hide list creation success component when modal is closed
@@ -75,7 +83,6 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 deleteGrocery,
                 saveSList,
                 hideListIsSavedView,
-                // createListModalIsOpen,
             }}
         >
             {children}

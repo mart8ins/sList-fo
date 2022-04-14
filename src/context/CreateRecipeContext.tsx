@@ -1,30 +1,12 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Grocery } from "../models/models";
-
-interface Recipe {
-    authorId?: string;
-    id?: string;
-    recipeTitle: string;
-    preperation: string;
-    cals: string;
-    recipeGroceriesList: Grocery[];
-}
-
-interface CreateRecipe extends Recipe {
-    recipeSaved: boolean;
-    updateRecipeTitle: (title: string) => void;
-    updatePreperation: (title: string) => void;
-    updateCals: (title: string) => void;
-    updateRecipeGroceries: (grocery: Grocery) => void;
-    saveRecipe: () => void;
-    deleteGroceryFromRecipe: (id: string) => void;
-    hideRecipeSavedView: () => void;
-}
+import { Grocery, CreateRecipe } from "../models/models";
+import { userContext } from "./UserContext";
 
 export const createRecipeContext = createContext({} as CreateRecipe);
 
 const CreateRecipeContextProvider = ({ children }: { children: any }) => {
+    const { user } = useContext(userContext);
     const [recipeSaved, setRecipeSaved] = useState(false);
 
     const [recipeTitle, setRecipeTitle] = useState("");
@@ -47,26 +29,36 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
         const gro = {
             id: uuidv4(),
             ...grocery,
+            checked: false,
         };
         setRecipeGroceriesList([gro, ...recipeGroceriesList]);
     };
 
     const saveRecipe = () => {
-        // const rec = {
-        //     id: uuidv4(),
-        //     authorId: uuidv4(),
-        //     recipeTitle,
-        //     preperation,
-        //     cals,
-        //     recipeGroceriesList,
-        // };
-        console.log("recepte noseivota");
-        // BACKEND - SAVE REC
-        setRecipeTitle("");
-        setPreperation("");
-        setCals("");
-        setRecipeGroceriesList([]);
-        setRecipeSaved(true);
+        if (
+            user.id &&
+            recipeTitle &&
+            preperation &&
+            cals &&
+            recipeGroceriesList.length
+        ) {
+            const rec = {
+                id: uuidv4(),
+                authorId: user.id,
+                recipeTitle,
+                preperation,
+                cals,
+                recipeGroceriesList,
+            };
+            console.log(rec, "recepte noseivota");
+            setRecipeTitle("");
+            setPreperation("");
+            setCals("");
+            setRecipeGroceriesList([]);
+            setRecipeSaved(true);
+        } else {
+            console.log("Cant save recipe, because there is missing data!");
+        }
     };
 
     const deleteGroceryFromRecipe = (id: string) => {

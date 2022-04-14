@@ -1,6 +1,7 @@
 import { createContext, useState } from "react";
 import { UserData } from "../models/models";
 import { User } from "../models/models";
+import { v4 as uuidv4 } from "uuid";
 
 export const userContext = createContext({} as User);
 
@@ -17,8 +18,8 @@ function UserContextProvider({ children }: { children: any }) {
         if (login) {
             // call to backend un kontkstā nostoro tikai, ja ir ok response
             setUser({
-                id: "1",
-                username: "",
+                id: "1", // get from db user ID
+                username: "", // exclude username if only log in
                 email: user.email,
                 password: user.password,
                 status: user.status,
@@ -26,7 +27,7 @@ function UserContextProvider({ children }: { children: any }) {
         } else {
             // call to backend un kontkstā nostoro tikai, ja ir ok response
             setUser({
-                id: "1",
+                id: uuidv4(), // set new user id
                 username: user.username,
                 email: user.email,
                 password: user.password,

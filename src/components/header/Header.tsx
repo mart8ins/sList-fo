@@ -6,11 +6,12 @@ import { createSListContext } from "../../context/CreateSListContext";
 import { useNavigate } from "react-router-dom";
 import { createRecipeContext } from "../../context/CreateRecipeContext";
 import { modalContext } from "../../context/ModalContext";
+import { shoppingListsContext } from "../../context/ShoppingListsContext";
 
 const Header = () => {
     // from db
     const recipesLength = true;
-    const shoppingListLength = true;
+    const { shoppingLists } = useContext(shoppingListsContext);
 
     const navigate = useNavigate();
     const [listIsPending, setListIsPending] = useState(false);
@@ -80,8 +81,8 @@ const Header = () => {
             {user.status && (
                 <div className="bottom">
                     {recipesLength && <Link to="recipes">Recipes</Link>}
-                    {shoppingListLength && (
-                        <Link to="s-list">Shopping lists</Link>
+                    {shoppingLists.length > 0 && (
+                        <Link to="shopping-list">Shopping lists</Link>
                     )}
                     {listIsPending && (
                         <button onClick={() => openModal("s-list")}>

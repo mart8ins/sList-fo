@@ -10,6 +10,7 @@ import UserContextProvider from "./context/UserContext";
 import CreateSListContextProvider from "./context/CreateSListContext";
 import CreateRecipeContextProvider from "./context/CreateRecipeContext";
 import ModalContextProvider from "./context/ModalContext";
+import ShoppingListsContextProvider from "./context/ShoppingListsContext";
 
 function App() {
     return (
@@ -17,18 +18,23 @@ function App() {
             <CreateSListContextProvider>
                 <CreateRecipeContextProvider>
                     <ModalContextProvider>
-                        <div className="App">
-                            <Header />
-                            <Routes>
-                                <Route path="/" element={<Landing />} />
-                                <Route path="auth" element={<SignIn />} />
-                                <Route path="recipes" element={<Recipes />} />
-                                <Route
-                                    path="shopping-list"
-                                    element={<SList />}
-                                />
-                            </Routes>
-                        </div>
+                        <ShoppingListsContextProvider>
+                            <div className="App">
+                                <Header />
+                                <Routes>
+                                    <Route path="/" element={<Landing />} />
+                                    <Route path="auth" element={<SignIn />} />
+                                    <Route
+                                        path="recipes"
+                                        element={<Recipes />}
+                                    />
+                                    <Route
+                                        path="shopping-list"
+                                        element={<SList />}
+                                    />
+                                </Routes>
+                            </div>
+                        </ShoppingListsContextProvider>
                     </ModalContextProvider>
                 </CreateRecipeContextProvider>
             </CreateSListContextProvider>

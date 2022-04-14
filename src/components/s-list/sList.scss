@@ -1,0 +1,64 @@
+@import "../../scss/layout";
+@import "../../scss/styles";
+
+.all__lists__container {
+    @include flexColumnAlignJustifyCenter();
+    width: 90%;
+    margin: 0 auto;
+
+    .shopping__list {
+        width: 85%;
+        margin-top: 15px;
+        border: 1px solid $green-color;
+        box-shadow: 2px 4px 2px $green-color;
+        padding: 5px 10px 10px;
+        color: $grey-color;
+        background-color: $dark-color;
+        border-radius: 5px;
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($dark-color, 10%);
+        }
+        .title {
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: $white-color;
+        }
+        .options {
+            display: flex;
+            margin-top: 20px;
+            div {
+                width: 50%;
+            }
+            div:nth-child(1) {
+                font-weight: bold;
+            }
+            div:nth-child(2) {
+                text-align: right;
+            }
+        }
+    }
+    .list__unfinished {
+        border: 1px solid $red-color;
+        box-shadow: 2px 4px 2px $red-color;
+    }
+}
+@media screen and (min-width: 786px) {
+    .all__lists__container {
+        width: 40%;
+        .shopping__list {
+            width: 75%;
+            margin-top: 20px;
+            padding: 10px 15px 15px;
+            .title {
+                font-size: 1.4rem;
+            }
+            .options {
+                div:nth-child(1) {
+                    font-size: 1.2rem;
+                }
+            }
+        }
+     
+    }
+}
