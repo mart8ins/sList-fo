@@ -5,8 +5,7 @@
 .modal__close {
     @include flexRowFlexEnd();
     margin: 20px 10px;
-    button {
-
+    .close__button {
         border: none;
         padding: 10px;
         border-radius: 50px;
@@ -19,14 +18,16 @@
 }
 
 
+
+
 @media screen and (min-width: 786px) {
     .modal__close {
-        button {
+        .close__button {
             font-size: 1.2rem;
             &:hover {
                 cursor: pointer;
                 background-color: lighten($dark-color, 10%);
             }
-        }
+        };
     }
 }

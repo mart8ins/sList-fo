@@ -44,21 +44,24 @@
         margin-bottom: 40px;
         box-shadow: 0px 2px 10px $grey-color;
         padding: 10px;
-        a {
+        .navLinks {
             text-decoration: none;
-            border-bottom: 1px solid $grey-color;
+            border-bottom: 3px solid $grey-color;
             margin: 10px;
             padding: 2px 8px;
-            border-bottom-left-radius: 15px;
             font-size: 1rem;
             color: $grey-color;
             font-weight: bold;
             &:hover {
-                color: darken($grey-color, 20%);
-                transform: scale(1.05);
+                border-bottom: 3px solid $dark-color;
             }
         }
+        .active__link {
+            border-bottom: 3px solid $dark-color;
+            color: $dark-color;
+        }
         button {
+            margin-left: 15px;
             border: none;
             background-color:  $grey-color;
             color: $green-color;
@@ -95,8 +98,7 @@
         
         .bottom {
             @include flexRow();
-            a {
-                border-bottom: 3px solid $grey-color;
+            .navLinks {
                 margin: 5px 15px;
                 padding: 2px 11px;
                 font-size: 1.3rem;

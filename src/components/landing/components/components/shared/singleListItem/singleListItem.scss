@@ -3,12 +3,54 @@
 
 .single__list__item {
     width: 95%;
-    margin: 8px auto;
+    margin: 18px auto;
     @include flexRowSpaceBetween();
     box-shadow: 2px 4px 4px $grey-color;
     padding: 5px;
     border-radius: 5px;
     background-color: lighten($grey-color, 45%);
+
+    // custom checkbox
+    .checkBox__container {
+        display: block;
+        position: relative;
+        margin-right: 35px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        span {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 30px;
+            width: 30px;
+            background-color: $white-color;
+            border-radius: 50%;
+            box-shadow: 1px 3px 5px $dark-color;
+            &:after {
+                content: "";
+                left: 11px;
+                top: 7px;
+                width: 6px;
+                height: 10px;
+                border: solid darken($white-color, 7%);
+                border-width: 0 3px 3px 0;
+                transform: rotate(45deg);
+                position: absolute;
+            }
+        }
+        input:checked ~ span {
+            background-color: $dark-color;
+        }
+    }
+    
+    
 
     .single__item__data {
         @include flexRowSpaceBetween();
@@ -44,9 +86,13 @@
     }
 }
 
+.grocery__item__checked {
+    background-color: lighten($green-color, 30%);
+}
+
 @media screen and (min-width: 786px) {
     .single__list__item {
-        width: 75%;
+        width: 65%;
         box-shadow: 4px 6px 8px $grey-color;
         padding: 8px;
     

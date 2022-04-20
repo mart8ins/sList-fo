@@ -1,0 +1,68 @@
+@import "../../../scss/layout";
+@import "../../../scss/styles";
+
+
+.list__details__container {
+    width: 90%;
+    margin: 0 auto;
+    .title {
+        div:nth-child(1) {
+            color: $grey-color;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        div:nth-child(2) {
+            color: $dark-color;
+            margin-top: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .option__buttons {
+        margin-bottom: 30px;
+        button {
+            border: none;
+            background-color: white;
+            border-bottom: 1px solid black;
+            color: $dark-color;
+            font-size: 0.7rem;
+            margin-left: 10px;
+            padding: 5px;
+            font-weight: bold;
+            box-shadow: 0 2px 4px $grey-color;
+            border-radius: 2px;
+            &:hover {
+                cursor: pointer;
+                box-shadow: 0 2px 8px $grey-color;
+            }
+        }
+        .delete__button:hover {
+            background-color: $red-color;
+            color: $white-color;
+        }
+    }
+
+}
+@media screen and (min-width: 786px) {
+    .list__details__container {
+        width: 50%;
+        margin-top: 30px;
+        .title {
+            div:nth-child(1) {
+                font-size: 1.5rem;
+            }
+            div:nth-child(2) {
+                margin-top: 20px;
+                font-size: 1.7rem;
+            }
+        }
+
+        .option__buttons {
+            button {
+                font-size: 1rem;
+            }
+        }
+    }
+}

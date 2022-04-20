@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./header.css";
 import { userContext } from "../../context/UserContext";
 import { createSListContext } from "../../context/CreateSListContext";
@@ -17,7 +17,8 @@ const Header = () => {
     const [listIsPending, setListIsPending] = useState(false);
     const [recipeIsPending, setRecipeIsPending] = useState(false);
 
-    const { user, updateUser } = useContext(userContext);
+    const { user, updateUser, activeLink, changeActiveLink } =
+        useContext(userContext);
     const { openModal } = useContext(modalContext);
     const { listTitle, groceriesList } = useContext(createSListContext);
     const { recipeTitle, preperation, cals, recipeGroceriesList } =
@@ -65,11 +66,19 @@ const Header = () => {
             <div className="top">
                 <div></div>
                 <div>
-                    <Link to="/">S-list</Link>
+                    <Link to="/" onClick={() => changeActiveLink("")}>
+                        S-list
+                    </Link>
                 </div>
                 <div className="auth__false">
                     {user.status ? (
-                        <Link onClick={signOut} to="/">
+                        <Link
+                            onClick={() => {
+                                signOut();
+                                changeActiveLink("");
+                            }}
+                            to="/"
+                        >
                             Logout
                         </Link>
                     ) : (
@@ -80,9 +89,27 @@ const Header = () => {
 
             {user.status && (
                 <div className="bottom">
-                    {recipesLength && <Link to="recipes">Recipes</Link>}
+                    {recipesLength && (
+                        <NavLink
+                            onClick={() => changeActiveLink("recipes")}
+                            className={`navLinks ${
+                                activeLink === "recipes" && "active__link"
+                            }`}
+                            to="/recipes"
+                        >
+                            Recipes
+                        </NavLink>
+                    )}
                     {shoppingLists.length > 0 && (
-                        <Link to="shopping-list">Shopping lists</Link>
+                        <NavLink
+                            onClick={() => changeActiveLink("shopping-list")}
+                            className={`navLinks ${
+                                activeLink === "shopping-list" && "active__link"
+                            }`}
+                            to="/shopping-list"
+                        >
+                            Shopping lists
+                        </NavLink>
                     )}
                     {listIsPending && (
                         <button onClick={() => openModal("s-list")}>

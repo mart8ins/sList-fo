@@ -57,7 +57,6 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 groceries: groceriesList,
                 completed: false,
             };
-            console.log(listToSave, "list To Save");
             setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
             setListTitle("");
             setGroceriesList([]);

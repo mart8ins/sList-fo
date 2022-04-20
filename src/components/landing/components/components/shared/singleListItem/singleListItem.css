@@ -1,6 +1,6 @@
 .single__list__item {
   width: 95%;
-  margin: 8px auto;
+  margin: 18px auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -16,6 +16,51 @@
   padding: 5px;
   border-radius: 5px;
   background-color: #fafbfb;
+}
+
+.single__list__item .checkBox__container {
+  display: block;
+  position: relative;
+  margin-right: 35px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.single__list__item .checkBox__container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.single__list__item .checkBox__container span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-color: #f2f2ff;
+  border-radius: 50%;
+  -webkit-box-shadow: 1px 3px 5px #292929;
+          box-shadow: 1px 3px 5px #292929;
+}
+
+.single__list__item .checkBox__container span:after {
+  content: "";
+  left: 11px;
+  top: 7px;
+  width: 6px;
+  height: 10px;
+  border: solid #ceceff;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  position: absolute;
+}
+
+.single__list__item .checkBox__container input:checked ~ span {
+  background-color: #292929;
 }
 
 .single__list__item .single__item__data {
@@ -81,9 +126,13 @@
   color: #ff0000;
 }
 
+.grocery__item__checked {
+  background-color: #caff96;
+}
+
 @media screen and (min-width: 786px) {
   .single__list__item {
-    width: 75%;
+    width: 65%;
     -webkit-box-shadow: 4px 6px 8px #778899;
             box-shadow: 4px 6px 8px #778899;
     padding: 8px;

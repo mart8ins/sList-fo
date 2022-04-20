@@ -1,6 +1,6 @@
 import { createContext, useState } from "react";
 
-type ModalType = "s-list" | "recipe" | "list-details" | null;
+type ModalType = "s-list" | "recipe" | "list-details" | "recipe-details" | null;
 
 interface Modal {
     modalIsOpen: boolean;

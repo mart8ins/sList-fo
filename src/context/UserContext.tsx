@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { UserData } from "../models/models";
 import { User } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
@@ -13,6 +13,7 @@ function UserContextProvider({ children }: { children: any }) {
         password: "",
         status: true,
     });
+    const [activeLink, setActiveLink] = useState("");
 
     const updateUser = (user: UserData, login?: boolean) => {
         if (login) {
@@ -35,11 +36,19 @@ function UserContextProvider({ children }: { children: any }) {
             });
         }
     };
+
+    const changeActiveLink = (type: string) => {
+        console.log(window.location.pathname);
+        setActiveLink(type);
+    };
+
     return (
         <userContext.Provider
             value={{
                 user,
                 updateUser,
+                changeActiveLink,
+                activeLink,
             }}
         >
             {children}

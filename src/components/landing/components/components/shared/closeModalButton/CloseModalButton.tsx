@@ -4,9 +4,12 @@ import "./closeModalButton.css";
 
 function CloseModalButton() {
     const { closeModal } = useContext(modalContext);
+
     return (
         <div className="modal__close">
-            <button onClick={closeModal}>Close</button>
+            <button className="close__button" onClick={closeModal}>
+                Close
+            </button>
         </div>
     );
 }

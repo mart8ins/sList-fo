@@ -16,21 +16,8 @@ function GroceriesListPreview() {
     return (
         <div className="list__items__container">
             {modalType === "s-list" &&
-                groceriesList.map(({ id, grocery, quantity, unit }: any) => {
-                    return (
-                        <SingleListItem
-                            key={id}
-                            id={id}
-                            grocery={grocery}
-                            quantity={quantity}
-                            unit={unit}
-                            modalType={modalType}
-                        />
-                    );
-                })}
-            {modalType === "recipe" &&
-                recipeGroceriesList.map(
-                    ({ id, grocery, quantity, unit }: any) => {
+                groceriesList.map(
+                    ({ id, grocery, quantity, unit, checked }: any) => {
                         return (
                             <SingleListItem
                                 key={id}
@@ -39,6 +26,23 @@ function GroceriesListPreview() {
                                 quantity={quantity}
                                 unit={unit}
                                 modalType={modalType}
+                                checked={checked}
+                            />
+                        );
+                    }
+                )}
+            {modalType === "recipe" &&
+                recipeGroceriesList.map(
+                    ({ id, grocery, quantity, unit, checked }: any) => {
+                        return (
+                            <SingleListItem
+                                key={id}
+                                id={id}
+                                grocery={grocery}
+                                quantity={quantity}
+                                unit={unit}
+                                modalType={modalType}
+                                checked={checked}
                             />
                         );
                     }

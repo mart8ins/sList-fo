@@ -58,24 +58,27 @@
   padding: 10px;
 }
 
-.header .bottom a {
+.header .bottom .navLinks {
   text-decoration: none;
-  border-bottom: 1px solid #778899;
+  border-bottom: 3px solid #778899;
   margin: 10px;
   padding: 2px 8px;
-  border-bottom-left-radius: 15px;
   font-size: 1rem;
   color: #778899;
   font-weight: bold;
 }
 
-.header .bottom a:hover {
-  color: #495561;
-  -webkit-transform: scale(1.05);
-          transform: scale(1.05);
+.header .bottom .navLinks:hover {
+  border-bottom: 3px solid #292929;
+}
+
+.header .bottom .active__link {
+  border-bottom: 3px solid #292929;
+  color: #292929;
 }
 
 .header .bottom button {
+  margin-left: 15px;
   border: none;
   background-color: #778899;
   color: #7cfc00;
@@ -134,8 +137,7 @@
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  .header .bottom a {
-    border-bottom: 3px solid #778899;
+  .header .bottom .navLinks {
     margin: 5px 15px;
     padding: 2px 11px;
     font-size: 1.3rem;

@@ -10,7 +10,7 @@ export interface ShoppingList {
     authorId: string;
     id: string;
     title: string;
-    groceries: object[];
+    groceries: Grocery[];
     completed: boolean;
 }
 
@@ -36,6 +36,8 @@ export type UserData = {
 export interface User {
     user: UserData;
     updateUser: (user: UserData, login?: boolean) => void;
+    changeActiveLink: (type: string) => void;
+    activeLink: string;
 }
 
 export interface Recipe {

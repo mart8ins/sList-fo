@@ -50,7 +50,6 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
                 cals,
                 recipeGroceriesList,
             };
-            console.log(rec, "recepte noseivota");
             setRecipeTitle("");
             setPreperation("");
             setCals("");
