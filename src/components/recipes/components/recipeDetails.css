@@ -45,7 +45,7 @@
           align-items: center;
 }
 
-.recipe__details__container .recipe__for__choose div {
+.recipe__details__container .recipe__for__choose .choose__recipe {
   background-color: #778899;
   color: #f2f2ff;
   font-size: 1rem;
@@ -56,7 +56,7 @@
   letter-spacing: 1.5px;
 }
 
-.recipe__details__container .recipe__for__choose div:hover {
+.recipe__details__container .recipe__for__choose .choose__recipe:hover {
   cursor: pointer;
 }
 
@@ -64,6 +64,32 @@
   background-color: #7cfc00;
   color: #292929;
   font-weight: bold;
+}
+
+.recipe__details__container .new__recipe label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #778899;
+}
+
+.recipe__details__container .new__recipe input {
+  width: 80%;
+  padding: 10px 15px;
+  border: none;
+  background-color: #f2f2ff;
+  color: #292929;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.recipe__details__container .new__recipe input:focus {
+  outline: none;
+  border-left: 3px solid #292929;
+  border-bottom: 3px solid #292929;
+  -webkit-box-shadow: 0px 1px 5px #292929;
+          box-shadow: 0px 1px 5px #292929;
 }
 
 .recipe__details__container .title div:nth-child(1) {
@@ -130,10 +156,17 @@
             flex-direction: row;
     margin-bottom: 30px;
   }
-  .recipe__details__container .recipe__for__choose div {
+  .recipe__details__container .recipe__for__choose .choose__recipe {
     font-size: 1.3rem;
     font-weight: bold;
     margin-left: 8px;
+  }
+  .recipe__details__container .new__recipe label {
+    font-size: 1.1rem;
+  }
+  .recipe__details__container .new__recipe input {
+    font-size: 1.2rem;
+    margin-bottom: 0px;
   }
   .recipe__details__container .title div:nth-child(1) {
     font-size: 1.5rem;

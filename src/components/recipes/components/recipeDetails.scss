@@ -16,7 +16,7 @@
 
     .recipe__for__choose {
         @include flexColumnAlignCenter();
-        div {
+        .choose__recipe {
             background-color: $grey-color;
             color: $white-color;
             font-size: 1rem;
@@ -33,6 +33,22 @@
             background-color: $green-color;
             color: $dark-color;
             font-weight: bold;
+        }
+    }
+
+    .new__recipe {
+        label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: $grey-color;
+        }
+        input {
+            @include InputBasic();
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            &:focus {
+                @include InputFocused();
+            }
         }
     }
 
@@ -78,10 +94,20 @@
         .recipe__for__choose {
             @include flexRow();
             margin-bottom: 30px;
-            div {
+            .choose__recipe {
                 font-size: 1.3rem;
                 font-weight: bold;
                 margin-left: 8px;
+            }
+        }
+
+        .new__recipe {
+            label {
+                font-size: 1.1rem;
+            }
+            input {
+                font-size: 1.2rem;
+                margin-bottom: 0px;
             }
         }
 
