@@ -1,0 +1,107 @@
+@import "../../../scss/layout";
+@import "../../../scss/styles";
+
+.recipe__details__container {
+    width: 90%;
+    margin: auto;
+
+    .option__buttons {
+        margin-bottom: 30px;
+        @include OptionButtonsButton(0.7rem);
+        .delete__button:hover {
+            background-color: $red-color;
+            color: $white-color;
+        }
+    }
+
+    .recipe__for__choose {
+        @include flexColumnAlignCenter();
+        div {
+            background-color: $grey-color;
+            color: $white-color;
+            font-size: 1rem;
+            font-weight: bold;
+            margin-top: 5px;
+            border-radius: 4px;
+            padding: 5px;
+            letter-spacing: 1.5px;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+        .selected__recipe {
+            background-color: $green-color;
+            color: $dark-color;
+            font-weight: bold;
+        }
+    }
+
+    .title {
+        div:nth-child(1) {
+            color: $grey-color;
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        div:nth-child(2) {
+            color: $dark-color;
+            margin-top: 10px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+    .preperation {
+        margin-top: 20px;
+        box-shadow: 0 2px 4px $dark-color;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: justify;
+        font-size: 1rem;
+        p {
+            margin: 0 0 5px;
+            color: $grey-color;
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .recipe__details__container {
+        width: 50%;
+
+        .option__buttons {
+            @include OptionButtonsButton(1rem);
+        }
+
+        .recipe__for__choose {
+            @include flexRow();
+            margin-bottom: 30px;
+            div {
+                font-size: 1.3rem;
+                font-weight: bold;
+                margin-left: 8px;
+            }
+        }
+
+        .title {
+            div:nth-child(1) {
+                font-size: 1.5rem;
+            }
+            div:nth-child(2) {
+                margin-top: 20px;
+                font-size: 1.7rem;
+            }
+        }
+
+        .preperation {
+            margin-top: 40px;
+            padding: 30px;
+            font-size: 1.2rem;
+            p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

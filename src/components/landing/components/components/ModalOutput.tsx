@@ -6,6 +6,7 @@ import NewRecipe from "./recipe/NewRecipe";
 import { createRecipeContext } from "../../../../context/CreateRecipeContext";
 import { modalContext } from "../../../../context/ModalContext";
 import ListDetails from "../../../s-list/components/ListDetails";
+import RecipeDetails from "../../../recipes/components/RecipeDetails";
 
 Modal.setAppElement("#root");
 
@@ -19,7 +20,7 @@ const customStyles = {
 };
 
 const ModalOutput = () => {
-    const { modalType, modalIsOpen, closeModal, listId } =
+    const { modalType, modalIsOpen, closeModal, listId, recipeId } =
         useContext(modalContext);
     const { hideListIsSavedView } = useContext(createSListContext);
     const { hideRecipeSavedView } = useContext(createRecipeContext);
@@ -48,6 +49,9 @@ const ModalOutput = () => {
             {modalType === "s-list" && <NewSList />}
             {modalType === "recipe" && <NewRecipe />}
             {modalType === "list-details" && <ListDetails listId={listId} />}
+            {modalType === "recipe-details" && (
+                <RecipeDetails recipeId={recipeId} />
+            )}
         </Modal>
     );
 };

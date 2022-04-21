@@ -1,0 +1,153 @@
+.recipe__details__container {
+  width: 90%;
+  margin: auto;
+}
+
+.recipe__details__container .option__buttons {
+  margin-bottom: 30px;
+}
+
+.recipe__details__container .option__buttons button {
+  border: none;
+  background-color: white;
+  border-bottom: 1px solid black;
+  color: #292929;
+  font-size: 0.7rem;
+  margin-left: 10px;
+  padding: 5px;
+  font-weight: bold;
+  -webkit-box-shadow: 0 2px 4px #778899;
+          box-shadow: 0 2px 4px #778899;
+  border-radius: 2px;
+}
+
+.recipe__details__container .option__buttons button:hover {
+  cursor: pointer;
+  -webkit-box-shadow: 0 2px 8px #778899;
+          box-shadow: 0 2px 8px #778899;
+}
+
+.recipe__details__container .option__buttons .delete__button:hover {
+  background-color: #ff0000;
+  color: #f2f2ff;
+}
+
+.recipe__details__container .recipe__for__choose {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.recipe__details__container .recipe__for__choose div {
+  background-color: #778899;
+  color: #f2f2ff;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  border-radius: 4px;
+  padding: 5px;
+  letter-spacing: 1.5px;
+}
+
+.recipe__details__container .recipe__for__choose div:hover {
+  cursor: pointer;
+}
+
+.recipe__details__container .recipe__for__choose .selected__recipe {
+  background-color: #7cfc00;
+  color: #292929;
+  font-weight: bold;
+}
+
+.recipe__details__container .title div:nth-child(1) {
+  color: #778899;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.recipe__details__container .title div:nth-child(2) {
+  color: #292929;
+  margin-top: 10px;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.recipe__details__container .preperation {
+  margin-top: 20px;
+  -webkit-box-shadow: 0 2px 4px #292929;
+          box-shadow: 0 2px 4px #292929;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: justify;
+  font-size: 1rem;
+}
+
+.recipe__details__container .preperation p {
+  margin: 0 0 5px;
+  color: #778899;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+@media screen and (min-width: 786px) {
+  .recipe__details__container {
+    width: 50%;
+  }
+  .recipe__details__container .option__buttons button {
+    border: none;
+    background-color: white;
+    border-bottom: 1px solid black;
+    color: #292929;
+    font-size: 1rem;
+    margin-left: 10px;
+    padding: 5px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 2px 4px #778899;
+            box-shadow: 0 2px 4px #778899;
+    border-radius: 2px;
+  }
+  .recipe__details__container .option__buttons button:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 2px 8px #778899;
+            box-shadow: 0 2px 8px #778899;
+  }
+  .recipe__details__container .recipe__for__choose {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-bottom: 30px;
+  }
+  .recipe__details__container .recipe__for__choose div {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-left: 8px;
+  }
+  .recipe__details__container .title div:nth-child(1) {
+    font-size: 1.5rem;
+  }
+  .recipe__details__container .title div:nth-child(2) {
+    margin-top: 20px;
+    font-size: 1.7rem;
+  }
+  .recipe__details__container .preperation {
+    margin-top: 40px;
+    padding: 30px;
+    font-size: 1.2rem;
+  }
+  .recipe__details__container .preperation p {
+    font-size: 1.5rem;
+  }
+}

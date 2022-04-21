@@ -84,6 +84,11 @@
   font-size: 1.1rem;
 }
 
+.single__list__item .single__item__data h3 span {
+  color: #778899;
+  font-size: 0.9rem;
+}
+
 .single__list__item .single__item__data .quantity__unit {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -105,6 +110,10 @@
 
 .single__list__item .single__item__data .quantity__unit p:nth-child(1) {
   font-weight: bold;
+}
+
+.single__list__item .streched {
+  width: 100%;
 }
 
 .single__list__item .delete__icon {

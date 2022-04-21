@@ -49,8 +49,6 @@
             background-color: $dark-color;
         }
     }
-    
-    
 
     .single__item__data {
         @include flexRowSpaceBetween();
@@ -59,12 +57,15 @@
 
         h3 {
             font-size: 1.1rem;
+            span {
+                color: $grey-color;
+                font-size: 0.9rem;
+            }
         }
         
         .quantity__unit {
             @include flexRow();
             background-color: $dark-color;
-            
             padding: 2px 5px;
             border-radius: 4px;
             p {
@@ -77,6 +78,10 @@
             }
         }
     };
+    .streched {
+        width: 100%;
+    }
+    
 
     .delete__icon {
         @include flexColumnAlignJustifyCenter();

@@ -22,22 +22,7 @@
 
     .option__buttons {
         margin-bottom: 30px;
-        button {
-            border: none;
-            background-color: white;
-            border-bottom: 1px solid black;
-            color: $dark-color;
-            font-size: 0.7rem;
-            margin-left: 10px;
-            padding: 5px;
-            font-weight: bold;
-            box-shadow: 0 2px 4px $grey-color;
-            border-radius: 2px;
-            &:hover {
-                cursor: pointer;
-                box-shadow: 0 2px 8px $grey-color;
-            }
-        }
+        @include OptionButtonsButton(0.7rem);
         .delete__button:hover {
             background-color: $red-color;
             color: $white-color;
@@ -60,9 +45,7 @@
         }
 
         .option__buttons {
-            button {
-                font-size: 1rem;
-            }
+            @include OptionButtonsButton(1rem);
         }
     }
 }

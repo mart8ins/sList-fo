@@ -19,6 +19,12 @@
     justify-content: flex-end;
 }
 
+@mixin flexRowFlexEvenly() {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
 @mixin flexCenter() {
     display: flex;
     flex-direction: row;

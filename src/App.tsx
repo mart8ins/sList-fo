@@ -11,33 +11,39 @@ import CreateSListContextProvider from "./context/CreateSListContext";
 import CreateRecipeContextProvider from "./context/CreateRecipeContext";
 import ModalContextProvider from "./context/ModalContext";
 import ShoppingListsContextProvider from "./context/ShoppingListsContext";
+import RecipesContextProvider from "./context/RecipesContext";
 
 function App() {
     return (
         <UserContextProvider>
-            <CreateSListContextProvider>
-                <CreateRecipeContextProvider>
+            <ShoppingListsContextProvider>
+                <RecipesContextProvider>
                     <ModalContextProvider>
-                        <ShoppingListsContextProvider>
-                            <div className="App">
-                                <Header />
-                                <Routes>
-                                    <Route path="/" element={<Landing />} />
-                                    <Route path="auth" element={<SignIn />} />
-                                    <Route
-                                        path="recipes"
-                                        element={<Recipes />}
-                                    />
-                                    <Route
-                                        path="shopping-list"
-                                        element={<SList />}
-                                    />
-                                </Routes>
-                            </div>
-                        </ShoppingListsContextProvider>
+                        <CreateSListContextProvider>
+                            <CreateRecipeContextProvider>
+                                <div className="App">
+                                    <Header />
+                                    <Routes>
+                                        <Route path="/" element={<Landing />} />
+                                        <Route
+                                            path="auth"
+                                            element={<SignIn />}
+                                        />
+                                        <Route
+                                            path="recipes"
+                                            element={<Recipes />}
+                                        />
+                                        <Route
+                                            path="shopping-list"
+                                            element={<SList />}
+                                        />
+                                    </Routes>
+                                </div>
+                            </CreateRecipeContextProvider>
+                        </CreateSListContextProvider>
                     </ModalContextProvider>
-                </CreateRecipeContextProvider>
-            </CreateSListContextProvider>
+                </RecipesContextProvider>
+            </ShoppingListsContextProvider>
         </UserContextProvider>
     );
 }

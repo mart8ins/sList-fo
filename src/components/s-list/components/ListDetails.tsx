@@ -20,13 +20,6 @@ function ListDetails({ listId }: { listId: string }) {
         setListDetails(obj);
     }, [listId, shoppingLists]);
 
-    const deleteRecipe = () => {
-        console.log("delete recipe poga CloseModalButton ");
-    };
-    const sendRecipeGroceriesToShoppingList = () => {
-        console.log("send groceries from recipe to shopping list");
-    };
-
     return (
         <div className="list__details__container">
             {listDetails && listDetails.groceries ? (
@@ -61,25 +54,6 @@ function ListDetails({ listId }: { listId: string }) {
                                 </button>
                             </>
                         )}
-
-                        {modalType === "recipe-details" && (
-                            <>
-                                <button
-                                    className="delete__button"
-                                    onClick={() => {
-                                        deleteRecipe();
-                                        closeModal();
-                                    }}
-                                >
-                                    Delete recipe
-                                </button>
-                                <button
-                                    onClick={sendRecipeGroceriesToShoppingList}
-                                >
-                                    Send groceries to shopping list
-                                </button>
-                            </>
-                        )}
                     </div>
 
                     <div className="title">
@@ -100,6 +74,7 @@ function ListDetails({ listId }: { listId: string }) {
                                         modalType={"list-details"}
                                         checked={item.checked}
                                         listId={listDetails.id}
+                                        recipeTitle={item.recipeTitle}
                                     />
                                 );
                             }

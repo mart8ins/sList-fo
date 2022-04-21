@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { UserData } from "../models/models";
 import { User } from "../models/models";
 import { v4 as uuidv4 } from "uuid";
@@ -11,7 +11,7 @@ function UserContextProvider({ children }: { children: any }) {
         username: "",
         email: "",
         password: "",
-        status: true,
+        status: false,
     });
     const [activeLink, setActiveLink] = useState("");
 
@@ -38,7 +38,6 @@ function UserContextProvider({ children }: { children: any }) {
     };
 
     const changeActiveLink = (type: string) => {
-        console.log(window.location.pathname);
         setActiveLink(type);
     };
 

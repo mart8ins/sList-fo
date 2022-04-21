@@ -14,6 +14,7 @@ type Props = {
     modalType: string;
     checked: boolean;
     listId?: string;
+    recipeTitle?: string;
 };
 
 function SingleListItem({
@@ -24,6 +25,7 @@ function SingleListItem({
     modalType,
     checked,
     listId,
+    recipeTitle,
 }: Props) {
     // SHOPPING LIST CONTEXT
     const { deleteGrocery } = useContext(createSListContext);
@@ -35,22 +37,32 @@ function SingleListItem({
     const handleCheckBox = (e: any) => {
         checkGrocery(id, listId);
     };
-
     return (
         <div
             className={`single__list__item ${
                 checked && "grocery__item__checked"
             }`}
         >
-            <div className="single__item__data">
-                <h3>{grocery}</h3>
-                <div className="quantity__unit">
+            <div
+                className={`single__item__data ${
+                    modalType === "recipe-details" && "streched"
+                } `}
+            >
+                <h3>
+                    {grocery}{" "}
+                    {recipeTitle && (
+                        <span className="grocery__from__recipe">
+                            recipe {recipeTitle}
+                        </span>
+                    )}
+                </h3>
+                <div className={`quantity__unit`}>
                     <p>{quantity}</p>
                     <p>{unit}</p>
                 </div>
             </div>
 
-            {modalType === "list-details" || modalType === "recipe-details" ? (
+            {modalType === "list-details" && (
                 <label className="checkBox__container">
                     <input
                         className="checkBox__input"
@@ -60,14 +72,20 @@ function SingleListItem({
                     />
                     <span className="checkBox__checkMark"></span>
                 </label>
-            ) : (
+            )}
+
+            {modalType === "recipe-details" && null}
+
+            {modalType === "s-list" && (
+                <div className="delete__icon" onClick={() => deleteGrocery(id)}>
+                    <FontAwesomeIcon icon={faXmark} />
+                </div>
+            )}
+
+            {modalType === "recipe" && (
                 <div
                     className="delete__icon"
-                    onClick={() =>
-                        modalType === "s-list"
-                            ? deleteGrocery(id)
-                            : deleteGroceryFromRecipe(id)
-                    }
+                    onClick={() => deleteGroceryFromRecipe(id)}
                 >
                     <FontAwesomeIcon icon={faXmark} />
                 </div>

@@ -21,3 +21,22 @@ $red-color: #ff0000;
     border-bottom: 3px solid $dark-color;
     box-shadow: 0px 1px 5px $dark-color;
 }
+
+@mixin OptionButtonsButton($fontSize) {
+    button {
+        border: none;
+        background-color: white;
+        border-bottom: 1px solid black;
+        color: $dark-color;
+        font-size: $fontSize;
+        margin-left: 10px;
+        padding: 5px;
+        font-weight: bold;
+        box-shadow: 0 2px 4px $grey-color;
+        border-radius: 2px;
+        &:hover {
+            cursor: pointer;
+            box-shadow: 0 2px 8px $grey-color;
+        }
+    }
+}

@@ -4,6 +4,7 @@ export type Grocery = {
     quantity: string;
     unit: string;
     checked: boolean;
+    recipeTitle?: string;
 };
 
 export interface ShoppingList {
@@ -13,6 +14,21 @@ export interface ShoppingList {
     groceries: Grocery[];
     completed: boolean;
 }
+
+export interface ShoppingLists {
+    shoppingLists: ShoppingList[];
+    shoppingListNamesForChooseOption: ListNames[];
+    fetchUserShoppingLists: (id: string) => void;
+    checkGrocery: (groceryId: string, inListId?: string) => void;
+    checkUnckeckAllList: (listId: string, toStatus: boolean) => void;
+    deleteShoppingList: (listId: string) => void;
+    updateShoppingLists: (listsUpdate: ShoppingList[]) => void;
+}
+
+export type ListNames = {
+    listTitle: string;
+    listId: string;
+};
 
 export interface CreateSList {
     listSaved: boolean;

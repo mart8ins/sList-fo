@@ -1,12 +1,14 @@
 import { createContext, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Grocery, CreateRecipe } from "../models/models";
+import { recipesContext } from "./RecipesContext";
 import { userContext } from "./UserContext";
 
 export const createRecipeContext = createContext({} as CreateRecipe);
 
 const CreateRecipeContextProvider = ({ children }: { children: any }) => {
     const { user } = useContext(userContext);
+    const { updateRecipes } = useContext(recipesContext);
     const [recipeSaved, setRecipeSaved] = useState(false);
 
     const [recipeTitle, setRecipeTitle] = useState("");
@@ -30,6 +32,7 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
             id: uuidv4(),
             ...grocery,
             checked: false,
+            recipeTitle,
         };
         setRecipeGroceriesList([gro, ...recipeGroceriesList]);
     };
@@ -50,6 +53,7 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
                 cals,
                 recipeGroceriesList,
             };
+            updateRecipes(rec);
             setRecipeTitle("");
             setPreperation("");
             setCals("");

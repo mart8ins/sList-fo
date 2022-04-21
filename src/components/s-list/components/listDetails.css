@@ -59,6 +59,21 @@
     font-size: 1.7rem;
   }
   .list__details__container .option__buttons button {
+    border: none;
+    background-color: white;
+    border-bottom: 1px solid black;
+    color: #292929;
     font-size: 1rem;
+    margin-left: 10px;
+    padding: 5px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 2px 4px #778899;
+            box-shadow: 0 2px 4px #778899;
+    border-radius: 2px;
+  }
+  .list__details__container .option__buttons button:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 2px 8px #778899;
+            box-shadow: 0 2px 8px #778899;
   }
 }

@@ -1,0 +1,63 @@
+@import "../../scss/layout";
+@import "../../scss/styles";
+
+.recipes__container {
+    width: 80%;
+    margin: auto;
+    @include flexColumnAlignJustifyCenter();
+    .recipe__box {
+        width: 90%;
+        box-shadow: 0 2px 5px black;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: $dark-color;
+        min-height: 80px;
+        margin: 8px;
+        div:nth-child(1) {
+            text-align: right;
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: $grey-color;
+            span {
+                font-size: 1rem;
+            }
+        }
+        div:nth-child(2) {
+            text-align: center;
+            font-size: 1.4rem;
+            margin-top: 5px;
+            padding: 10px;
+            color: $orange-color;
+        }
+        &:hover {
+            cursor: pointer;
+            background-color: lighten($dark-color, 10%);
+        }
+    }
+}
+
+@media screen and (min-width: 786px) {
+    .recipes__container {
+        // margin: auto;
+        @include flexRow();
+        flex-wrap: wrap;
+        .recipe__box {
+            width: 350px;
+            min-height: 120px;
+            margin: 10px;
+        div:nth-child(1) {
+            font-size: 1.8rem;
+            span {
+                font-size: 1.2rem;
+            }
+        }
+        div:nth-child(2) {
+            text-align: center;
+            font-size: 1.6rem;
+            color: $orange-color;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+        }
+    }
+    }
+}
