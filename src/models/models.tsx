@@ -5,6 +5,7 @@ export type Grocery = {
     unit: string;
     checked: boolean;
     recipeTitle?: string;
+    portions: number;
 };
 
 export interface ShoppingList {

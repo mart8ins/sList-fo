@@ -58,12 +58,17 @@
 
 .recipe__details__container .recipe__for__choose .choose__recipe:hover {
   cursor: pointer;
+  color: #242424;
 }
 
 .recipe__details__container .recipe__for__choose .selected__recipe {
   background-color: #7cfc00;
   color: #292929;
   font-weight: bold;
+}
+
+.recipe__details__container .recipe__for__choose .selected__recipe:hover {
+  color: #242424;
 }
 
 .recipe__details__container .new__recipe label {
@@ -104,6 +109,11 @@
   font-size: 1.3rem;
   font-weight: bold;
   text-align: center;
+}
+
+.recipe__details__container .title div:nth-child(2) span {
+  color: #778899;
+  font-size: 0.9rem;
 }
 
 .recipe__details__container .preperation {
@@ -174,6 +184,9 @@
   .recipe__details__container .title div:nth-child(2) {
     margin-top: 20px;
     font-size: 1.7rem;
+  }
+  .recipe__details__container .title div:nth-child(2) span {
+    font-size: 1.1rem;
   }
   .recipe__details__container .preperation {
     margin-top: 40px;

@@ -21,14 +21,11 @@ function GroceryInputs() {
         quantity: "",
         unit: "",
         checked: false,
+        portions: 1,
     });
 
     useEffect(() => {
-        if (
-            grocery.grocery.length > 0 &&
-            grocery.quantity.length > 0 &&
-            grocery.unit.length > 0
-        ) {
+        if (grocery.grocery.length > 0 && grocery.quantity.length > 0 && grocery.unit.length > 0) {
             setCanAdd(true);
         } else {
             setCanAdd(false);
@@ -54,6 +51,7 @@ function GroceryInputs() {
             quantity: "",
             unit: "",
             checked: false,
+            portions: 1,
         });
     };
 
@@ -61,11 +59,7 @@ function GroceryInputs() {
         <div>
             <div className="grocery__option">
                 <p>Check if grocery exists...</p>
-                <select
-                    onChange={handleChange}
-                    name="grocery"
-                    value={grocery.grocery}
-                >
+                <select onChange={handleChange} name="grocery" value={grocery.grocery}>
                     <option value="">Groceries</option>
                     {groceriesNameDB.map((item, i) => {
                         return (
@@ -95,11 +89,7 @@ function GroceryInputs() {
                         placeholder="Q"
                         min={0}
                     />
-                    <select
-                        onChange={handleChange}
-                        name="unit"
-                        value={grocery.unit}
-                    >
+                    <select onChange={handleChange} name="unit" value={grocery.unit}>
                         <option value="">Unit</option>
                         <option value="pc">pc</option>
                         <option value="ml">ml</option>
@@ -112,9 +102,7 @@ function GroceryInputs() {
                 <button
                     disabled={!canAdd}
                     onClick={addGroceryToList}
-                    className={`pluss__icon__container ${
-                        !canAdd && "add__btn__disabled"
-                    }`}
+                    className={`pluss__icon__container ${!canAdd && "add__btn__disabled"}`}
                 >
                     <FontAwesomeIcon icon={faCirclePlus} />
                 </button>

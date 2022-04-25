@@ -9,8 +9,7 @@ export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
     const { user } = useContext(userContext);
-    const { shoppingLists, updateShoppingLists } =
-        useContext(shoppingListsContext);
+    const { shoppingLists, updateShoppingLists } = useContext(shoppingListsContext);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
@@ -33,6 +32,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             id: uuidv4(),
             ...grocery,
             checked: false,
+            portions: 1,
         };
         // update groceries names
         const name = grocery.grocery;

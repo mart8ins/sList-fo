@@ -27,12 +27,16 @@
             letter-spacing: 1.5px;
             &:hover {
                 cursor: pointer;
+                color: darken($dark-color, 2%);
             }
         }
         .selected__recipe {
             background-color: $green-color;
             color: $dark-color;
             font-weight: bold;
+            &:hover {
+                color: darken($dark-color, 2%);
+            }
         }
     }
 
@@ -64,6 +68,10 @@
             font-size: 1.3rem;
             font-weight: bold;
             text-align: center;
+            span {
+                color: $grey-color;
+                font-size: 0.9rem;
+            }
         }
     }
     .preperation {
@@ -118,6 +126,9 @@
             div:nth-child(2) {
                 margin-top: 20px;
                 font-size: 1.7rem;
+                span {
+                    font-size: 1.1rem;
+                }
             }
         }
 

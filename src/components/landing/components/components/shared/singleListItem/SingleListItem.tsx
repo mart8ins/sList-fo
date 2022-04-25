@@ -15,18 +15,10 @@ type Props = {
     checked: boolean;
     listId?: string;
     recipeTitle?: string;
+    portions?: number;
 };
 
-function SingleListItem({
-    grocery,
-    quantity,
-    unit,
-    id,
-    modalType,
-    checked,
-    listId,
-    recipeTitle,
-}: Props) {
+function SingleListItem({ grocery, quantity, unit, id, modalType, checked, listId, recipeTitle, portions }: Props) {
     // SHOPPING LIST CONTEXT
     const { deleteGrocery } = useContext(createSListContext);
     const { checkGrocery } = useContext(shoppingListsContext);
@@ -38,38 +30,25 @@ function SingleListItem({
         checkGrocery(id, listId);
     };
     return (
-        <div
-            className={`single__list__item ${
-                checked && "grocery__item__checked"
-            }`}
-        >
-            <div
-                className={`single__item__data ${
-                    modalType === "recipe-details" && "streched"
-                } `}
-            >
+        <div className={`single__list__item ${checked && "grocery__item__checked"}`}>
+            <div className={`single__item__data ${modalType === "recipe-details" && "streched"} `}>
                 <h3>
                     {grocery}{" "}
                     {recipeTitle && (
                         <span className="grocery__from__recipe">
-                            recipe {recipeTitle}
+                            recipe {recipeTitle} ({portions} por.)
                         </span>
                     )}
                 </h3>
                 <div className={`quantity__unit`}>
-                    <p>{quantity}</p>
+                    <p>{portions ? portions * Number(quantity) : quantity}</p>
                     <p>{unit}</p>
                 </div>
             </div>
 
             {modalType === "list-details" && (
                 <label className="checkBox__container">
-                    <input
-                        className="checkBox__input"
-                        onChange={handleCheckBox}
-                        type="checkbox"
-                        checked={checked}
-                    />
+                    <input className="checkBox__input" onChange={handleCheckBox} type="checkbox" checked={checked} />
                     <span className="checkBox__checkMark"></span>
                 </label>
             )}
@@ -83,10 +62,7 @@ function SingleListItem({
             )}
 
             {modalType === "recipe" && (
-                <div
-                    className="delete__icon"
-                    onClick={() => deleteGroceryFromRecipe(id)}
-                >
+                <div className="delete__icon" onClick={() => deleteGroceryFromRecipe(id)}>
                     <FontAwesomeIcon icon={faXmark} />
                 </div>
             )}

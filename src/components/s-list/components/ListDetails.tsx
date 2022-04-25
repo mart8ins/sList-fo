@@ -33,10 +33,7 @@ function ListDetails({ listId }: { listId: string }) {
                                     onClick={() => {
                                         !listDetails.completed
                                             ? checkUnckeckAllList(listId, true)
-                                            : checkUnckeckAllList(
-                                                  listId,
-                                                  false
-                                              );
+                                            : checkUnckeckAllList(listId, false);
                                     }}
                                 >
                                     {!listDetails.completed
@@ -75,6 +72,7 @@ function ListDetails({ listId }: { listId: string }) {
                                         checked={item.checked}
                                         listId={listDetails.id}
                                         recipeTitle={item.recipeTitle}
+                                        portions={item.portions}
                                     />
                                 );
                             }

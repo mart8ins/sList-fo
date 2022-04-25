@@ -14,9 +14,7 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
     const [recipeTitle, setRecipeTitle] = useState("");
     const [preperation, setPreperation] = useState("");
     const [cals, setCals] = useState("");
-    const [recipeGroceriesList, setRecipeGroceriesList] = useState<Grocery[]>(
-        []
-    );
+    const [recipeGroceriesList, setRecipeGroceriesList] = useState<Grocery[]>([]);
 
     const updateRecipeTitle = (title: string) => {
         setRecipeTitle(title);
@@ -33,18 +31,13 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
             ...grocery,
             checked: false,
             recipeTitle,
+            portions: 1,
         };
         setRecipeGroceriesList([gro, ...recipeGroceriesList]);
     };
 
     const saveRecipe = () => {
-        if (
-            user.id &&
-            recipeTitle &&
-            preperation &&
-            cals &&
-            recipeGroceriesList.length
-        ) {
+        if (user.id && recipeTitle && preperation && cals && recipeGroceriesList.length) {
             const rec = {
                 id: uuidv4(),
                 authorId: user.id,

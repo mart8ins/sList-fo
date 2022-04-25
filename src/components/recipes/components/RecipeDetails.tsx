@@ -2,7 +2,7 @@ import { useState, useContext, useEffect } from "react";
 import { recipesContext } from "../../../context/RecipesContext";
 import { modalContext } from "../../../context/ModalContext";
 import { shoppingListsContext } from "../../../context/ShoppingListsContext";
-import { Recipe } from "../../../models/models";
+import { Recipe, ShoppingList } from "../../../models/models";
 import CloseModalButton from "../../landing/components/components/shared/closeModalButton/CloseModalButton";
 import SingleListItem from "../../landing/components/components/shared/singleListItem/SingleListItem";
 import "./recipeDetails.css";
@@ -15,24 +15,16 @@ type Props = {
 function RecipeDetails({ recipeId }: Props) {
     const [recipeDetails, setRecipeDetails] = useState({} as Recipe);
     const { recipes, deleteRecipe } = useContext(recipesContext);
-    const {
-        shoppingLists,
-        updateShoppingLists,
-        shoppingListNamesForChooseOption,
-    } = useContext(shoppingListsContext);
+    const { shoppingLists, updateShoppingLists, shoppingListNamesForChooseOption } = useContext(shoppingListsContext);
     const { closeModal } = useContext(modalContext);
 
-    const [
-        showRecipeNamesWhereToSendGroceries,
-        setShowRecipeNameWhereToSendGroceries,
-    ] = useState(false);
-    const [
-        choosenRecipeIDWhereToSendGroceries,
-        setChoosenRecipeIDWhereToSendGroceries,
-    ] = useState("");
+    const [showRecipeNamesWhereToSendGroceries, setShowRecipeNameWhereToSendGroceries] = useState(false);
+    const [choosenShoppingListIDWhereToSendGroceries, setChoosenShoppingListIDWhereToSendGroceries] = useState("");
+    const [shoppingListToUpdateWithGroceries, setShoppingListToUpdateWithGroceries] = useState({} as ShoppingList);
 
     const [newListTitle, setNewListTitle] = useState("");
 
+    // filter recipe
     useEffect(() => {
         const filtered = recipes.filter((recipe) => {
             return recipe.id === recipeId;
@@ -41,31 +33,75 @@ function RecipeDetails({ recipeId }: Props) {
     }, [recipeId, recipes]);
 
     const sendRecipeGroceriesToShoppingList = () => {
-        const groceries = recipeDetails.recipeGroceriesList;
+        const groceries = [...recipeDetails.recipeGroceriesList]; // receptes groceries arrays
         // OPEN OPTION TO CHOOSE SHOPPING LIST WHERE TO SEND GROCERIES
         if (!showRecipeNamesWhereToSendGroceries) {
             setShowRecipeNameWhereToSendGroceries(true);
         }
-
         // SEND GROCERIES TO CHOOSEN SHOPPING LIST
-        if (
-            showRecipeNamesWhereToSendGroceries &&
-            choosenRecipeIDWhereToSendGroceries
-        ) {
-            const id = choosenRecipeIDWhereToSendGroceries;
-            const shoppingListsRef = [...shoppingLists];
-            shoppingListsRef.forEach((item) => {
-                if (item.id === id) {
-                    item.groceries = [...item.groceries, ...groceries];
-                }
-            });
+        if (showRecipeNamesWhereToSendGroceries && choosenShoppingListIDWhereToSendGroceries) {
+            const updatedObj: ShoppingList = {
+                authorId: shoppingListToUpdateWithGroceries.authorId,
+                id: shoppingListToUpdateWithGroceries.id,
+                title: shoppingListToUpdateWithGroceries.title,
+                completed: shoppingListToUpdateWithGroceries.completed,
+                groceries: [],
+            };
+            /* CHANGE VALUES */
+            let what = [...groceries]; // recipe groceries to...
+            let where = [...shoppingListToUpdateWithGroceries.groceries]; // shopping list groceries
 
-            // update context
-            updateShoppingLists(shoppingListsRef);
-            // set default state
+            let recipeExistsInList = false;
+            for (let outer = 0; outer < where.length; outer++) {
+                if (where[outer].recipeTitle === recipeDetails.recipeTitle) {
+                    recipeExistsInList = true;
+                }
+            }
+
+            const maped = where.map((item) => {
+                let por = item.portions;
+                let title = item.recipeTitle;
+                if (item.recipeTitle === recipeDetails.recipeTitle) {
+                    por++;
+                    title = recipeDetails.recipeTitle;
+                }
+                const newEl = {
+                    id: item.id,
+                    grocery: item.grocery,
+                    checked: item.checked,
+                    unit: item.unit,
+                    quantity: item.quantity,
+                    portions: por,
+                    recipeTitle: title,
+                };
+                return newEl;
+            });
+            if (!recipeExistsInList) {
+                updatedObj.groceries = [...where, ...what];
+            } else {
+                updatedObj.groceries = [...maped];
+            }
+
+            /* UPDATE MAIN STATE */
+            const shopRef = [...shoppingLists];
+            const index = shopRef.findIndex((el) => {
+                return el.id === updatedObj.id;
+            });
+            shopRef.splice(index, 1, updatedObj);
+
+            updateShoppingLists(shopRef);
+            // SET DEFAULT STATE
             setShowRecipeNameWhereToSendGroceries(false);
-            setChoosenRecipeIDWhereToSendGroceries("");
+            setChoosenShoppingListIDWhereToSendGroceries("");
+            setShoppingListToUpdateWithGroceries({
+                authorId: "",
+                id: "",
+                title: "",
+                groceries: [],
+                completed: false,
+            });
         }
+
         if (showRecipeNamesWhereToSendGroceries && newListTitle.length > 0) {
             const newSList = {
                 authorId: uuidv4(),
@@ -80,10 +116,6 @@ function RecipeDetails({ recipeId }: Props) {
         }
     };
 
-    // const createNewShoppingListIfNoExists = () => {
-    //     console.log("jauns shop lists");
-    // };
-
     const handleNewListTitle = (e: any) => {
         setNewListTitle(e.target.value);
     };
@@ -93,12 +125,8 @@ function RecipeDetails({ recipeId }: Props) {
             <CloseModalButton />
             <div className="option__buttons">
                 <button onClick={sendRecipeGroceriesToShoppingList}>
-                    {!choosenRecipeIDWhereToSendGroceries &&
-                        newListTitle.length === 0 &&
-                        "Choose shopping list"}
-                    {((showRecipeNamesWhereToSendGroceries &&
-                        choosenRecipeIDWhereToSendGroceries) ||
-                        newListTitle.length > 0) &&
+                    {!choosenShoppingListIDWhereToSendGroceries && newListTitle.length === 0 && "Choose shopping list"}
+                    {((showRecipeNamesWhereToSendGroceries && choosenShoppingListIDWhereToSendGroceries) || newListTitle.length > 0) &&
                         "Send groceries to shopping list"}
                 </button>
                 <button
@@ -120,14 +148,15 @@ function RecipeDetails({ recipeId }: Props) {
                                 <div
                                     key={item.listId}
                                     className={`choose__recipe ${
-                                        choosenRecipeIDWhereToSendGroceries ===
-                                            item.listId && "selected__recipe"
+                                        choosenShoppingListIDWhereToSendGroceries === item.listId && "selected__recipe"
                                     }`}
-                                    onClick={() =>
-                                        setChoosenRecipeIDWhereToSendGroceries(
-                                            item.listId
-                                        )
-                                    }
+                                    onClick={() => {
+                                        const filtered = shoppingLists.filter((i) => {
+                                            return i.id === item.listId;
+                                        });
+                                        setShoppingListToUpdateWithGroceries(filtered[0]);
+                                        setChoosenShoppingListIDWhereToSendGroceries(item.listId);
+                                    }}
                                 >
                                     {item.listTitle}
                                 </div>
@@ -137,12 +166,7 @@ function RecipeDetails({ recipeId }: Props) {
                         <div className="new__recipe">
                             <label>
                                 Send to new shopping list
-                                <input
-                                    type="text"
-                                    placeholder="Enter lists title"
-                                    onChange={handleNewListTitle}
-                                    value={newListTitle}
-                                />
+                                <input type="text" placeholder="Enter lists title" onChange={handleNewListTitle} value={newListTitle} />
                             </label>
                             {/* <span onClick={createNewShoppingListIfNoExists}>
                                 Create
@@ -154,7 +178,9 @@ function RecipeDetails({ recipeId }: Props) {
 
             <div className="title">
                 <div>Recipe</div>
-                <div>{recipeDetails.recipeTitle}</div>
+                <div>
+                    {recipeDetails.recipeTitle} <span className="calories">{recipeDetails.cals} cal. per serving</span>
+                </div>
             </div>
 
             <div className="preperation">
