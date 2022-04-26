@@ -17,7 +17,6 @@ function UserContextProvider({ children }: { children: any }) {
     });
     const [activeLink, setActiveLink] = useState("");
     const [authError, setauthError] = useState("");
-    console.log(authError);
 
     const updateUser = async (user: UserData, login?: boolean) => {
         const res = await axios.post(`${serverUrl}user`, {
@@ -27,7 +26,7 @@ function UserContextProvider({ children }: { children: any }) {
                 action: login,
             },
         });
-        console.log(res);
+
         if (res.status === 200 && res.data.status) {
             setUser({
                 id: res.data.userId, // get from db user ID
