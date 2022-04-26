@@ -1,4 +1,4 @@
-import { useState, useContext, ChangeEvent } from "react";
+import { useState, useContext, ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./signin.css";
 import { userContext } from "../../context/UserContext";
@@ -6,9 +6,8 @@ import { ValidateForm } from "./Validate";
 
 function SignIn() {
     const navigate = useNavigate();
-    const { updateUser } = useContext(userContext);
+    const { updateUser, authError } = useContext(userContext);
 
-    const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
@@ -19,23 +18,18 @@ function SignIn() {
 
     const canLogin = true; // all data is filled
 
-    const signInUser = () => {
+    const signInUser = async () => {
         // VALIDĀCIJA USERA INPUTAM, PĒC KURAS IR TRUE UN VAR IET TĀLĀK
-        const inputValid = ValidateForm(username, email, password, login);
+        const inputValid = await ValidateForm(email, password, login);
 
         // CALL TO BACKEND
         if (inputValid.isValid) {
             setError(false);
             setErrorMessage("");
             if (login) {
-                // CALL TO BACKEND
-                // ***************
-                // CALL TO BACKEND
-                // - RESPONSE .....
                 updateUser(
                     {
                         id: "",
-                        username: username,
                         email: email,
                         password: password,
                         status: true,
@@ -44,15 +38,10 @@ function SignIn() {
                 );
                 navigate("/");
             }
-            if (!login && username) {
-                // CALL TO BACKEND
-                // ***************
-                // CALL TO BACKEND
-                // - RESPONSE .....
+            if (!login) {
                 updateUser(
                     {
                         id: "",
-                        username: username,
                         email: email,
                         password: password,
                         status: true,
@@ -67,10 +56,17 @@ function SignIn() {
         }
     };
 
-    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.name === "username") {
-            setUsername(event.target.value);
+    useEffect(() => {
+        if (authError) {
+            setError(true);
+            setErrorMessage(authError);
+        } else {
+            setError(false);
+            setErrorMessage("");
         }
+    }, [authError]);
+
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         if (event.target.name === "email") {
             setEmail(event.target.value);
         }
@@ -84,18 +80,12 @@ function SignIn() {
             <div className="signin__form">
                 <div className="signin__titles">
                     <div>
-                        <button
-                            className={`${login && "active__auth"}`}
-                            onClick={() => setLogin(true)}
-                        >
+                        <button className={`${login && "active__auth"}`} onClick={() => setLogin(true)}>
                             Login
                         </button>
                     </div>
                     <div>
-                        <button
-                            className={`${!login && "active__auth"}`}
-                            onClick={() => setLogin(false)}
-                        >
+                        <button className={`${!login && "active__auth"}`} onClick={() => setLogin(false)}>
                             Signup
                         </button>
                     </div>
@@ -103,63 +93,19 @@ function SignIn() {
 
                 <form>
                     {login ? (
-                        <div
-                            className={`input__container ${
-                                login && "active__auth"
-                            }`}
-                        >
-                            <input
-                                onChange={handleChange}
-                                name="email"
-                                type="email"
-                                value={email}
-                                placeholder="email"
-                            />
-                            <input
-                                onChange={handleChange}
-                                name="password"
-                                type="password"
-                                value={password}
-                                placeholder="password"
-                            />
+                        <div className={`input__container ${login && "active__auth"}`}>
+                            <input onChange={handleChange} name="email" type="email" value={email} placeholder="email" />
+                            <input onChange={handleChange} name="password" type="password" value={password} placeholder="password" />
                         </div>
                     ) : (
-                        <div
-                            className={`input__container ${
-                                !login && "active__auth"
-                            }`}
-                        >
-                            <input
-                                onChange={handleChange}
-                                name="username"
-                                type="text"
-                                value={username}
-                                placeholder="username"
-                            />
-                            <input
-                                onChange={handleChange}
-                                name="email"
-                                type="email"
-                                value={email}
-                                placeholder="email"
-                            />
-                            <input
-                                onChange={handleChange}
-                                name="password"
-                                type="password"
-                                value={password}
-                                placeholder="password"
-                            />
+                        <div className={`input__container ${!login && "active__auth"}`}>
+                            <input onChange={handleChange} name="email" type="email" value={email} placeholder="email" />
+                            <input onChange={handleChange} name="password" type="password" value={password} placeholder="password" />
                         </div>
                     )}
                     <div className="button__container">
                         <div>{error && errorMessage}</div>
-                        <button
-                            className={`${canLogin && "inputs__are"}`}
-                            disabled={!canLogin}
-                            type="button"
-                            onClick={signInUser}
-                        >
+                        <button className={`${canLogin && "inputs__are"}`} disabled={!canLogin} type="button" onClick={signInUser}>
                             Enter
                         </button>
                     </div>

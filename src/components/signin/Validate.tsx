@@ -1,9 +1,4 @@
-export const ValidateForm = (
-    username: string,
-    email: string,
-    password: string,
-    login: boolean
-) => {
+export const ValidateForm = (email: string, password: string, login: boolean) => {
     let isValid = true;
     let errorMessage = "";
 
@@ -38,16 +33,6 @@ export const ValidateForm = (
     }
 
     if (!login) {
-        if (!username) {
-            isValid = false;
-            errorMessage = "Usernames is required";
-        } else {
-            if (username.length < 2) {
-                isValid = false;
-                errorMessage = "Usernames minimum length is 2 characters";
-            }
-        }
-
         if (password.length < 4) {
             isValid = false;
             errorMessage = "Passwords minimum length is 5 characters";

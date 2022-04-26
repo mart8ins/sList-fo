@@ -7,8 +7,6 @@ function RouteGuard({ children }: { children: JSX.Element }) {
         user: { status },
     } = useContext(userContext);
 
-    console.log(window.location.pathname);
-
     if (!status && window.location.pathname !== "/") {
         return <Navigate to="/" />;
     }

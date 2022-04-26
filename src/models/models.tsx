@@ -45,7 +45,6 @@ export interface CreateSList {
 
 export type UserData = {
     id: string;
-    username: string;
     email: string;
     password: string;
     status: boolean;
@@ -53,8 +52,10 @@ export type UserData = {
 export interface User {
     user: UserData;
     updateUser: (user: UserData, login?: boolean) => void;
+    signout: () => void;
     changeActiveLink: (type: string) => void;
     activeLink: string;
+    authError: string;
 }
 
 export interface Recipe {

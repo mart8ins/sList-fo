@@ -16,7 +16,7 @@ const Header = () => {
     const [listIsPending, setListIsPending] = useState(false);
     const [recipeIsPending, setRecipeIsPending] = useState(false);
 
-    const { user, updateUser, activeLink, changeActiveLink } = useContext(userContext);
+    const { user, activeLink, changeActiveLink, signout } = useContext(userContext);
     const { recipes } = useContext(recipesContext);
     const { shoppingLists } = useContext(shoppingListsContext);
     const { openModal } = useContext(modalContext);
@@ -37,14 +37,8 @@ const Header = () => {
         }
     }, [listTitle, groceriesList, recipeTitle, preperation, cals, recipeGroceriesList]);
 
-    const signOut = () => {
-        updateUser({
-            id: "",
-            username: "",
-            email: "",
-            password: "",
-            status: false,
-        });
+    const logOut = () => {
+        signout();
         navigate("/");
     };
 
@@ -67,7 +61,7 @@ const Header = () => {
                         {user.status ? (
                             <Link
                                 onClick={() => {
-                                    signOut();
+                                    logOut();
                                     changeActiveLink("");
                                 }}
                                 to="/"
