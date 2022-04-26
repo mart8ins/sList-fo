@@ -14,7 +14,6 @@ function UserContextProvider({ children }: { children: any }) {
         status: false,
     });
     const [activeLink, setActiveLink] = useState("");
-
     const updateUser = (user: UserData, login?: boolean) => {
         if (login) {
             // call to backend un kontkstā nostoro tikai, ja ir ok response

@@ -88,8 +88,8 @@ function RecipeDetails({ recipeId }: Props) {
                 return el.id === updatedObj.id;
             });
             shopRef.splice(index, 1, updatedObj);
-
             updateShoppingLists(shopRef);
+
             // SET DEFAULT STATE
             setShowRecipeNameWhereToSendGroceries(false);
             setChoosenShoppingListIDWhereToSendGroceries("");

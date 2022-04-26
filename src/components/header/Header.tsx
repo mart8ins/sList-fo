@@ -16,14 +16,12 @@ const Header = () => {
     const [listIsPending, setListIsPending] = useState(false);
     const [recipeIsPending, setRecipeIsPending] = useState(false);
 
-    const { user, updateUser, activeLink, changeActiveLink } =
-        useContext(userContext);
+    const { user, updateUser, activeLink, changeActiveLink } = useContext(userContext);
     const { recipes } = useContext(recipesContext);
     const { shoppingLists } = useContext(shoppingListsContext);
     const { openModal } = useContext(modalContext);
     const { listTitle, groceriesList } = useContext(createSListContext);
-    const { recipeTitle, preperation, cals, recipeGroceriesList } =
-        useContext(createRecipeContext);
+    const { recipeTitle, preperation, cals, recipeGroceriesList } = useContext(createRecipeContext);
 
     useEffect(() => {
         if (listTitle.length > 0 || groceriesList.length > 0) {
@@ -32,24 +30,12 @@ const Header = () => {
             setListIsPending(false);
         }
 
-        if (
-            recipeTitle.length > 0 ||
-            preperation.length > 0 ||
-            cals.length > 0 ||
-            recipeGroceriesList.length > 0
-        ) {
+        if (recipeTitle.length > 0 || preperation.length > 0 || cals.length > 0 || recipeGroceriesList.length > 0) {
             setRecipeIsPending(true);
         } else {
             setRecipeIsPending(false);
         }
-    }, [
-        listTitle,
-        groceriesList,
-        recipeTitle,
-        preperation,
-        cals,
-        recipeGroceriesList,
-    ]);
+    }, [listTitle, groceriesList, recipeTitle, preperation, cals, recipeGroceriesList]);
 
     const signOut = () => {
         updateUser({
@@ -70,13 +56,9 @@ const Header = () => {
                     <div>
                         <Link to="/" onClick={() => changeActiveLink("")}>
                             S-list{" "}
-                            {(activeLink === "recipes" ||
-                                activeLink === "shopping-list") && (
+                            {(activeLink === "recipes" || activeLink === "shopping-list") && (
                                 <span>
-                                    <FontAwesomeIcon
-                                        className="icon"
-                                        icon={faCirclePlus}
-                                    />
+                                    <FontAwesomeIcon className="icon" icon={faCirclePlus} />
                                 </span>
                             )}
                         </Link>
@@ -92,53 +74,35 @@ const Header = () => {
                             >
                                 Logout
                             </Link>
-                        ) : (
-                            <Link to="auth">Sign in</Link>
-                        )}
+                        ) : // <Link to="auth">Sign in</Link>
+                        null}
                     </div>
                 </div>
 
-                {user.status &&
-                    (recipes.length > 0 || shoppingLists.length > 0) && (
-                        <div className="bottom">
-                            {recipes.length > 0 && (
-                                <NavLink
-                                    onClick={() => changeActiveLink("recipes")}
-                                    className={`navLinks ${
-                                        activeLink === "recipes" &&
-                                        "active__link"
-                                    }`}
-                                    to="/recipes"
-                                >
-                                    Recipes
-                                </NavLink>
-                            )}
-                            {shoppingLists.length > 0 && (
-                                <NavLink
-                                    onClick={() =>
-                                        changeActiveLink("shopping-list")
-                                    }
-                                    className={`navLinks ${
-                                        activeLink === "shopping-list" &&
-                                        "active__link"
-                                    }`}
-                                    to="/shopping-list"
-                                >
-                                    Shopping lists
-                                </NavLink>
-                            )}
-                            {listIsPending && (
-                                <button onClick={() => openModal("s-list")}>
-                                    Finish your list
-                                </button>
-                            )}
-                            {recipeIsPending && (
-                                <button onClick={() => openModal("recipe")}>
-                                    Finish your recipe
-                                </button>
-                            )}
-                        </div>
-                    )}
+                {user.status && (recipes.length > 0 || shoppingLists.length > 0) && (
+                    <div className="bottom">
+                        {recipes.length > 0 && (
+                            <NavLink
+                                onClick={() => changeActiveLink("recipes")}
+                                className={`navLinks ${activeLink === "recipes" && "active__link"}`}
+                                to="/recipes"
+                            >
+                                Recipes
+                            </NavLink>
+                        )}
+                        {shoppingLists.length > 0 && (
+                            <NavLink
+                                onClick={() => changeActiveLink("shopping-list")}
+                                className={`navLinks ${activeLink === "shopping-list" && "active__link"}`}
+                                to="/shopping-list"
+                            >
+                                Shopping lists
+                            </NavLink>
+                        )}
+                        {listIsPending && <button onClick={() => openModal("s-list")}>Finish your list</button>}
+                        {recipeIsPending && <button onClick={() => openModal("recipe")}>Finish your recipe</button>}
+                    </div>
+                )}
             </div>
         </div>
     );
