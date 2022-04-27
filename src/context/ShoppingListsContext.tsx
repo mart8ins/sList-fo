@@ -14,13 +14,12 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
 
     useEffect(() => {
         fetchUserShoppingLists(user.id);
-        console.log("hiii");
     }, [user]);
 
     useEffect(() => {
         const lists: ListNames[] = [];
         shoppingLists.forEach((item) => {
-            lists.push({ listTitle: item.title, listId: item.id! });
+            lists.push({ listTitle: item.title, listId: item._id! });
         });
         setShoppingListNamesForChooseOption(lists);
     }, [user, shoppingLists]);

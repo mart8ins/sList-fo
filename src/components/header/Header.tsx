@@ -20,7 +20,7 @@ const Header = () => {
     const { recipes } = useContext(recipesContext);
     const { shoppingLists } = useContext(shoppingListsContext);
     const { openModal } = useContext(modalContext);
-    const { listTitle, groceriesList } = useContext(createSListContext);
+    const { listTitle, groceriesList, clearInputs } = useContext(createSListContext);
     const { recipeTitle, preperation, cals, recipeGroceriesList } = useContext(createRecipeContext);
 
     useEffect(() => {
@@ -39,6 +39,7 @@ const Header = () => {
 
     const logOut = () => {
         signout();
+        clearInputs();
         navigate("/");
     };
 

@@ -1,5 +1,6 @@
 export type Grocery = {
     id?: string;
+    _id?: string;
     grocery: string;
     quantity: string;
     unit: string;
@@ -42,6 +43,7 @@ export interface CreateSList {
     deleteGrocery: (id: string) => void;
     saveSList: () => void;
     hideListIsSavedView: () => void;
+    clearInputs: () => void;
 }
 
 export type UserSignInData = {

@@ -57,29 +57,25 @@ function GroceryInputs() {
 
     return (
         <div>
-            <div className="grocery__option">
-                <p>Check if grocery exists...</p>
-                <select onChange={handleChange} name="grocery" value={grocery.grocery}>
-                    <option value="">Groceries</option>
-                    {groceriesNameDB.map((item, i) => {
-                        return (
-                            <option key={i} value={item}>
-                                {item}
-                            </option>
-                        );
-                    })}
-                </select>
-            </div>
+            {groceriesNameDB && groceriesNameDB.length ? (
+                <div className="grocery__option">
+                    <p>Check if grocery exists...</p>
+                    <select onChange={handleChange} name="grocery" value={grocery.grocery}>
+                        <option value="">Groceries</option>
+                        {groceriesNameDB.map((item: any, i) => {
+                            return (
+                                <option key={i} value={item.grocery}>
+                                    {item.grocery}
+                                </option>
+                            );
+                        })}
+                    </select>
+                </div>
+            ) : null}
 
             <div className="grocery__inputs__container">
                 <div className="grocery__inputs">
-                    <input
-                        value={grocery.grocery}
-                        name="grocery"
-                        onChange={handleChange}
-                        type="text"
-                        placeholder="Enter grocery"
-                    />
+                    <input value={grocery.grocery} name="grocery" onChange={handleChange} type="text" placeholder="Enter grocery" />
                     <input
                         onChange={handleChange}
                         name="quantity"

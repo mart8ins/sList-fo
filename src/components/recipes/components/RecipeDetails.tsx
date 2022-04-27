@@ -6,13 +6,17 @@ import { Recipe, ShoppingList } from "../../../models/models";
 import CloseModalButton from "../../landing/components/components/shared/closeModalButton/CloseModalButton";
 import SingleListItem from "../../landing/components/components/shared/singleListItem/SingleListItem";
 import "./recipeDetails.css";
-import { v4 as uuidv4 } from "uuid";
+
+import axios from "axios";
+import { userContext } from "../../../context/UserContext";
+const serverUrl = "http://localhost:3001/";
 
 type Props = {
     recipeId: string;
 };
 
 function RecipeDetails({ recipeId }: Props) {
+    const { user } = useContext(userContext);
     const [recipeDetails, setRecipeDetails] = useState({} as Recipe);
     const { recipes, deleteRecipe } = useContext(recipesContext);
     const { shoppingLists, updateShoppingLists, shoppingListNamesForChooseOption } = useContext(shoppingListsContext);
@@ -23,7 +27,6 @@ function RecipeDetails({ recipeId }: Props) {
     const [shoppingListToUpdateWithGroceries, setShoppingListToUpdateWithGroceries] = useState({} as ShoppingList);
 
     const [newListTitle, setNewListTitle] = useState("");
-    console.log(recipeDetails, "???/");
     // filter recipe
     useEffect(() => {
         const filtered = recipes.filter((recipe) => {
@@ -33,7 +36,7 @@ function RecipeDetails({ recipeId }: Props) {
         setRecipeDetails(filtered[0]);
     }, [recipeId, recipes]);
 
-    const sendRecipeGroceriesToShoppingList = () => {
+    const sendRecipeGroceriesToShoppingList = async () => {
         const groceries = [...recipeDetails.recipeGroceriesList]; // receptes groceries arrays
         // OPEN OPTION TO CHOOSE SHOPPING LIST WHERE TO SEND GROCERIES
         if (!showRecipeNamesWhereToSendGroceries) {
@@ -43,9 +46,9 @@ function RecipeDetails({ recipeId }: Props) {
         if (showRecipeNamesWhereToSendGroceries && choosenShoppingListIDWhereToSendGroceries) {
             const updatedObj: ShoppingList = {
                 authorId: shoppingListToUpdateWithGroceries.authorId,
-                id: shoppingListToUpdateWithGroceries.id,
+                _id: shoppingListToUpdateWithGroceries._id,
                 title: shoppingListToUpdateWithGroceries.title,
-                completed: shoppingListToUpdateWithGroceries.completed,
+                completed: false,
                 groceries: [],
             };
             /* CHANGE VALUES */
@@ -67,7 +70,7 @@ function RecipeDetails({ recipeId }: Props) {
                     title = recipeDetails.recipeTitle;
                 }
                 const newEl = {
-                    id: item.id,
+                    _id: item._id,
                     grocery: item.grocery,
                     checked: item.checked,
                     unit: item.unit,
@@ -83,13 +86,10 @@ function RecipeDetails({ recipeId }: Props) {
                 updatedObj.groceries = [...maped];
             }
 
-            /* UPDATE MAIN STATE */
-            const shopRef = [...shoppingLists];
-            const index = shopRef.findIndex((el) => {
-                return el.id === updatedObj.id;
+            const res = await axios.post(`${serverUrl}shoppingList/update`, {
+                listToChange: updatedObj,
             });
-            shopRef.splice(index, 1, updatedObj);
-            updateShoppingLists(shopRef);
+            updateShoppingLists(res.data.update);
 
             // SET DEFAULT STATE
             setShowRecipeNameWhereToSendGroceries(false);
@@ -103,15 +103,19 @@ function RecipeDetails({ recipeId }: Props) {
             });
         }
 
+        // create new shopping list with recipe details
         if (showRecipeNamesWhereToSendGroceries && newListTitle.length > 0) {
             const newSList = {
-                authorId: uuidv4(),
-                id: uuidv4(),
+                authorId: user.id,
                 title: newListTitle,
                 groceries,
                 completed: false,
             };
-            updateShoppingLists([newSList]);
+
+            const res = await axios.post(`${serverUrl}shoppingList`, {
+                list: newSList,
+            });
+            updateShoppingLists(res.data.allLists);
             setShowRecipeNameWhereToSendGroceries(false);
             setNewListTitle("");
         }
@@ -153,7 +157,8 @@ function RecipeDetails({ recipeId }: Props) {
                                     }`}
                                     onClick={() => {
                                         const filtered = shoppingLists.filter((i) => {
-                                            return i.id === item.listId;
+                                            const id = i._id;
+                                            return id === item.listId;
                                         });
                                         setShoppingListToUpdateWithGroceries(filtered[0]);
                                         setChoosenShoppingListIDWhereToSendGroceries(item.listId);
@@ -169,9 +174,6 @@ function RecipeDetails({ recipeId }: Props) {
                                 Send to new shopping list
                                 <input type="text" placeholder="Enter lists title" onChange={handleNewListTitle} value={newListTitle} />
                             </label>
-                            {/* <span onClick={createNewShoppingListIfNoExists}>
-                                Create
-                            </span> */}
                         </div>
                     )}
                 </div>

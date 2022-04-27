@@ -61,6 +61,7 @@
             color: $dark-color;
         }
         button {
+            margin-top: 10px;
             margin-left: 15px;
             border: none;
             background-color:  $grey-color;
@@ -104,6 +105,7 @@
                 font-size: 1.3rem;
             }
             button {
+                margin-top: 0;
                 font-size: 1rem;
             }
         }

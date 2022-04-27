@@ -18,31 +18,34 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
     const [groceriesNameDB, setGroceriesNameDB] = useState<string[]>([]);
 
-    // pirmais app renders
     useEffect(() => {
-        // GET GROCERY NAMES FROM DB
-        // **************************
-        const result = ["Piens", "Maize", "Griķi", "Avokado"];
-        setGroceriesNameDB(result);
+        fetchGroceryNames();
     }, []);
+
+    const fetchGroceryNames = async () => {
+        const res = await axios.get(`${serverUrl}groceries`);
+        if (res) {
+            setGroceriesNameDB(res.data.allNames);
+        }
+    };
 
     const updateTitle = (title: string) => {
         setListTitle(title);
     };
 
-    const updateGroceries = (grocery: Grocery) => {
+    const updateGroceries = async (grocery: Grocery) => {
         const groc = {
             id: uuidv4(),
             ...grocery,
             checked: false,
             portions: 1,
         };
+
         // update groceries names
-        const name = grocery.grocery;
-        const newArr = [name, ...groceriesNameDB];
-        setGroceriesNameDB([...new Set(newArr)]);
-        // SET NEW GROCERIE NAME TO DB
-        // *************************
+        const res = await axios.post(`${serverUrl}groceries`, { grocery: grocery.grocery });
+        if (res.data.status) {
+            setGroceriesNameDB(res.data.allNames);
+        }
         setGroceriesList([groc, ...groceriesList]);
     };
 
@@ -64,20 +67,24 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             };
             const res = await axios.post(`${serverUrl}shoppingList`, {
                 list: listToSave,
+                authorId: user.id,
             });
             updateShoppingLists(res.data.allLists.reverse());
 
             setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
             setListTitle("");
             setGroceriesList([]);
-        } else {
-            console.log("Cant save shopping list because data is missing");
         }
     };
 
     // hide list creation success component when modal is closed
     const hideListIsSavedView = () => {
         setListSaved(false);
+    };
+
+    const clearInputs = () => {
+        setListTitle("");
+        setGroceriesList([]);
     };
 
     return (
@@ -92,6 +99,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 deleteGrocery,
                 saveSList,
                 hideListIsSavedView,
+                clearInputs,
             }}
         >
             {children}

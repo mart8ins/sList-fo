@@ -59,8 +59,6 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
             setCals("");
             setRecipeGroceriesList([]);
             setRecipeSaved(true);
-        } else {
-            console.log("Cant save recipe, because there is missing data!");
         }
     };
 
