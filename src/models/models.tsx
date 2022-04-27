@@ -10,7 +10,8 @@ export type Grocery = {
 
 export interface ShoppingList {
     authorId: string;
-    id: string;
+    id?: string;
+    _id?: string;
     title: string;
     groceries: Grocery[];
     completed: boolean;

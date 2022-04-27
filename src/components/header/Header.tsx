@@ -73,7 +73,7 @@ const Header = () => {
                     </div>
                 </div>
 
-                {user.status && (recipes.length > 0 || shoppingLists.length > 0) && (
+                {user.status && (recipes.length > 0 || shoppingLists.length > 0 || listIsPending || recipeIsPending) && (
                     <div className="bottom">
                         {recipes.length > 0 && (
                             <NavLink

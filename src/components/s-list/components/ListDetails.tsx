@@ -8,13 +8,13 @@ import { modalContext } from "../../../context/ModalContext";
 
 function ListDetails({ listId }: { listId: string }) {
     const [listDetails, setListDetails] = useState({} as ShoppingList);
-    const { shoppingLists, checkUnckeckAllList, deleteShoppingList } =
-        useContext(shoppingListsContext);
+    const { shoppingLists, checkUnckeckAllList, deleteShoppingList } = useContext(shoppingListsContext);
     const { modalType, closeModal } = useContext(modalContext);
 
     useEffect(() => {
         const filtered = shoppingLists.filter((list) => {
-            return list.id === listId;
+            const id = list._id;
+            return id === listId;
         });
         const obj = filtered[0];
         setListDetails(obj);
@@ -31,14 +31,10 @@ function ListDetails({ listId }: { listId: string }) {
                             <>
                                 <button
                                     onClick={() => {
-                                        !listDetails.completed
-                                            ? checkUnckeckAllList(listId, true)
-                                            : checkUnckeckAllList(listId, false);
+                                        !listDetails.completed ? checkUnckeckAllList(listId, true) : checkUnckeckAllList(listId, false);
                                     }}
                                 >
-                                    {!listDetails.completed
-                                        ? "Check all groceries"
-                                        : "Uncheck all groceries"}
+                                    {!listDetails.completed ? "Check all groceries" : "Uncheck all groceries"}
                                 </button>
                                 <button
                                     className="delete__button"

@@ -5,11 +5,14 @@ import { CreateSList } from "../models/models";
 import { userContext } from "./UserContext";
 import { shoppingListsContext } from "./ShoppingListsContext";
 
+import axios from "axios";
+const serverUrl = "http://localhost:3001/";
+
 export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
     const { user } = useContext(userContext);
-    const { shoppingLists, updateShoppingLists } = useContext(shoppingListsContext);
+    const { updateShoppingLists } = useContext(shoppingListsContext);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
@@ -50,17 +53,20 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
         setGroceriesList(newArr);
     };
 
-    const saveSList = () => {
+    const saveSList = async () => {
         // SAVE LIST TO DB
         if (user.id && listTitle.length > 0 && groceriesList.length > 0) {
             const listToSave: ShoppingList = {
                 authorId: user.id,
-                id: uuidv4(),
                 title: listTitle,
                 groceries: groceriesList,
                 completed: false,
             };
-            updateShoppingLists([listToSave, ...shoppingLists]);
+            const res = await axios.post(`${serverUrl}shoppingList`, {
+                list: listToSave,
+            });
+            updateShoppingLists(res.data.allLists.reverse());
+
             setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
             setListTitle("");
             setGroceriesList([]);
