@@ -18,20 +18,14 @@ function AfterSave() {
             <div className="slist__success__container">
                 <p>{activeTitle} saved</p>
                 <div className="button__container">
-                    <button
-                        onClick={() =>
-                            modalType === "s-list"
-                                ? hideListIsSavedView()
-                                : hideRecipeSavedView()
-                        }
-                    >
+                    <button onClick={() => (modalType === "s-list" ? hideListIsSavedView() : hideRecipeSavedView())}>
                         New {activeTitle}
                     </button>
-                    <button>
+                    {/* <button>
                         <Link to={`${activeLink}/1`}>
                             View created {activeTitle}
                         </Link>
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

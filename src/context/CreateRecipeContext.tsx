@@ -1,8 +1,11 @@
 import { createContext, useState, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { Grocery, CreateRecipe } from "../models/models";
+import { Grocery, CreateRecipe, Recipe } from "../models/models";
 import { recipesContext } from "./RecipesContext";
 import { userContext } from "./UserContext";
+
+import axios from "axios";
+const serverUrl = "http://localhost:3001/";
 
 export const createRecipeContext = createContext({} as CreateRecipe);
 
@@ -36,17 +39,21 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
         setRecipeGroceriesList([gro, ...recipeGroceriesList]);
     };
 
-    const saveRecipe = () => {
+    const saveRecipe = async () => {
         if (user.id && recipeTitle && preperation && cals && recipeGroceriesList.length) {
-            const rec = {
-                id: uuidv4(),
+            const recipeToSave: Recipe = {
                 authorId: user.id,
                 recipeTitle,
                 preperation,
                 cals,
                 recipeGroceriesList,
             };
-            updateRecipes(rec);
+            const res = await axios.post(`${serverUrl}recipe`, {
+                recipeToSave,
+                authorId: user.id,
+            });
+
+            updateRecipes(res.data.update);
             setRecipeTitle("");
             setPreperation("");
             setCals("");

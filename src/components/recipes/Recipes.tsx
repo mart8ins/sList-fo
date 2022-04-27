@@ -11,13 +11,14 @@ const Recipes = () => {
         <div className="recipes__container">
             {modalIsOpen && <ModalOutput />}
             {recipes.map((recipe) => {
+                const id = recipe._id;
                 return (
                     <div
                         onClick={() => {
-                            openModal("recipe-details", recipe.id);
+                            openModal("recipe-details", id);
                         }}
                         className="recipe__box"
-                        key={recipe.id}
+                        key={id}
                     >
                         <div>
                             {recipe.cals} <span>calories</span>

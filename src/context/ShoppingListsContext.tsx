@@ -65,14 +65,8 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
     };
 
     const deleteShoppingList = async (listId: string) => {
-        // const allListsRef = [...shoppingLists];
-        // const updatedList = allListsRef.filter((item) => {
-        //     return item.id !== listId;
-        // });
-
         const res = await axios.post(`${serverUrl}shoppingList/delete`, { listId, authorId: user.id });
         setShoppingLists(res.data.update.reverse());
-        // setShoppingLists(updatedList);
     };
 
     const fetchUserShoppingLists = async (id: string) => {

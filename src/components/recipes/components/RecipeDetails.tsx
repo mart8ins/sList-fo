@@ -23,11 +23,12 @@ function RecipeDetails({ recipeId }: Props) {
     const [shoppingListToUpdateWithGroceries, setShoppingListToUpdateWithGroceries] = useState({} as ShoppingList);
 
     const [newListTitle, setNewListTitle] = useState("");
-
+    console.log(recipeDetails, "???/");
     // filter recipe
     useEffect(() => {
         const filtered = recipes.filter((recipe) => {
-            return recipe.id === recipeId;
+            const id = recipe._id;
+            return id === recipeId;
         });
         setRecipeDetails(filtered[0]);
     }, [recipeId, recipes]);
@@ -132,7 +133,7 @@ function RecipeDetails({ recipeId }: Props) {
                 <button
                     className="delete__button"
                     onClick={() => {
-                        deleteRecipe(recipeDetails.id!);
+                        deleteRecipe(recipeDetails._id!);
                         closeModal();
                     }}
                 >
@@ -199,7 +200,7 @@ function RecipeDetails({ recipeId }: Props) {
                             unit={item.unit}
                             modalType={"recipe-details"}
                             checked={item.checked}
-                            listId={recipeDetails.id}
+                            listId={recipeDetails._id}
                         />
                     );
                 })}

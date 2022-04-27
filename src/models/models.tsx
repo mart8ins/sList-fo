@@ -65,6 +65,7 @@ export interface User {
 export interface Recipe {
     authorId?: string;
     id?: string;
+    _id?: string;
     recipeTitle: string;
     preperation: string;
     cals: string;
