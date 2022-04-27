@@ -43,15 +43,18 @@ export interface CreateSList {
     hideListIsSavedView: () => void;
 }
 
-export type UserData = {
-    id: string;
+export type UserSignInData = {
     email: string;
     password: string;
     status: boolean;
 };
 export interface User {
-    user: UserData;
-    updateUser: (user: UserData, login?: boolean) => void;
+    user: {
+        id: string;
+        email: string;
+        status: boolean;
+    };
+    updateUser: (user: UserSignInData, login?: boolean) => void;
     signout: () => void;
     changeActiveLink: (type: string) => void;
     activeLink: string;

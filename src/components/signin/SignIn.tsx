@@ -29,7 +29,6 @@ function SignIn() {
             if (login) {
                 updateUser(
                     {
-                        id: "",
                         email: email,
                         password: password,
                         status: true,
@@ -41,7 +40,6 @@ function SignIn() {
             if (!login) {
                 updateUser(
                     {
-                        id: "",
                         email: email,
                         password: password,
                         status: true,
