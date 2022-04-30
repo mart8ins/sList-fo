@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 import "./recipes.css";
 import { recipesContext } from "../../context/RecipesContext";
 import { modalContext } from "../../context/ModalContext";
@@ -10,23 +11,27 @@ const Recipes = () => {
     return (
         <div className="recipes__container">
             {modalIsOpen && <ModalOutput />}
-            {recipes.map((recipe) => {
-                const id = recipe._id;
-                return (
-                    <div
-                        onClick={() => {
-                            openModal("recipe-details", id);
-                        }}
-                        className="recipe__box"
-                        key={id}
-                    >
-                        <div>
-                            {recipe.cals} <span>calories</span>
+            {recipes.length ? (
+                recipes.map((recipe) => {
+                    const id = recipe._id;
+                    return (
+                        <div
+                            onClick={() => {
+                                openModal("recipe-details", id);
+                            }}
+                            className="recipe__box"
+                            key={id}
+                        >
+                            <div>
+                                {recipe.cals} <span>calories</span>
+                            </div>
+                            <div>{recipe.recipeTitle}</div>
                         </div>
-                        <div>{recipe.recipeTitle}</div>
-                    </div>
-                );
-            })}
+                    );
+                })
+            ) : (
+                <Navigate to="/" />
+            )}
         </div>
     );
 };

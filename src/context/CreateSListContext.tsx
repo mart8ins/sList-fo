@@ -16,6 +16,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
+    const [groceriesListNames, setGroceriesListNames] = useState<String[]>([]);
     const [groceriesNameDB, setGroceriesNameDB] = useState<string[]>([]);
 
     useEffect(() => {
@@ -40,12 +41,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             checked: false,
             portions: 1,
         };
-
-        // update groceries names
-        const res = await axios.post(`${serverUrl}groceries`, { grocery: grocery.grocery });
-        if (res.data.status) {
-            setGroceriesNameDB(res.data.allNames);
-        }
+        setGroceriesListNames([...groceriesListNames, grocery.grocery]);
         setGroceriesList([groc, ...groceriesList]);
     };
 
@@ -74,6 +70,13 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             setListSaved(true); // set list as saved to render component after list is saved with options to choose - create more lists all show created list
             setListTitle("");
             setGroceriesList([]);
+
+            // save grocerie names
+            const groceryNamesRes = await axios.post(`${serverUrl}groceries`, { groceryNames: groceriesListNames });
+            if (groceryNamesRes.data.status) {
+                setGroceriesNameDB(groceryNamesRes.data.allNames);
+            }
+            setGroceriesListNames([]);
         }
     };
 

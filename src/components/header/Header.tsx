@@ -51,7 +51,7 @@ const Header = () => {
                     <div>
                         <Link to="/" onClick={() => changeActiveLink("")}>
                             S-list{" "}
-                            {(activeLink === "recipes" || activeLink === "shopping-list") && (
+                            {window.location.pathname !== "/" && (
                                 <span>
                                     <FontAwesomeIcon className="icon" icon={faCirclePlus} />
                                 </span>

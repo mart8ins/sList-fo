@@ -33,9 +33,15 @@ function GroceryInputs() {
     }, [grocery]);
 
     const handleChange = (e: any) => {
+        let value = "";
+        if (e.target.name === "grocery") {
+            value = e.target.value.toUpperCase();
+        } else {
+            value = e.target.value;
+        }
         setGrocery({
             ...grocery,
-            [e.target.name]: e.target.value,
+            [e.target.name]: value,
         });
     };
 

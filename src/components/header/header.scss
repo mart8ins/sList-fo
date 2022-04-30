@@ -14,11 +14,15 @@
                 font-size: 2rem;
                 font-weight: bold;
                 text-align: center;
-                color: $grey-color;
-                text-shadow: 0px 0px 25px $white-color;
+                color: $white-color;
+                // text-shadow: 0px 0px 25px $white-color;
                 letter-spacing: 2px;
                 &:hover {
                     color: $white-color;
+                }
+
+                .icon {
+                    color: $green-color;
                 }
             }
 

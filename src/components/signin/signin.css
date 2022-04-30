@@ -131,8 +131,8 @@
 @media screen and (min-width: 786px) {
   .signin__container {
     width: 25%;
-    height: 40vh;
-    margin: 300px auto;
+    height: 200px;
+    margin: 12% auto;
   }
   .signin__container .signin__form .signin__titles {
     display: -webkit-box;
