@@ -70,7 +70,7 @@ function RecipeDetails({ recipeId }: Props) {
                     title = recipeDetails.recipeTitle;
                 }
                 const newEl = {
-                    _id: item._id,
+                    id: item.id,
                     grocery: item.grocery,
                     checked: item.checked,
                     unit: item.unit,

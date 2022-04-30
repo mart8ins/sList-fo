@@ -55,11 +55,12 @@ function ListDetails({ listId }: { listId: string }) {
                     </div>
 
                     <div className="groceries__list">
-                        {listDetails.groceries.map((item: any) => {
+                        {listDetails.groceries.map((item: any, i) => {
+                            console.log(item);
                             if (item) {
                                 return (
                                     <SingleListItem
-                                        key={item.id}
+                                        key={i}
                                         grocery={item.grocery}
                                         quantity={item.quantity}
                                         unit={item.unit}
