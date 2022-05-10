@@ -14,8 +14,9 @@ const SList = () => {
             {modalIsOpen && <ModalOutput />}
 
             {shoppingLists.length ? (
-                shoppingLists.map((item) => {
+                shoppingLists.map((item, i) => {
                     const id = item._id;
+                    console.log(id);
                     return (
                         <div
                             onClick={() => openModal("list-details", id)}

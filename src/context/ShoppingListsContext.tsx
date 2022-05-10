@@ -4,7 +4,6 @@ import { ShoppingList, ShoppingLists, ListNames } from "../models/models";
 import { serverUrl } from "../vars";
 
 import axios from "axios";
-// const serverUrl = "http://localhost:3001/";
 
 export const shoppingListsContext = createContext({} as ShoppingLists);
 
@@ -47,8 +46,6 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         // CHANGE LIST STATUS - COMPLETED/PENDING DEPENDING IF ALL GROCERIES AR CHECKED OR NOT
         listToChange.completed = listCompleted;
         // UPDATE STATE
-        // const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
-        // setShoppingLists(res.data.update.reverse());
         setShoppingLists(allListsRef);
         axios.post(`${serverUrl}shoppingList/update`, { listToChange });
     };
@@ -67,8 +64,6 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         // CHANGE LIST STATUS - COMPLETED/PENDING
         listToChange.completed = !listToChange.completed;
         // UPDATE Shopping lists
-        // const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
-        // setShoppingLists(res.data.update.reverse());
         setShoppingLists(allListsRef);
         axios.post(`${serverUrl}shoppingList/update`, { listToChange });
     };

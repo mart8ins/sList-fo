@@ -10,7 +10,6 @@ import { serverUrl } from "../../../vars";
 
 import axios from "axios";
 import { userContext } from "../../../context/UserContext";
-// const serverUrl = "http://localhost:3001/";
 
 type Props = {
     recipeId: string;

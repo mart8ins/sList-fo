@@ -12,8 +12,6 @@ type UserToSave = {
     status: boolean;
 };
 
-// const serverUrl = "http://localhost:3001/";
-
 export const userContext = createContext({} as User);
 
 function UserContextProvider({ children }: { children: any }) {

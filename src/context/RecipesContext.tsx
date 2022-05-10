@@ -4,7 +4,6 @@ import { Recipe } from "../models/models";
 import { serverUrl } from "../vars";
 
 import axios from "axios";
-// const serverUrl = "http://localhost:3001/";
 
 interface Recipes {
     recipes: Recipe[];
@@ -23,12 +22,17 @@ const RecipesContextProvider = ({ children }: { children: any }) => {
         fetchUserRecipes(user.id);
     }, [user]);
 
+    console.log(recipes, "recipes");
+
     const deleteRecipe = async (recipeId: string) => {
-        const res = await axios.post(`${serverUrl}recipe/delete`, {
+        const filtered = recipes.filter((rec) => {
+            return rec._id !== recipeId;
+        });
+        setRecipes(filtered);
+        axios.post(`${serverUrl}recipe/delete`, {
             recipeId: recipeId,
             authorId: user.id,
         });
-        setRecipes(res.data.update);
     };
 
     const updateRecipes = (recipes: Recipe[]) => {

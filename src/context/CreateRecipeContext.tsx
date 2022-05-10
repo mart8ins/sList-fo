@@ -6,7 +6,6 @@ import { userContext } from "./UserContext";
 import { serverUrl } from "../vars";
 
 import axios from "axios";
-// const serverUrl = "http://localhost:3001/";
 
 export const createRecipeContext = createContext({} as CreateRecipe);
 

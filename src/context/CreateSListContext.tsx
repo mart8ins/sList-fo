@@ -7,13 +7,12 @@ import { shoppingListsContext } from "./ShoppingListsContext";
 import { serverUrl } from "../vars";
 
 import axios from "axios";
-// const serverUrl = "http://localhost:3001/";
 
 export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
     const { user } = useContext(userContext);
-    const { updateShoppingLists } = useContext(shoppingListsContext);
+    const { updateShoppingLists, shoppingLists } = useContext(shoppingListsContext);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
