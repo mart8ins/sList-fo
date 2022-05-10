@@ -10,7 +10,6 @@ function ListDetails({ listId }: { listId: string }) {
     const [listDetails, setListDetails] = useState({} as ShoppingList);
     const { shoppingLists, checkUnckeckAllList, deleteShoppingList } = useContext(shoppingListsContext);
     const { modalType, closeModal } = useContext(modalContext);
-
     useEffect(() => {
         const filtered = shoppingLists.filter((list) => {
             const id = list._id;
@@ -19,7 +18,6 @@ function ListDetails({ listId }: { listId: string }) {
         const obj = filtered[0];
         setListDetails(obj);
     }, [listId, shoppingLists]);
-
     return (
         <div className="list__details__container">
             {listDetails && listDetails.groceries ? (
@@ -66,7 +64,7 @@ function ListDetails({ listId }: { listId: string }) {
                                         id={item.id}
                                         modalType={"list-details"}
                                         checked={item.checked}
-                                        listId={listDetails.id}
+                                        listId={listDetails._id}
                                         recipeTitle={item.recipeTitle}
                                         portions={item.portions}
                                     />

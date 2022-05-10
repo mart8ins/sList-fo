@@ -30,15 +30,20 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         const allListsRef = [...shoppingLists];
         // CHANGE GROCERIES STATUS CHECKED/UNCHECKED
         const indexOfListNeedsUpdate = allListsRef.findIndex((item) => {
-            return item.id === inListId;
+            return item._id === inListId;
         });
+
         const listToChange = allListsRef[indexOfListNeedsUpdate];
-        listToChange.groceries.forEach((item) => {
-            if (item.id === groceryId) {
-                item.checked = !item.checked;
-            }
-            if (!item.checked) listCompleted = false;
-        });
+
+        if (listToChange.groceries) {
+            listToChange.groceries.forEach((item) => {
+                if (item.id === groceryId) {
+                    item.checked = !item.checked;
+                }
+                if (!item.checked) listCompleted = false;
+            });
+        }
+
         // CHANGE LIST STATUS - COMPLETED/PENDING DEPENDING IF ALL GROCERIES AR CHECKED OR NOT
         listToChange.completed = listCompleted;
         // UPDATE STATE
