@@ -12,10 +12,10 @@ Modal.setAppElement("#root");
 
 const customStyles = {
     content: {
-        top: "60px",
+        top: "20px",
         left: "20px",
         right: "20px",
-        bottom: "60px",
+        bottom: "20px",
     },
 };
 

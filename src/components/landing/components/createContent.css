@@ -12,7 +12,7 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: 60vh;
+  padding-bottom: 70px;
 }
 
 .create__options__container .option {
@@ -20,8 +20,8 @@
   background-color: #292929;
   color: #f2f2ff;
   padding: 10px;
-  height: 220px;
-  width: 160px;
+  height: 200px;
+  width: 150px;
   border-radius: 5px;
   -webkit-box-shadow: 5px 5px 10px #778899;
           box-shadow: 5px 5px 10px #778899;

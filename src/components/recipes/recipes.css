@@ -1,6 +1,7 @@
 .recipes__container {
   width: 80%;
   margin: auto;
+  padding-bottom: 70px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

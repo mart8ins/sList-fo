@@ -4,6 +4,7 @@
 .recipes__container {
     width: 80%;
     margin: auto;
+    padding-bottom: 70px;
     @include flexColumnAlignJustifyCenter();
     .recipe__box {
         width: 90%;

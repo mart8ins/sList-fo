@@ -3,14 +3,14 @@
 
 .create__options__container {
     @include flexColumnAlignJustifyCenter();
-    height: 60vh;
+    padding-bottom: 70px;
     .option {
         margin: 10px;
         background-color: $dark-color;
         color: $white-color;
         padding: 10px;
-        height: 220px;
-        width: 160px;
+        height: 200px;
+        width: 150px;
         border-radius: 5px;
         box-shadow: 5px 5px 10px $grey-color;
         &:hover {
@@ -37,6 +37,7 @@
 
 @media screen and (min-width: 786px) {
     .create__options__container {
+        
         @include flexCenter();
         .option {
             margin: 50px;
