@@ -129,7 +129,13 @@ function RecipeDetails({ recipeId }: Props) {
         <div className="recipe__details__container">
             <CloseModalButton />
             <div className="option__buttons">
-                <button onClick={sendRecipeGroceriesToShoppingList}>
+                <button
+                    onClick={sendRecipeGroceriesToShoppingList}
+                    className={`choose__button ${
+                        ((showRecipeNamesWhereToSendGroceries && choosenShoppingListIDWhereToSendGroceries) || newListTitle.length > 0) &&
+                        "choosen__button"
+                    }`}
+                >
                     {!choosenShoppingListIDWhereToSendGroceries && newListTitle.length === 0 && "Choose shopping list"}
                     {((showRecipeNamesWhereToSendGroceries && choosenShoppingListIDWhereToSendGroceries) || newListTitle.length > 0) &&
                         "Send groceries to shopping list"}

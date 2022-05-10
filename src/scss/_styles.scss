@@ -25,7 +25,6 @@ $red-color: #ff0000;
 @mixin OptionButtonsButton($fontSize) {
     button {
         border: none;
-        background-color: white;
         border-bottom: 1px solid black;
         color: $dark-color;
         font-size: $fontSize;

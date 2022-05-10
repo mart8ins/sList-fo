@@ -9,7 +9,6 @@
 
 .recipe__details__container .option__buttons button {
   border: none;
-  background-color: white;
   border-bottom: 1px solid black;
   color: #292929;
   font-size: 0.7rem;
@@ -25,6 +24,20 @@
   cursor: pointer;
   -webkit-box-shadow: 0 2px 8px #778899;
           box-shadow: 0 2px 8px #778899;
+}
+
+.recipe__details__container .option__buttons .choose__button {
+  background-color: #ffa343;
+  color: #f2f2ff;
+}
+
+.recipe__details__container .option__buttons .choosen__button {
+  background-color: #7cfc00;
+  color: #292929;
+}
+
+.recipe__details__container .option__buttons .delete__button {
+  background-color: white;
 }
 
 .recipe__details__container .option__buttons .delete__button:hover {
@@ -58,17 +71,13 @@
 
 .recipe__details__container .recipe__for__choose .choose__recipe:hover {
   cursor: pointer;
-  color: #242424;
+  -webkit-box-shadow: 0 2px 6px #778899;
+          box-shadow: 0 2px 6px #778899;
 }
 
 .recipe__details__container .recipe__for__choose .selected__recipe {
-  background-color: #7cfc00;
-  color: #292929;
-  font-weight: bold;
-}
-
-.recipe__details__container .recipe__for__choose .selected__recipe:hover {
-  color: #242424;
+  -webkit-box-shadow: 0 2px 6px #292929;
+          box-shadow: 0 2px 6px #292929;
 }
 
 .recipe__details__container .new__recipe label {
@@ -140,7 +149,6 @@
   }
   .recipe__details__container .option__buttons button {
     border: none;
-    background-color: white;
     border-bottom: 1px solid black;
     color: #292929;
     font-size: 1rem;

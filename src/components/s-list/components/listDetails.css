@@ -23,7 +23,6 @@
 
 .list__details__container .option__buttons button {
   border: none;
-  background-color: white;
   border-bottom: 1px solid black;
   color: #292929;
   font-size: 0.7rem;
@@ -60,7 +59,6 @@
   }
   .list__details__container .option__buttons button {
     border: none;
-    background-color: white;
     border-bottom: 1px solid black;
     color: #292929;
     font-size: 1rem;

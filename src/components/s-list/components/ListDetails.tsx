@@ -56,7 +56,6 @@ function ListDetails({ listId }: { listId: string }) {
 
                     <div className="groceries__list">
                         {listDetails.groceries.map((item: any, i) => {
-                            console.log(item);
                             if (item) {
                                 return (
                                     <SingleListItem

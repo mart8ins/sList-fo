@@ -8,6 +8,17 @@
     .option__buttons {
         margin-bottom: 30px;
         @include OptionButtonsButton(0.7rem);
+        .choose__button {
+            background-color: $orange-color;
+            color: $white-color;
+        }
+        .choosen__button {
+            background-color: $green-color;
+            color: $dark-color;
+        }
+        .delete__button {
+            background-color: white;
+        }
         .delete__button:hover {
             background-color: $red-color;
             color: $white-color;
@@ -27,16 +38,11 @@
             letter-spacing: 1.5px;
             &:hover {
                 cursor: pointer;
-                color: darken($dark-color, 2%);
+                box-shadow: 0 2px 6px $grey-color;
             }
         }
         .selected__recipe {
-            background-color: $green-color;
-            color: $dark-color;
-            font-weight: bold;
-            &:hover {
-                color: darken($dark-color, 2%);
-            }
+            box-shadow: 0 2px 6px $dark-color;
         }
     }
 

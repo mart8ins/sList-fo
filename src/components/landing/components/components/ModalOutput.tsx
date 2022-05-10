@@ -20,8 +20,7 @@ const customStyles = {
 };
 
 const ModalOutput = () => {
-    const { modalType, modalIsOpen, closeModal, listId, recipeId } =
-        useContext(modalContext);
+    const { modalType, modalIsOpen, closeModal, listId, recipeId } = useContext(modalContext);
     const { hideListIsSavedView } = useContext(createSListContext);
     const { hideRecipeSavedView } = useContext(createRecipeContext);
 
@@ -49,9 +48,7 @@ const ModalOutput = () => {
             {modalType === "s-list" && <NewSList />}
             {modalType === "recipe" && <NewRecipe />}
             {modalType === "list-details" && <ListDetails listId={listId} />}
-            {modalType === "recipe-details" && (
-                <RecipeDetails recipeId={recipeId} />
-            )}
+            {modalType === "recipe-details" && <RecipeDetails recipeId={recipeId} />}
         </Modal>
     );
 };
