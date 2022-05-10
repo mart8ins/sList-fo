@@ -47,8 +47,10 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         // CHANGE LIST STATUS - COMPLETED/PENDING DEPENDING IF ALL GROCERIES AR CHECKED OR NOT
         listToChange.completed = listCompleted;
         // UPDATE STATE
-        const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
-        setShoppingLists(res.data.update.reverse());
+        // const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
+        // setShoppingLists(res.data.update.reverse());
+        setShoppingLists(allListsRef);
+        axios.post(`${serverUrl}shoppingList/update`, { listToChange });
     };
 
     const checkUnckeckAllList = async (listId: string, toStatus: boolean) => {
@@ -65,8 +67,10 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         // CHANGE LIST STATUS - COMPLETED/PENDING
         listToChange.completed = !listToChange.completed;
         // UPDATE Shopping lists
-        const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
-        setShoppingLists(res.data.update.reverse());
+        // const res = await axios.post(`${serverUrl}shoppingList/update`, { listToChange });
+        // setShoppingLists(res.data.update.reverse());
+        setShoppingLists(allListsRef);
+        axios.post(`${serverUrl}shoppingList/update`, { listToChange });
     };
 
     const deleteShoppingList = async (listId: string) => {
