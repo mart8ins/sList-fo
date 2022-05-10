@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { UserSignInData } from "../models/models";
 import { User } from "../models/models";
 import { setLocalStorage } from "../components/utils/setLocalStorage";
+import { serverUrl } from "../vars";
 
 import axios from "axios";
 
@@ -11,7 +12,7 @@ type UserToSave = {
     status: boolean;
 };
 
-const serverUrl = "http://localhost:3001/";
+// const serverUrl = "http://localhost:3001/";
 
 export const userContext = createContext({} as User);
 

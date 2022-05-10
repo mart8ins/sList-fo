@@ -6,10 +6,11 @@ import { Recipe, ShoppingList } from "../../../models/models";
 import CloseModalButton from "../../landing/components/components/shared/closeModalButton/CloseModalButton";
 import SingleListItem from "../../landing/components/components/shared/singleListItem/SingleListItem";
 import "./recipeDetails.css";
+import { serverUrl } from "../../../vars";
 
 import axios from "axios";
 import { userContext } from "../../../context/UserContext";
-const serverUrl = "http://localhost:3001/";
+// const serverUrl = "http://localhost:3001/";
 
 type Props = {
     recipeId: string;

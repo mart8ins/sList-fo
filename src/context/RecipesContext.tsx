@@ -1,9 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { userContext } from "./UserContext";
 import { Recipe } from "../models/models";
+import { serverUrl } from "../vars";
 
 import axios from "axios";
-const serverUrl = "http://localhost:3001/";
+// const serverUrl = "http://localhost:3001/";
 
 interface Recipes {
     recipes: Recipe[];

@@ -3,9 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import { Grocery, CreateRecipe, Recipe } from "../models/models";
 import { recipesContext } from "./RecipesContext";
 import { userContext } from "./UserContext";
+import { serverUrl } from "../vars";
 
 import axios from "axios";
-const serverUrl = "http://localhost:3001/";
+// const serverUrl = "http://localhost:3001/";
 
 export const createRecipeContext = createContext({} as CreateRecipe);
 
