@@ -12,7 +12,7 @@ export const createSListContext = createContext({} as CreateSList);
 
 const CreateSListContextProvider = ({ children }: { children: any }) => {
     const { user } = useContext(userContext);
-    const { updateShoppingLists, shoppingLists } = useContext(shoppingListsContext);
+    const { updateShoppingLists } = useContext(shoppingListsContext);
     const [listSaved, setListSaved] = useState(false);
     const [listTitle, setListTitle] = useState("");
     const [groceriesList, setGroceriesList] = useState<Grocery[]>([]);
@@ -24,7 +24,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
     }, []);
 
     const fetchGroceryNames = async () => {
-        const res = await axios.get(`${serverUrl}groceries`);
+        const res = await axios.get(`${serverUrl}sList/groceries`);
         if (res) {
             setGroceriesNameDB(res.data.allNames);
         }
@@ -61,7 +61,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
                 groceries: groceriesList,
                 completed: false,
             };
-            const res = await axios.post(`${serverUrl}shoppingList`, {
+            const res = await axios.post(`${serverUrl}sList/shoppingList`, {
                 list: listToSave,
                 authorId: user.id,
             });
@@ -72,7 +72,7 @@ const CreateSListContextProvider = ({ children }: { children: any }) => {
             setGroceriesList([]);
 
             // save grocerie names
-            const groceryNamesRes = await axios.post(`${serverUrl}groceries`, { groceryNames: groceriesListNames });
+            const groceryNamesRes = await axios.post(`${serverUrl}sList/groceries`, { groceryNames: groceriesListNames });
             if (groceryNamesRes.data.status) {
                 setGroceriesNameDB(groceryNamesRes.data.allNames);
             }

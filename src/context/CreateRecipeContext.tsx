@@ -48,7 +48,7 @@ const CreateRecipeContextProvider = ({ children }: { children: any }) => {
                 cals,
                 recipeGroceriesList,
             };
-            const res = await axios.post(`${serverUrl}recipe`, {
+            const res = await axios.post(`${serverUrl}sList/recipe`, {
                 recipeToSave,
                 authorId: user.id,
             });

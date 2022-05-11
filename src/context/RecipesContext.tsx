@@ -29,7 +29,7 @@ const RecipesContextProvider = ({ children }: { children: any }) => {
             return rec._id !== recipeId;
         });
         setRecipes(filtered);
-        axios.post(`${serverUrl}recipe/delete`, {
+        axios.post(`${serverUrl}sList/recipe/delete`, {
             recipeId: recipeId,
             authorId: user.id,
         });
@@ -40,7 +40,7 @@ const RecipesContextProvider = ({ children }: { children: any }) => {
     };
 
     const fetchUserRecipes = async (userId: string) => {
-        const res = await axios.get(`${serverUrl}recipe`, {
+        const res = await axios.get(`${serverUrl}sList/recipe`, {
             params: {
                 authorId: userId,
             },

@@ -86,7 +86,7 @@ function RecipeDetails({ recipeId }: Props) {
                 updatedObj.groceries = [...maped];
             }
 
-            const res = await axios.post(`${serverUrl}shoppingList/update`, {
+            const res = await axios.post(`${serverUrl}sList/shoppingList/update`, {
                 listToChange: updatedObj,
             });
             updateShoppingLists(res.data.update);
@@ -112,7 +112,7 @@ function RecipeDetails({ recipeId }: Props) {
                 completed: false,
             };
 
-            const res = await axios.post(`${serverUrl}shoppingList`, {
+            const res = await axios.post(`${serverUrl}sList/shoppingList`, {
                 list: newSList,
             });
             updateShoppingLists(res.data.allLists);

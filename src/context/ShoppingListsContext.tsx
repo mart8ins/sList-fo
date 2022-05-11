@@ -47,7 +47,7 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         listToChange.completed = listCompleted;
         // UPDATE STATE
         setShoppingLists(allListsRef);
-        axios.post(`${serverUrl}shoppingList/update`, { listToChange });
+        axios.post(`${serverUrl}sList/shoppingList/update`, { listToChange });
     };
 
     const checkUnckeckAllList = async (listId: string, toStatus: boolean) => {
@@ -65,16 +65,16 @@ const ShoppingListsContextProvider = ({ children }: { children: any }) => {
         listToChange.completed = !listToChange.completed;
         // UPDATE Shopping lists
         setShoppingLists(allListsRef);
-        axios.post(`${serverUrl}shoppingList/update`, { listToChange });
+        axios.post(`${serverUrl}sList/shoppingList/update`, { listToChange });
     };
 
     const deleteShoppingList = async (listId: string) => {
-        const res = await axios.post(`${serverUrl}shoppingList/delete`, { listId, authorId: user.id });
+        const res = await axios.post(`${serverUrl}sList/shoppingList/delete`, { listId, authorId: user.id });
         setShoppingLists(res.data.update.reverse());
     };
 
     const fetchUserShoppingLists = async (id: string) => {
-        const res = await axios.get(`${serverUrl}shoppingList`, {
+        const res = await axios.get(`${serverUrl}sList/shoppingList`, {
             params: {
                 authorId: id,
             },

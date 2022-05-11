@@ -23,7 +23,7 @@ function UserContextProvider({ children }: { children: any }) {
     const [activeLink, setActiveLink] = useState("");
     const [authError, setauthError] = useState("");
     const updateUser = async (user: UserSignInData, login?: boolean) => {
-        const res = await axios.post(`${serverUrl}user`, {
+        const res = await axios.post(`${serverUrl}sList/user`, {
             user: {
                 email: user.email,
                 password: user.password,
