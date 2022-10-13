@@ -16,13 +16,11 @@ const SList = () => {
             {shoppingLists.length ? (
                 shoppingLists.map((item, i) => {
                     const id = item._id;
-                    console.log(id);
                     return (
                         <div
                             onClick={() => openModal("list-details", id)}
                             key={id}
-                            className={`shopping__list ${!item.completed && "list__unfinished"}`}
-                        >
+                            className={`shopping__list ${!item.completed && "list__unfinished"}`}>
                             <div className="title">{item.title}</div>
                             <div className="options">
                                 <div>{item.completed ? "Completed" : "Pending"}</div>

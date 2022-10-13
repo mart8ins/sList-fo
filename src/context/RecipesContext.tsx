@@ -22,8 +22,6 @@ const RecipesContextProvider = ({ children }: { children: any }) => {
         fetchUserRecipes(user.id);
     }, [user]);
 
-    console.log(recipes, "recipes");
-
     const deleteRecipe = async (recipeId: string) => {
         const filtered = recipes.filter((rec) => {
             return rec._id !== recipeId;
@@ -55,8 +53,7 @@ const RecipesContextProvider = ({ children }: { children: any }) => {
                 fetchUserRecipes,
                 deleteRecipe,
                 updateRecipes,
-            }}
-        >
+            }}>
             {children}
         </recipesContext.Provider>
     );
